@@ -1,0 +1,160 @@
+0    DEBUG [2018-09-07 11:03:33]  Get connection for route {s}->https://yunyidata.market.alicloudapi.com:443
+122  DEBUG [2018-09-07 11:03:33]  Connecting to yunyidata.market.alicloudapi.com:443
+472  DEBUG [2018-09-07 11:03:34]  CookieSpec selected: default
+473  DEBUG [2018-09-07 11:03:34]  Auth cache not set in the context
+474  DEBUG [2018-09-07 11:03:34]  Proxy auth state: UNCHALLENGED
+474  DEBUG [2018-09-07 11:03:34]  Attempt 1 to execute request
+474  DEBUG [2018-09-07 11:03:34]  Sending request: POST /bankAuthenticate4 HTTP/1.1
+474  DEBUG [2018-09-07 11:03:34]   >> "POST /bankAuthenticate4 HTTP/1.1[\r][\n]"
+475  DEBUG [2018-09-07 11:03:34]   >> "Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3[\r][\n]"
+475  DEBUG [2018-09-07 11:03:34]   >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+475  DEBUG [2018-09-07 11:03:34]   >> "Content-Length: 85[\r][\n]"
+476  DEBUG [2018-09-07 11:03:34]   >> "Host: yunyidata.market.alicloudapi.com[\r][\n]"
+476  DEBUG [2018-09-07 11:03:34]   >> "Connection: Keep-Alive[\r][\n]"
+476  DEBUG [2018-09-07 11:03:34]   >> "User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)[\r][\n]"
+476  DEBUG [2018-09-07 11:03:34]   >> "[\r][\n]"
+476  DEBUG [2018-09-07 11:03:34]  >> POST /bankAuthenticate4 HTTP/1.1
+476  DEBUG [2018-09-07 11:03:34]  >> Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3
+476  DEBUG [2018-09-07 11:03:34]  >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+477  DEBUG [2018-09-07 11:03:34]  >> Content-Length: 85
+477  DEBUG [2018-09-07 11:03:34]  >> Host: yunyidata.market.alicloudapi.com
+477  DEBUG [2018-09-07 11:03:34]  >> Connection: Keep-Alive
+477  DEBUG [2018-09-07 11:03:34]  >> User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)
+477  DEBUG [2018-09-07 11:03:34]   >> "ReturnBankInfo=YES&name=%E9%92%9F%E6%9D%83%E5%AE%9D&cardNo=&idNo=&phoneNo=18124178734"
+551  DEBUG [2018-09-07 11:03:34]   << "HTTP/1.1 403 Forbidden[\r][\n]"
+552  DEBUG [2018-09-07 11:03:34]   << "Server: Tengine[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Date: Fri, 07 Sep 2018 03:03:48 GMT[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Content-Type: text/plain;charset=UTF-8[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Content-Length: 0[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Connection: keep-alive[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Access-Control-Allow-Origin: *[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH[\r][\n]"
+553  DEBUG [2018-09-07 11:03:34]   << "Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5[\r][\n]"
+554  DEBUG [2018-09-07 11:03:34]   << "Access-Control-Max-Age: 172800[\r][\n]"
+554  DEBUG [2018-09-07 11:03:34]   << "X-Ca-Request-Id: E856B4BE-5348-4D9C-BA5E-A76BFB8F3AA9[\r][\n]"
+554  DEBUG [2018-09-07 11:03:34]   << "X-Ca-Error-Message: Quota Exhausted[\r][\n]"
+554  DEBUG [2018-09-07 11:03:34]   << "[\r][\n]"
+554  DEBUG [2018-09-07 11:03:34]  Receiving response: HTTP/1.1 403 Forbidden
+555  DEBUG [2018-09-07 11:03:34]  << HTTP/1.1 403 Forbidden
+555  DEBUG [2018-09-07 11:03:34]  << Server: Tengine
+555  DEBUG [2018-09-07 11:03:34]  << Date: Fri, 07 Sep 2018 03:03:48 GMT
+555  DEBUG [2018-09-07 11:03:34]  << Content-Type: text/plain;charset=UTF-8
+555  DEBUG [2018-09-07 11:03:34]  << Content-Length: 0
+555  DEBUG [2018-09-07 11:03:34]  << Connection: keep-alive
+555  DEBUG [2018-09-07 11:03:34]  << Access-Control-Allow-Origin: *
+555  DEBUG [2018-09-07 11:03:34]  << Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH
+555  DEBUG [2018-09-07 11:03:34]  << Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5
+555  DEBUG [2018-09-07 11:03:34]  << Access-Control-Max-Age: 172800
+555  DEBUG [2018-09-07 11:03:34]  << X-Ca-Request-Id: E856B4BE-5348-4D9C-BA5E-A76BFB8F3AA9
+555  DEBUG [2018-09-07 11:03:34]  << X-Ca-Error-Message: Quota Exhausted
+559  DEBUG [2018-09-07 11:03:34]  Connection can be kept alive indefinitely
+572  DEBUG [2018-09-07 11:03:34]  Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@75c072cb
+572  DEBUG [2018-09-07 11:03:34]  Connection can be kept alive indefinitely
+0    DEBUG [2018-09-07 11:05:47]  Get connection for route {s}->https://yunyidata.market.alicloudapi.com:443
+17   DEBUG [2018-09-07 11:05:47]  Connecting to yunyidata.market.alicloudapi.com:443
+466  DEBUG [2018-09-07 11:05:47]  CookieSpec selected: default
+467  DEBUG [2018-09-07 11:05:47]  Auth cache not set in the context
+467  DEBUG [2018-09-07 11:05:47]  Proxy auth state: UNCHALLENGED
+467  DEBUG [2018-09-07 11:05:47]  Attempt 1 to execute request
+467  DEBUG [2018-09-07 11:05:47]  Sending request: POST /bankAuthenticate4 HTTP/1.1
+468  DEBUG [2018-09-07 11:05:47]   >> "POST /bankAuthenticate4 HTTP/1.1[\r][\n]"
+468  DEBUG [2018-09-07 11:05:47]   >> "Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "Content-Length: 85[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "Host: yunyidata.market.alicloudapi.com[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "Connection: Keep-Alive[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]   >> "[\r][\n]"
+469  DEBUG [2018-09-07 11:05:47]  >> POST /bankAuthenticate4 HTTP/1.1
+469  DEBUG [2018-09-07 11:05:47]  >> Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3
+469  DEBUG [2018-09-07 11:05:47]  >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+469  DEBUG [2018-09-07 11:05:47]  >> Content-Length: 85
+470  DEBUG [2018-09-07 11:05:47]  >> Host: yunyidata.market.alicloudapi.com
+470  DEBUG [2018-09-07 11:05:47]  >> Connection: Keep-Alive
+470  DEBUG [2018-09-07 11:05:47]  >> User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)
+470  DEBUG [2018-09-07 11:05:47]   >> "ReturnBankInfo=YES&name=%E9%92%9F%E6%9D%83%E5%AE%9D&cardNo=&idNo=&phoneNo=18124178734"
+521  DEBUG [2018-09-07 11:05:47]   << "HTTP/1.1 403 Forbidden[\r][\n]"
+522  DEBUG [2018-09-07 11:05:47]   << "Server: Tengine[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Date: Fri, 07 Sep 2018 03:06:01 GMT[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Content-Type: text/plain;charset=UTF-8[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Content-Length: 0[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Connection: keep-alive[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Access-Control-Allow-Origin: *[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH[\r][\n]"
+523  DEBUG [2018-09-07 11:05:47]   << "Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5[\r][\n]"
+524  DEBUG [2018-09-07 11:05:47]   << "Access-Control-Max-Age: 172800[\r][\n]"
+524  DEBUG [2018-09-07 11:05:47]   << "X-Ca-Request-Id: F5331FDD-A5DB-4D0C-9A76-67279AC8FFE9[\r][\n]"
+524  DEBUG [2018-09-07 11:05:47]   << "X-Ca-Error-Message: Quota Exhausted[\r][\n]"
+524  DEBUG [2018-09-07 11:05:47]   << "[\r][\n]"
+527  DEBUG [2018-09-07 11:05:47]  Receiving response: HTTP/1.1 403 Forbidden
+527  DEBUG [2018-09-07 11:05:47]  << HTTP/1.1 403 Forbidden
+527  DEBUG [2018-09-07 11:05:47]  << Server: Tengine
+527  DEBUG [2018-09-07 11:05:47]  << Date: Fri, 07 Sep 2018 03:06:01 GMT
+527  DEBUG [2018-09-07 11:05:47]  << Content-Type: text/plain;charset=UTF-8
+528  DEBUG [2018-09-07 11:05:47]  << Content-Length: 0
+528  DEBUG [2018-09-07 11:05:47]  << Connection: keep-alive
+528  DEBUG [2018-09-07 11:05:47]  << Access-Control-Allow-Origin: *
+528  DEBUG [2018-09-07 11:05:47]  << Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH
+528  DEBUG [2018-09-07 11:05:47]  << Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5
+528  DEBUG [2018-09-07 11:05:47]  << Access-Control-Max-Age: 172800
+528  DEBUG [2018-09-07 11:05:47]  << X-Ca-Request-Id: F5331FDD-A5DB-4D0C-9A76-67279AC8FFE9
+528  DEBUG [2018-09-07 11:05:47]  << X-Ca-Error-Message: Quota Exhausted
+532  DEBUG [2018-09-07 11:05:47]  Connection can be kept alive indefinitely
+545  DEBUG [2018-09-07 11:05:47]  Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@75c072cb
+545  DEBUG [2018-09-07 11:05:47]  Connection can be kept alive indefinitely
+0    DEBUG [2018-09-07 11:06:45]  Get connection for route {s}->https://yunyidata.market.alicloudapi.com:443
+17   DEBUG [2018-09-07 11:06:45]  Connecting to yunyidata.market.alicloudapi.com:443
+406  DEBUG [2018-09-07 11:06:45]  CookieSpec selected: default
+407  DEBUG [2018-09-07 11:06:45]  Auth cache not set in the context
+407  DEBUG [2018-09-07 11:06:45]  Proxy auth state: UNCHALLENGED
+408  DEBUG [2018-09-07 11:06:45]  Attempt 1 to execute request
+408  DEBUG [2018-09-07 11:06:45]  Sending request: POST /bankAuthenticate4 HTTP/1.1
+408  DEBUG [2018-09-07 11:06:45]   >> "POST /bankAuthenticate4 HTTP/1.1[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "Content-Length: 85[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "Host: yunyidata.market.alicloudapi.com[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "Connection: Keep-Alive[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]   >> "[\r][\n]"
+409  DEBUG [2018-09-07 11:06:45]  >> POST /bankAuthenticate4 HTTP/1.1
+410  DEBUG [2018-09-07 11:06:45]  >> Authorization: APPCODE b607184ed352461d84aa8454e05ce3a3
+410  DEBUG [2018-09-07 11:06:45]  >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+410  DEBUG [2018-09-07 11:06:45]  >> Content-Length: 85
+410  DEBUG [2018-09-07 11:06:45]  >> Host: yunyidata.market.alicloudapi.com
+410  DEBUG [2018-09-07 11:06:45]  >> Connection: Keep-Alive
+410  DEBUG [2018-09-07 11:06:45]  >> User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_144)
+410  DEBUG [2018-09-07 11:06:45]   >> "ReturnBankInfo=YES&name=%E9%92%9F%E6%9D%83%E5%AE%9D&cardNo=&idNo=&phoneNo=18124178734"
+470  DEBUG [2018-09-07 11:06:45]   << "HTTP/1.1 403 Forbidden[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Server: Tengine[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Date: Fri, 07 Sep 2018 03:06:59 GMT[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Content-Type: text/plain;charset=UTF-8[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Content-Length: 0[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Connection: keep-alive[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Access-Control-Allow-Origin: *[\r][\n]"
+472  DEBUG [2018-09-07 11:06:45]   << "Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH[\r][\n]"
+473  DEBUG [2018-09-07 11:06:45]   << "Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5[\r][\n]"
+473  DEBUG [2018-09-07 11:06:45]   << "Access-Control-Max-Age: 172800[\r][\n]"
+473  DEBUG [2018-09-07 11:06:45]   << "X-Ca-Request-Id: 7FFB0521-0C04-4D7E-B0E7-FE8C5A4A7E92[\r][\n]"
+473  DEBUG [2018-09-07 11:06:45]   << "X-Ca-Error-Message: Quota Exhausted[\r][\n]"
+473  DEBUG [2018-09-07 11:06:45]   << "[\r][\n]"
+474  DEBUG [2018-09-07 11:06:45]  Receiving response: HTTP/1.1 403 Forbidden
+474  DEBUG [2018-09-07 11:06:45]  << HTTP/1.1 403 Forbidden
+474  DEBUG [2018-09-07 11:06:45]  << Server: Tengine
+474  DEBUG [2018-09-07 11:06:45]  << Date: Fri, 07 Sep 2018 03:06:59 GMT
+474  DEBUG [2018-09-07 11:06:45]  << Content-Type: text/plain;charset=UTF-8
+474  DEBUG [2018-09-07 11:06:45]  << Content-Length: 0
+474  DEBUG [2018-09-07 11:06:45]  << Connection: keep-alive
+474  DEBUG [2018-09-07 11:06:45]  << Access-Control-Allow-Origin: *
+474  DEBUG [2018-09-07 11:06:45]  << Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH
+474  DEBUG [2018-09-07 11:06:45]  << Access-Control-Allow-Headers: X-Requested-With,X-Sequence,X-Ca-Key,X-Ca-Secret,X-Ca-Version,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-API-Key,X-Ca-Stage,X-Ca-Client-DeviceId,X-Ca-Client-AppId,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Forwarded-For,X-Ca-Date,X-Ca-Request-Mode,Authorization,Content-Type,Accept,Accept-Ranges,Cache-Control,Range,Content-MD5
+474  DEBUG [2018-09-07 11:06:45]  << Access-Control-Max-Age: 172800
+474  DEBUG [2018-09-07 11:06:45]  << X-Ca-Request-Id: 7FFB0521-0C04-4D7E-B0E7-FE8C5A4A7E92
+474  DEBUG [2018-09-07 11:06:45]  << X-Ca-Error-Message: Quota Exhausted
+477  DEBUG [2018-09-07 11:06:45]  Connection can be kept alive indefinitely
+487  DEBUG [2018-09-07 11:06:45]  Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@1f1c7bf6
+487  DEBUG [2018-09-07 11:06:45]  Connection can be kept alive indefinitely
+0    DEBUG [2018-09-07 11:40:10]  Get connection for route {s}->https://yunyidata.market.alicloudapi.com:443
+66   DEBUG [2018-09-07 11:40:10]  Connection org.apache.http.impl.conn.DefaultClientConnection@68bbe345 closed
+66   DEBUG [2018-09-07 11:40:10]  Connection org.apache.http.impl.conn.DefaultClientConnection@68bbe345 shut down
+66   DEBUG [2018-09-07 11:40:10]  Releasing connection org.apache.http.impl.conn.ManagedClientConnectionImpl@30b8a058

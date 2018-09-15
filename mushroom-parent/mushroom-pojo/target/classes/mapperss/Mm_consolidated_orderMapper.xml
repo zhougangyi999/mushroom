@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_consolidated_orderMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_consolidated_order">
+    <id column="consolidated_order_id" jdbcType="INTEGER" property="consolidatedOrderId" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="total" jdbcType="DOUBLE" property="total" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="stats" jdbcType="INTEGER" property="stats" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    consolidated_order_id, order_num, creation_time, total, uid, stats, reserve1, reserve2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_consolidated_order
+    where consolidated_order_id = #{consolidatedOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_consolidated_order
+    where consolidated_order_id = #{consolidatedOrderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_consolidated_order">
+    insert into mm_consolidated_order (consolidated_order_id, order_num, creation_time, 
+      total, uid, stats, reserve1, 
+      reserve2)
+    values (#{consolidatedOrderId,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, #{creationTime,jdbcType=DATE}, 
+      #{total,jdbcType=DOUBLE}, #{uid,jdbcType=INTEGER}, #{stats,jdbcType=INTEGER}, #{reserve1,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_consolidated_order">
+    insert into mm_consolidated_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="consolidatedOrderId != null">
+        consolidated_order_id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="stats != null">
+        stats,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="consolidatedOrderId != null">
+        #{consolidatedOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_consolidated_order">
+    update mm_consolidated_order
+    <set>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        stats = #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where consolidated_order_id = #{consolidatedOrderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_consolidated_order">
+    update mm_consolidated_order
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      creation_time = #{creationTime,jdbcType=DATE},
+      total = #{total,jdbcType=DOUBLE},
+      uid = #{uid,jdbcType=INTEGER},
+      stats = #{stats,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where consolidated_order_id = #{consolidatedOrderId,jdbcType=INTEGER}
+  </update>
+</mapper>

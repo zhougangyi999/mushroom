@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_shopping_cartMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_shopping_cart">
+    <id column="shopping_vart_id" jdbcType="INTEGER" property="shoppingVartId" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shopping_vart_id, sku_id, userId, number, commodity_id, reserved1, reserved2, reserved3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_shopping_cart
+    where shopping_vart_id = #{shoppingVartId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_shopping_cart
+    where shopping_vart_id = #{shoppingVartId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_shopping_cart">
+    insert into mm_shopping_cart (shopping_vart_id, sku_id, userId, 
+      number, commodity_id, reserved1, 
+      reserved2, reserved3)
+    values (#{shoppingVartId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_shopping_cart">
+    insert into mm_shopping_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shoppingVartId != null">
+        shopping_vart_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shoppingVartId != null">
+        #{shoppingVartId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_shopping_cart">
+    update mm_shopping_cart
+    <set>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shopping_vart_id = #{shoppingVartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_shopping_cart">
+    update mm_shopping_cart
+    set sku_id = #{skuId,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where shopping_vart_id = #{shoppingVartId,jdbcType=INTEGER}
+  </update>
+</mapper>

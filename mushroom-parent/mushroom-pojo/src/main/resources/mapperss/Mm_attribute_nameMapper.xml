@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_attribute_nameMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_attribute_name">
+    <id column="attribute_name_id" jdbcType="INTEGER" property="attributeNameId" />
+    <result column="attribute_value" jdbcType="VARCHAR" property="attributeValue" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    attribute_name_id, attribute_value, parent_id, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_attribute_name
+    where attribute_name_id = #{attributeNameId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_attribute_name
+    where attribute_name_id = #{attributeNameId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_attribute_name">
+    insert into mm_attribute_name (attribute_name_id, attribute_value, 
+      parent_id, reserved1, reserved2
+      )
+    values (#{attributeNameId,jdbcType=INTEGER}, #{attributeValue,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_attribute_name">
+    insert into mm_attribute_name
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attributeNameId != null">
+        attribute_name_id,
+      </if>
+      <if test="attributeValue != null">
+        attribute_value,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attributeNameId != null">
+        #{attributeNameId,jdbcType=INTEGER},
+      </if>
+      <if test="attributeValue != null">
+        #{attributeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_attribute_name">
+    update mm_attribute_name
+    <set>
+      <if test="attributeValue != null">
+        attribute_value = #{attributeValue,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where attribute_name_id = #{attributeNameId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_attribute_name">
+    update mm_attribute_name
+    set attribute_value = #{attributeValue,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where attribute_name_id = #{attributeNameId,jdbcType=INTEGER}
+  </update>
+</mapper>

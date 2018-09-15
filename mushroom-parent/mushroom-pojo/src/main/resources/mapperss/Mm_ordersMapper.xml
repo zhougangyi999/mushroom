@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_ordersMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_orders">
+    <id column="orderid" jdbcType="INTEGER" property="orderid" />
+    <result column="order_num_parent" jdbcType="VARCHAR" property="orderNumParent" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="deal_time" jdbcType="DATE" property="dealTime" />
+    <result column="total" jdbcType="DOUBLE" property="total" />
+    <result column="merge_price" jdbcType="DOUBLE" property="mergePrice" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="consignee" jdbcType="VARCHAR" property="consignee" />
+    <result column="region_id_province" jdbcType="VARCHAR" property="regionIdProvince" />
+    <result column="region_id_city" jdbcType="VARCHAR" property="regionIdCity" />
+    <result column="region_id_county" jdbcType="VARCHAR" property="regionIdCounty" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="verification_code" jdbcType="VARCHAR" property="verificationCode" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="freight" jdbcType="DOUBLE" property="freight" />
+    <result column="store_the_user" jdbcType="INTEGER" property="storeTheUser" />
+    <result column="shopid" jdbcType="INTEGER" property="shopid" />
+    <result column="emit_daddress" jdbcType="VARCHAR" property="emitDaddress" />
+    <result column="emit_id_province" jdbcType="INTEGER" property="emitIdProvince" />
+    <result column="emit_id_city" jdbcType="INTEGER" property="emitIdCity" />
+    <result column="emit_id_county" jdbcType="INTEGER" property="emitIdCounty" />
+    <result column="emit_consignee" jdbcType="INTEGER" property="emitConsignee" />
+    <result column="emit_code" jdbcType="VARCHAR" property="emitCode" />
+    <result column="pay_date" jdbcType="DATE" property="payDate" />
+    <result column="delivery_time" jdbcType="DATE" property="deliveryTime" />
+    <result column="notarize_time" jdbcType="DATE" property="notarizeTime" />
+    <result column="tracking_number" jdbcType="VARCHAR" property="trackingNumber" />
+    <result column="logistics_company" jdbcType="VARCHAR" property="logisticsCompany" />
+    <result column="evaluate_time" jdbcType="DATE" property="evaluateTime" />
+    <result column="cancel" jdbcType="INTEGER" property="cancel" />
+    <result column="emit_phone" jdbcType="VARCHAR" property="emitPhone" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_orders">
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderid, order_num_parent, order_num, deal_time, total, merge_price, status, userid, 
+    consignee, region_id_province, region_id_city, region_id_county, address, verification_code, 
+    phone, freight, store_the_user, shopid, emit_daddress, emit_id_province, emit_id_city, 
+    emit_id_county, emit_consignee, emit_code, pay_date, delivery_time, notarize_time, 
+    tracking_number, logistics_company, evaluate_time, cancel, emit_phone, reserved1, 
+    reserved2, reserved3
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_orders
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_orders
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_orders">
+    insert into mm_orders (orderid, order_num_parent, order_num, 
+      deal_time, total, merge_price, 
+      status, userid, consignee, 
+      region_id_province, region_id_city, region_id_county, 
+      address, verification_code, phone, 
+      freight, store_the_user, shopid, 
+      emit_daddress, emit_id_province, emit_id_city, 
+      emit_id_county, emit_consignee, emit_code, 
+      pay_date, delivery_time, notarize_time, 
+      tracking_number, logistics_company, evaluate_time, 
+      cancel, emit_phone, reserved1, 
+      reserved2, reserved3, remark
+      )
+    values (#{orderid,jdbcType=INTEGER}, #{orderNumParent,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, 
+      #{dealTime,jdbcType=DATE}, #{total,jdbcType=DOUBLE}, #{mergePrice,jdbcType=DOUBLE}, 
+      #{status,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{consignee,jdbcType=VARCHAR}, 
+      #{regionIdProvince,jdbcType=VARCHAR}, #{regionIdCity,jdbcType=VARCHAR}, #{regionIdCounty,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{verificationCode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{freight,jdbcType=DOUBLE}, #{storeTheUser,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, 
+      #{emitDaddress,jdbcType=VARCHAR}, #{emitIdProvince,jdbcType=INTEGER}, #{emitIdCity,jdbcType=INTEGER}, 
+      #{emitIdCounty,jdbcType=INTEGER}, #{emitConsignee,jdbcType=INTEGER}, #{emitCode,jdbcType=VARCHAR}, 
+      #{payDate,jdbcType=DATE}, #{deliveryTime,jdbcType=DATE}, #{notarizeTime,jdbcType=DATE}, 
+      #{trackingNumber,jdbcType=VARCHAR}, #{logisticsCompany,jdbcType=VARCHAR}, #{evaluateTime,jdbcType=DATE}, 
+      #{cancel,jdbcType=INTEGER}, #{emitPhone,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_orders">
+    insert into mm_orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="orderNumParent != null">
+        order_num_parent,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="mergePrice != null">
+        merge_price,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="consignee != null">
+        consignee,
+      </if>
+      <if test="regionIdProvince != null">
+        region_id_province,
+      </if>
+      <if test="regionIdCity != null">
+        region_id_city,
+      </if>
+      <if test="regionIdCounty != null">
+        region_id_county,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="verificationCode != null">
+        verification_code,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="freight != null">
+        freight,
+      </if>
+      <if test="storeTheUser != null">
+        store_the_user,
+      </if>
+      <if test="shopid != null">
+        shopid,
+      </if>
+      <if test="emitDaddress != null">
+        emit_daddress,
+      </if>
+      <if test="emitIdProvince != null">
+        emit_id_province,
+      </if>
+      <if test="emitIdCity != null">
+        emit_id_city,
+      </if>
+      <if test="emitIdCounty != null">
+        emit_id_county,
+      </if>
+      <if test="emitConsignee != null">
+        emit_consignee,
+      </if>
+      <if test="emitCode != null">
+        emit_code,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time,
+      </if>
+      <if test="notarizeTime != null">
+        notarize_time,
+      </if>
+      <if test="trackingNumber != null">
+        tracking_number,
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company,
+      </if>
+      <if test="evaluateTime != null">
+        evaluate_time,
+      </if>
+      <if test="cancel != null">
+        cancel,
+      </if>
+      <if test="emitPhone != null">
+        emit_phone,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumParent != null">
+        #{orderNumParent,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=DATE},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="mergePrice != null">
+        #{mergePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdProvince != null">
+        #{regionIdProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdCity != null">
+        #{regionIdCity,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdCounty != null">
+        #{regionIdCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationCode != null">
+        #{verificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null">
+        #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="storeTheUser != null">
+        #{storeTheUser,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="emitDaddress != null">
+        #{emitDaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emitIdProvince != null">
+        #{emitIdProvince,jdbcType=INTEGER},
+      </if>
+      <if test="emitIdCity != null">
+        #{emitIdCity,jdbcType=INTEGER},
+      </if>
+      <if test="emitIdCounty != null">
+        #{emitIdCounty,jdbcType=INTEGER},
+      </if>
+      <if test="emitConsignee != null">
+        #{emitConsignee,jdbcType=INTEGER},
+      </if>
+      <if test="emitCode != null">
+        #{emitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=DATE},
+      </if>
+      <if test="deliveryTime != null">
+        #{deliveryTime,jdbcType=DATE},
+      </if>
+      <if test="notarizeTime != null">
+        #{notarizeTime,jdbcType=DATE},
+      </if>
+      <if test="trackingNumber != null">
+        #{trackingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTime != null">
+        #{evaluateTime,jdbcType=DATE},
+      </if>
+      <if test="cancel != null">
+        #{cancel,jdbcType=INTEGER},
+      </if>
+      <if test="emitPhone != null">
+        #{emitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_orders">
+    update mm_orders
+    <set>
+      <if test="orderNumParent != null">
+        order_num_parent = #{orderNumParent,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=DATE},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="mergePrice != null">
+        merge_price = #{mergePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="consignee != null">
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdProvince != null">
+        region_id_province = #{regionIdProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdCity != null">
+        region_id_city = #{regionIdCity,jdbcType=VARCHAR},
+      </if>
+      <if test="regionIdCounty != null">
+        region_id_county = #{regionIdCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationCode != null">
+        verification_code = #{verificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null">
+        freight = #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="storeTheUser != null">
+        store_the_user = #{storeTheUser,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null">
+        shopid = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="emitDaddress != null">
+        emit_daddress = #{emitDaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emitIdProvince != null">
+        emit_id_province = #{emitIdProvince,jdbcType=INTEGER},
+      </if>
+      <if test="emitIdCity != null">
+        emit_id_city = #{emitIdCity,jdbcType=INTEGER},
+      </if>
+      <if test="emitIdCounty != null">
+        emit_id_county = #{emitIdCounty,jdbcType=INTEGER},
+      </if>
+      <if test="emitConsignee != null">
+        emit_consignee = #{emitConsignee,jdbcType=INTEGER},
+      </if>
+      <if test="emitCode != null">
+        emit_code = #{emitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=DATE},
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time = #{deliveryTime,jdbcType=DATE},
+      </if>
+      <if test="notarizeTime != null">
+        notarize_time = #{notarizeTime,jdbcType=DATE},
+      </if>
+      <if test="trackingNumber != null">
+        tracking_number = #{trackingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTime != null">
+        evaluate_time = #{evaluateTime,jdbcType=DATE},
+      </if>
+      <if test="cancel != null">
+        cancel = #{cancel,jdbcType=INTEGER},
+      </if>
+      <if test="emitPhone != null">
+        emit_phone = #{emitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_orders">
+    update mm_orders
+    set order_num_parent = #{orderNumParent,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      deal_time = #{dealTime,jdbcType=DATE},
+      total = #{total,jdbcType=DOUBLE},
+      merge_price = #{mergePrice,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      region_id_province = #{regionIdProvince,jdbcType=VARCHAR},
+      region_id_city = #{regionIdCity,jdbcType=VARCHAR},
+      region_id_county = #{regionIdCounty,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      verification_code = #{verificationCode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=DOUBLE},
+      store_the_user = #{storeTheUser,jdbcType=INTEGER},
+      shopid = #{shopid,jdbcType=INTEGER},
+      emit_daddress = #{emitDaddress,jdbcType=VARCHAR},
+      emit_id_province = #{emitIdProvince,jdbcType=INTEGER},
+      emit_id_city = #{emitIdCity,jdbcType=INTEGER},
+      emit_id_county = #{emitIdCounty,jdbcType=INTEGER},
+      emit_consignee = #{emitConsignee,jdbcType=INTEGER},
+      emit_code = #{emitCode,jdbcType=VARCHAR},
+      pay_date = #{payDate,jdbcType=DATE},
+      delivery_time = #{deliveryTime,jdbcType=DATE},
+      notarize_time = #{notarizeTime,jdbcType=DATE},
+      tracking_number = #{trackingNumber,jdbcType=VARCHAR},
+      logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      evaluate_time = #{evaluateTime,jdbcType=DATE},
+      cancel = #{cancel,jdbcType=INTEGER},
+      emit_phone = #{emitPhone,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_orders">
+    update mm_orders
+    set order_num_parent = #{orderNumParent,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      deal_time = #{dealTime,jdbcType=DATE},
+      total = #{total,jdbcType=DOUBLE},
+      merge_price = #{mergePrice,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      region_id_province = #{regionIdProvince,jdbcType=VARCHAR},
+      region_id_city = #{regionIdCity,jdbcType=VARCHAR},
+      region_id_county = #{regionIdCounty,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      verification_code = #{verificationCode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=DOUBLE},
+      store_the_user = #{storeTheUser,jdbcType=INTEGER},
+      shopid = #{shopid,jdbcType=INTEGER},
+      emit_daddress = #{emitDaddress,jdbcType=VARCHAR},
+      emit_id_province = #{emitIdProvince,jdbcType=INTEGER},
+      emit_id_city = #{emitIdCity,jdbcType=INTEGER},
+      emit_id_county = #{emitIdCounty,jdbcType=INTEGER},
+      emit_consignee = #{emitConsignee,jdbcType=INTEGER},
+      emit_code = #{emitCode,jdbcType=VARCHAR},
+      pay_date = #{payDate,jdbcType=DATE},
+      delivery_time = #{deliveryTime,jdbcType=DATE},
+      notarize_time = #{notarizeTime,jdbcType=DATE},
+      tracking_number = #{trackingNumber,jdbcType=VARCHAR},
+      logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      evaluate_time = #{evaluateTime,jdbcType=DATE},
+      cancel = #{cancel,jdbcType=INTEGER},
+      emit_phone = #{emitPhone,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+</mapper>

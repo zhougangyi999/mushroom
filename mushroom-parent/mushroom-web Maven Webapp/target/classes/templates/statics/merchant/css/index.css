@@ -1,0 +1,30 @@
+@-webkit-keyframes ks-fadeIn {
+	0% {
+		opacity: 0
+	}
+	100% {
+		opacity: 1
+	}
+}
+
+@keyframes ks-fadeIn {
+	0% {
+		opacity: 0
+	}
+	100% {
+		opacity: 1
+	}
+}
+
+.img-ks-lazyload {
+	-webkit-animation: ks-fadeIn 350ms linear 0ms 1 normal both;
+	animation: ks-fadeIn 350ms linear 0ms 1 normal both;
+	opacity: 1
+}
+
+.img-ks-beforeload {
+	opacity: 0
+}
+.tab-content img{
+	height: 100%;
+}

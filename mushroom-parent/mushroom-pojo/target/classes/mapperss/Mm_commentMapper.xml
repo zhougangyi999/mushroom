@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_commentMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_comment">
+    <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="attribute_name_value" jdbcType="VARCHAR" property="attributeNameValue" />
+    <result column="service_evaluation_id" jdbcType="INTEGER" property="serviceEvaluationId" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="stature" jdbcType="DOUBLE" property="stature" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="is_ok" jdbcType="INTEGER" property="isOk" />
+    <result column="user_name" jdbcType="INTEGER" property="userName" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="picture1" jdbcType="VARCHAR" property="picture1" />
+    <result column="picture2" jdbcType="VARCHAR" property="picture2" />
+    <result column="picture3" jdbcType="VARCHAR" property="picture3" />
+    <result column="picture4" jdbcType="VARCHAR" property="picture4" />
+    <result column="picture5" jdbcType="VARCHAR" property="picture5" />
+    <result column="picture6" jdbcType="VARCHAR" property="picture6" />
+    <result column="picture7" jdbcType="VARCHAR" property="picture7" />
+    <result column="is_anonymity" jdbcType="INTEGER" property="isAnonymity" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_commentWithBLOBs">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="reserved1" jdbcType="LONGVARCHAR" property="reserved1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    comment_id, attribute_name_value, service_evaluation_id, creation_time, stature, 
+    weight, is_ok, user_name, commodity_id, picture1, picture2, picture3, picture4, picture5, 
+    picture6, picture7, is_anonymity, reserved2, reserved3, reserved4
+  </sql>
+  <sql id="Blob_Column_List">
+    content, reserved1
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_commentWithBLOBs">
+    insert into mm_comment (comment_id, attribute_name_value, service_evaluation_id, 
+      creation_time, stature, weight, 
+      is_ok, user_name, commodity_id, 
+      picture1, picture2, picture3, 
+      picture4, picture5, picture6, 
+      picture7, is_anonymity, reserved2, 
+      reserved3, reserved4, content, 
+      reserved1)
+    values (#{commentId,jdbcType=INTEGER}, #{attributeNameValue,jdbcType=VARCHAR}, #{serviceEvaluationId,jdbcType=INTEGER}, 
+      #{creationTime,jdbcType=DATE}, #{stature,jdbcType=DOUBLE}, #{weight,jdbcType=DOUBLE}, 
+      #{isOk,jdbcType=INTEGER}, #{userName,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, 
+      #{picture1,jdbcType=VARCHAR}, #{picture2,jdbcType=VARCHAR}, #{picture3,jdbcType=VARCHAR}, 
+      #{picture4,jdbcType=VARCHAR}, #{picture5,jdbcType=VARCHAR}, #{picture6,jdbcType=VARCHAR}, 
+      #{picture7,jdbcType=VARCHAR}, #{isAnonymity,jdbcType=INTEGER}, #{reserved2,jdbcType=VARCHAR}, 
+      #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
+      #{reserved1,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_commentWithBLOBs">
+    insert into mm_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="attributeNameValue != null">
+        attribute_name_value,
+      </if>
+      <if test="serviceEvaluationId != null">
+        service_evaluation_id,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="stature != null">
+        stature,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="isOk != null">
+        is_ok,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="picture1 != null">
+        picture1,
+      </if>
+      <if test="picture2 != null">
+        picture2,
+      </if>
+      <if test="picture3 != null">
+        picture3,
+      </if>
+      <if test="picture4 != null">
+        picture4,
+      </if>
+      <if test="picture5 != null">
+        picture5,
+      </if>
+      <if test="picture6 != null">
+        picture6,
+      </if>
+      <if test="picture7 != null">
+        picture7,
+      </if>
+      <if test="isAnonymity != null">
+        is_anonymity,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="attributeNameValue != null">
+        #{attributeNameValue,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceEvaluationId != null">
+        #{serviceEvaluationId,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="stature != null">
+        #{stature,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="isOk != null">
+        #{isOk,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="picture1 != null">
+        #{picture1,jdbcType=VARCHAR},
+      </if>
+      <if test="picture2 != null">
+        #{picture2,jdbcType=VARCHAR},
+      </if>
+      <if test="picture3 != null">
+        #{picture3,jdbcType=VARCHAR},
+      </if>
+      <if test="picture4 != null">
+        #{picture4,jdbcType=VARCHAR},
+      </if>
+      <if test="picture5 != null">
+        #{picture5,jdbcType=VARCHAR},
+      </if>
+      <if test="picture6 != null">
+        #{picture6,jdbcType=VARCHAR},
+      </if>
+      <if test="picture7 != null">
+        #{picture7,jdbcType=VARCHAR},
+      </if>
+      <if test="isAnonymity != null">
+        #{isAnonymity,jdbcType=INTEGER},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_commentWithBLOBs">
+    update mm_comment
+    <set>
+      <if test="attributeNameValue != null">
+        attribute_name_value = #{attributeNameValue,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceEvaluationId != null">
+        service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="stature != null">
+        stature = #{stature,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="isOk != null">
+        is_ok = #{isOk,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="picture1 != null">
+        picture1 = #{picture1,jdbcType=VARCHAR},
+      </if>
+      <if test="picture2 != null">
+        picture2 = #{picture2,jdbcType=VARCHAR},
+      </if>
+      <if test="picture3 != null">
+        picture3 = #{picture3,jdbcType=VARCHAR},
+      </if>
+      <if test="picture4 != null">
+        picture4 = #{picture4,jdbcType=VARCHAR},
+      </if>
+      <if test="picture5 != null">
+        picture5 = #{picture5,jdbcType=VARCHAR},
+      </if>
+      <if test="picture6 != null">
+        picture6 = #{picture6,jdbcType=VARCHAR},
+      </if>
+      <if test="picture7 != null">
+        picture7 = #{picture7,jdbcType=VARCHAR},
+      </if>
+      <if test="isAnonymity != null">
+        is_anonymity = #{isAnonymity,jdbcType=INTEGER},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_commentWithBLOBs">
+    update mm_comment
+    set attribute_name_value = #{attributeNameValue,jdbcType=VARCHAR},
+      service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER},
+      creation_time = #{creationTime,jdbcType=DATE},
+      stature = #{stature,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      is_ok = #{isOk,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      picture1 = #{picture1,jdbcType=VARCHAR},
+      picture2 = #{picture2,jdbcType=VARCHAR},
+      picture3 = #{picture3,jdbcType=VARCHAR},
+      picture4 = #{picture4,jdbcType=VARCHAR},
+      picture5 = #{picture5,jdbcType=VARCHAR},
+      picture6 = #{picture6,jdbcType=VARCHAR},
+      picture7 = #{picture7,jdbcType=VARCHAR},
+      is_anonymity = #{isAnonymity,jdbcType=INTEGER},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      reserved1 = #{reserved1,jdbcType=LONGVARCHAR}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_comment">
+    update mm_comment
+    set attribute_name_value = #{attributeNameValue,jdbcType=VARCHAR},
+      service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER},
+      creation_time = #{creationTime,jdbcType=DATE},
+      stature = #{stature,jdbcType=DOUBLE},
+      weight = #{weight,jdbcType=DOUBLE},
+      is_ok = #{isOk,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      picture1 = #{picture1,jdbcType=VARCHAR},
+      picture2 = #{picture2,jdbcType=VARCHAR},
+      picture3 = #{picture3,jdbcType=VARCHAR},
+      picture4 = #{picture4,jdbcType=VARCHAR},
+      picture5 = #{picture5,jdbcType=VARCHAR},
+      picture6 = #{picture6,jdbcType=VARCHAR},
+      picture7 = #{picture7,jdbcType=VARCHAR},
+      is_anonymity = #{isAnonymity,jdbcType=INTEGER},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

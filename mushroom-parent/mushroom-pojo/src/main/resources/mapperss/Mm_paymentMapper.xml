@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_paymentMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_payment">
+    <id column="payment_id" jdbcType="INTEGER" property="paymentId" />
+    <result column="userid_out" jdbcType="INTEGER" property="useridOut" />
+    <result column="userid_int" jdbcType="INTEGER" property="useridInt" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="order_item_num" jdbcType="VARCHAR" property="orderItemNum" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    payment_id, userid_out, userid_int, money, order_item_num, reserved1, reserved2, 
+    reserved3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_payment
+    where payment_id = #{paymentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_payment
+    where payment_id = #{paymentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_payment">
+    insert into mm_payment (payment_id, userid_out, userid_int, 
+      money, order_item_num, reserved1, 
+      reserved2, reserved3)
+    values (#{paymentId,jdbcType=INTEGER}, #{useridOut,jdbcType=INTEGER}, #{useridInt,jdbcType=INTEGER}, 
+      #{money,jdbcType=DOUBLE}, #{orderItemNum,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_payment">
+    insert into mm_payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        payment_id,
+      </if>
+      <if test="useridOut != null">
+        userid_out,
+      </if>
+      <if test="useridInt != null">
+        userid_int,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="orderItemNum != null">
+        order_item_num,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        #{paymentId,jdbcType=INTEGER},
+      </if>
+      <if test="useridOut != null">
+        #{useridOut,jdbcType=INTEGER},
+      </if>
+      <if test="useridInt != null">
+        #{useridInt,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="orderItemNum != null">
+        #{orderItemNum,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_payment">
+    update mm_payment
+    <set>
+      <if test="useridOut != null">
+        userid_out = #{useridOut,jdbcType=INTEGER},
+      </if>
+      <if test="useridInt != null">
+        userid_int = #{useridInt,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="orderItemNum != null">
+        order_item_num = #{orderItemNum,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where payment_id = #{paymentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_payment">
+    update mm_payment
+    set userid_out = #{useridOut,jdbcType=INTEGER},
+      userid_int = #{useridInt,jdbcType=INTEGER},
+      money = #{money,jdbcType=DOUBLE},
+      order_item_num = #{orderItemNum,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where payment_id = #{paymentId,jdbcType=INTEGER}
+  </update>
+</mapper>

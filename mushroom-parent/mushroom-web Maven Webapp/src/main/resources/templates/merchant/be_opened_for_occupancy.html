@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商家入驻</title>
+<link rel="icon" href="../statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+<link rel="stylesheet" href="../statics/merchant/css/index.css" />
+<link rel="stylesheet" href="../statics/merchant/css/entry.css" />
+<link rel="stylesheet" href="../statics/merchant/css/calendar.css" />
+<link rel="stylesheet" href="../statics/merchant/css/globai.css" />
+<link rel="stylesheet" href="../statics/merchant/css/overlay.css" />
+<link rel="stylesheet" href="../statics/merchant/css/tmseller.css" />
+</head>
+
+<body>
+	<div id="mallPage"
+		class="mui-global-biz-  mui-global-not-market page-not-market">
+		<div id="container">
+
+			<div class="mui-zebra-module">
+
+				<div id="header" data-tag="header">
+					<div class="headerLayout">
+						<div class="headerCon">
+							<h1 id="mallLogo" class="mall-logo">
+								<span class="mlogo"> <a href="" title="潮时尚商家"><i
+										class="sui-font seller-logo-icon"></i></a>
+								</span> <span class="slogo"> <a href="">商家入驻</a>
+								</span>
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div class="sui-nav" data-tag="nav" id="sui-nav">
+					<div class="sui-nav-inner">
+						<ul class="sui-nav-ul">
+							<li class="sui-nav-li nav-0 nav-index cur"><a target="_self"
+								href="#">首页</a></li>
+							<li class="sui-nav-li nav-1 nav-guide "><a target="_self"
+								href="">入驻指南</a></li>
+							<li class="sui-nav-li nav-2 nav-brand "><a target="_self"
+								href="">热招品牌</a></li>
+							<li class="sui-nav-li nav-3 nav-standard "><a target="_self"
+								href="">入驻要求</a></li>
+							<li class="sui-nav-li nav-4 nav-fee "><a target="_self"
+								href="">资费标准</a></li>
+							<li class="sui-nav-li nav-5 nav-serve "><a target="_self"
+								href="">服务大厅</a></li>
+							<li class="sui-nav-li nav-6 nav-understand "><a
+								target="_self" href="">了解潮时尚</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="mui-zebra-page">
+				<div class="mui-zebra-module" id="J_2454455381">
+
+					<div class="zebra-seller-nav-current"></div>
+
+				</div>
+
+				<div class="mui-zebra-module" id="J_3840274459">
+
+					<div class="zebra-zhaoshang-banner">
+						<div id="J_ZhaoSlider" class="image-slider">
+
+							<div class="tab-content slider-content"
+								style="height: 280px; width: 100%; overflow: hidden; margin: 0 auto;">
+								<div id="play"
+									style="position: absolute; width: 6315px; overflow: hidden; height: 280px;">
+									<div href="javascript:void(0)" class="tab-pannel slider-panel"
+										style="float: left; height: 280px; overflow: hidden; width: 1230px; display: block; margin: 0 auto;">
+										<p class="join-button">
+											<a class="sui-btn sui-btn-primary sui-btn-large" id="J_Join"
+												href="regist.html" data-spm-anchor-id="">立即入驻</a>
+										</p>
+										<a> <img class="banner-bg"
+											src="../statics/merchant/img/400.jpg">
+										</a>
+									</div>
+									<div href="javascript:void(0)" class="tab-pannel slider-panel"
+										style="float: left; height: 280px; overflow: hidden; width: 1230px; display: block;">
+										<p class="join-button">
+											<a class="sui-btn sui-btn-primary sui-btn-large" id="J_Join">立即入驻</a>
+										</p>
+										<a> <img class="banner-bg img-ks-lazyload"
+											src="../statics/merchant/img/qq.jpg">
+										</a>
+									</div>
+									<div href="" class="tab-pannel slider-panel"
+										style="float: left; overflow: hidden; height: 280px; width: 1230px; display: block;">
+										<p class="join-button">
+											<a class="sui-btn sui-btn-primary sui-btn-large" id="J_Join">立即入驻</a>
+										</p>
+										<a> <img class="banner-bg img-ks-lazyload"
+											src="../statics/merchant/img/0.jpg">
+										</a>
+									</div>
+									<div href="" class="tab-pannel slider-panel"
+										style="float: left; overflow: hidden; height: 280px; width: 1230px; display: block;">
+										<a href="" data-spm-anchor-id=""> <img
+											class="banner-bg img-ks-lazyload"
+											src="../statics/merchant/img/q70.jpg">
+										</a>
+									</div>
+									<div href="" class="tab-pannel slider-panel"
+										style="float: left; overflow: hidden; width: 1230px; height: 280px; display: block;">
+										<a href=""> <img class="banner-bg img-ks-lazyload"
+											src="../statics/merchant/img/Q90.jpg">
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="slider-div">
+								<ul class="tab-nav slider-nav">
+									<li class="selected"><a href="">1</a></li>
+									<li class=""><a href="">2</a></li>
+									<li class=""><a href="">3</a></li>
+									<li class=""><a href="">4</a></li>
+									<li class=""><a href="">5</a></li>
+								</ul>
+							</div>
+							<span class="arrow-left"></span> <span class="arrow-right"></span>
+						</div>
+					</div>
+
+				</div>
+				<script type="text/javascript"
+					src="../statics/js/jquery-1.8.3.min.js"></script>
+				<script type="text/javascript">
+					var w = $(window).width();
+				
+					$("#play").width(w * 5).find("div").css("width", w)
+					var i = 0;
+					var inti = null;
+					var lets = $("#play").position().left;
+					$(function() {
+						$("#play").stop().animate({}, 1000)
+					});
+				
+					function ply() {
+						inti = setInterval(function() {
+				
+							gogo();
+						}, 3000);
+					}
+					$(".slider-nav li").click(function() {
+				
+						i = $(this).index();
+						gogo();
+					});
+				
+					$(".mui-zebra-module").mouseenter(function() {
+						clearInterval(inti);
+					})
+					$(".mui-zebra-module").mouseleave(function() {
+						ply();
+					});
+				
+					function gogo() {
+						lets = parseInt(w) * i * -1;
+						if (lets <= -w * 5) {
+							i = 0;
+							lets = 0;
+						}
+						$("#play").animate({
+							"left" : lets + "px"
+						}, 600)
+						$(".slider-nav li").eq(i).addClass("selected").siblings().removeClass("selected");
+						i++;
+					}
+					$(".arrow-right").click(function() {
+				
+						if (i > 5) {
+							i = 5
+						}
+						gogo() ;
+					})
+				
+					$(".arrow-left").click(function() {
+						i -= 2;
+						if (i < 0) {
+							i = 0
+						}
+						gogo() ;
+					})
+				</script>
+				<div class="mui-zebra-module" id="J_9613411426">
+
+					<div class="zebra-seller-zhaoshang-index-center">
+						<div class="wrapper">
+							<div class="sui-grid-row">
+
+								<div class="sui-grid-6">
+									<div class="info-box ">
+										<div class="sui-title">
+											<div class="sui-title-info">
+												<h2>一张图看懂天猫入驻</h2>
+
+												<div class="sui-title-sub">入驻前先看，流程、热招品牌、要求一目了然</div>
+
+											</div>
+										</div>
+
+										<a class="sui-btn sui-btn-primary sui-btn-larger" href="">了解流程</a>
+
+									</div>
+								</div>
+
+								<div class="sui-grid-6">
+									<div class="info-box ">
+										<div class="sui-title">
+											<div class="sui-title-info">
+												<h2>入驻小帮手</h2>
+
+												<div class="sui-title-sub">查一查、入驻材料、资费马上知道</div>
+
+											</div>
+										</div>
+
+										<a class="sui-btn sui-btn-primary sui-btn-larger" href="">马上算</a>
+
+									</div>
+								</div>
+
+								<div class="sui-grid-6">
+									<div class="info-box ">
+										<div class="sui-title">
+											<div class="sui-title-info">
+												<h2>申请遇到疑问了吗？</h2>
+
+												<div class="sui-title-sub">进入服务大厅，获得问题答案</div>
+
+											</div>
+										</div>
+
+										<a class="sui-btn  sui-btn-larger" href="">服务大厅</a> <a href=""
+											class="vedio"> 查看入驻进度</a>
+
+									</div>
+								</div>
+
+								<div class="sui-grid-6">
+									<div class="info-box info-list">
+										<div class="sui-title">
+											<div class="sui-title-info">
+												<h2>信息公告</h2>
+
+											</div>
+										</div>
+
+										<div class="mui-b-list">
+											<ul>
+
+												<li><a href="" title="天猫对外招商声明">天猫对外招商声明</a>
+
+													<div class="info-list-tip hot">hot</div></li>
+
+												<li><a href="" title="关于2018年度续签考核的补充说明">关于2018年度续签考核的补充说明</a>
+
+													<div class="info-list-tip hot">hot</div></li>
+
+												<li><a href="" title="工商亮照系统升级公告">工商亮照系统升级公告</a>
+
+													<div class="info-list-tip hot">hot</div></li>
+
+												<li><a href="" title="天猫2018年度商家续签公告">天猫2018年度商家续签公告</a>
+
+													<div class="info-list-tip new">new</div></li>
+
+												<li><a href="" title="天猫店铺转淘宝企业店铺功能即将开通的公告">天猫店铺转淘宝企业店铺功能即将开通的公告</a>
+
+													<div class="info-list-tip new">new</div></li>
+
+											</ul>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="mui-zebra-module" id="">
+
+					<div class="zebra-seller-zhaoshang-settle-process">
+						<div class="wrapper">
+							<div class="sui-title">
+								<div class="sui-title-info title">
+									<h2>入驻流程</h2>
+								</div>
+							</div>
+
+							<div class="sui-grid-row">
+
+								<div class="section sui-grid-6">
+									<div class="content">
+										<h3 class="section-title">阶段一</h3>
+										<div class="tip">
+											<i class="icon"></i><span>提交入驻资料</span>
+										</div>
+
+										<div class="speed">
+											<span class="speed-label">约2小时</span>
+										</div>
+
+										<ul>
+
+											<li>选择店铺类型/品牌/类目</li>
+
+											<li>填写品牌信息</li>
+
+											<li>填写企业信息</li>
+
+											<li>店铺命名</li>
+
+											<li>提交审核</li>
+
+										</ul>
+									</div>
+								</div>
+
+								<div class="section sui-grid-6">
+									<div class="content">
+										<h3 class="section-title">阶段二</h3>
+										<div class="tip">
+											<i class="icon"></i><span>商家等待审核</span>
+										</div>
+
+										<div class="speed">
+											<span class="speed-label">3-6工作日</span>
+										</div>
+
+										<ul>
+
+											<li>资质初审</li>
+
+											<li>资质复审</li>
+
+										</ul>
+									</div>
+								</div>
+
+								<div class="section sui-grid-6">
+									<div class="content">
+										<h3 class="section-title">阶段三</h3>
+										<div class="tip">
+											<i class="icon"></i><span>完善店铺信息</span>
+										</div>
+
+										<div class="speed">
+											<span class="speed-label">约1天</span>
+										</div>
+										<ul>
+
+											<li>激活商家帐号并登陆</li>
+
+											<li>完成开店前相关任务</li>
+
+											<li>锁定保证金/缴纳年费</li>
+
+										</ul>
+									</div>
+								</div>
+
+								<div class="section sui-grid-6">
+									<div class="content">
+										<h3 class="section-title">阶段四</h3>
+										<div class="tip">
+											<i class="icon"></i><span>店铺上线</span>
+										</div>
+
+										<ul>
+
+											<li>发布商品</li>
+
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="mui-zebra-module">
+
+					<div class="zebra-seller-zhaoshang-4-img-text">
+						<div class="service">
+							<div class="wrapper">
+								<div class="clearfix">
+									<div class="info-box">
+										<img src="../statics/merchant/img/130.png">
+										<div class="info-content">
+											<div class="sui-titlex">
+												<div class="sui-title-info">
+
+													<h2>加工定制，找淘工厂</h2>
+												</div>
+											</div>
+											<p>淘工厂是链接淘宝卖家与工厂的平台，解决淘宝卖家找工厂难、试单难、翻单难、新款开发难的问题，为电商卖家与优质工厂搭建的一条稳固的桥梁。</p>
+
+											<div class="sui-title-more">
+												<a href="">寻找供货工厂<i class="sui-icon sui-icon-youjiantou"></i></a>
+											</div>
+
+										</div>
+									</div>
+									<div class="info-box">
+										<img src="../statics/merchant/img/120.jpg">
+										<div class="info-content">
+											<div class="sui-titlex">
+												<div class="sui-title-info">
+													<h2>天猫规则</h2>
+												</div>
+											</div>
+											<p>快速了解规则，掌握规则动态，请关注天猫规则页面。帮助您熟悉运营每一步的规范和风险，以及违规处罚的影响和应对方案。</p>
+
+											<div class="sui-title-more">
+												<a href="">天猫规则平台 <i
+													class="sui-icon sui-icon-youjiantou"></i></a>
+											</div>
+
+										</div>
+									</div>
+									<div class="info-box">
+										<img src="../statics/merchant/img/-101.png">
+										<div class="info-content">
+											<div class="sui-titlex">
+												<div class="sui-title-info">
+													<h2>运营服务</h2>
+												</div>
+											</div>
+											<p>运营服务商为您托管天猫店铺运营业务，省心省力。 主要服务为 天猫开店，商品拍摄， 店铺装修，店铺运营，
+												客户服务，营销推广， 数据分析，仓储物流等。</p>
+
+											<div class="sui-title-more">
+												<a href="">挑选运营服务商<i
+													class="sui-icon sui-icon-youjiantou"></i></a>
+											</div>
+
+										</div>
+									</div>
+									<div class="info-box">
+										<img src="../statics/merchant/img/100.png">
+										<div class="info-content">
+											<div class="sui-titlex">
+												<div class="sui-title-info">
+													<h2>商家品控</h2>
+												</div>
+											</div>
+											<p>想知道行业标准？想了解品控动向？想学习优秀商家？快快关注商家品控吧，你所需要的合规信息统统都在这里！</p>
+
+											<div class="sui-title-more">
+												<a href="">了解品控规则<i class="sui-icon sui-icon-youjiantou"></i></a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+								<a class="service-feedback" href=""> <i
+									class="sui-icon sui-icon-fankui"></i> 意见反馈
+								</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

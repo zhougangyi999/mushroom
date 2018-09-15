@@ -1,0 +1,188 @@
+ 
+<!DOCTYPE HTML>
+<html>
+	<head>	
+		<meta charset="UTF-8">
+		<title>商品管理</title>
+		<!--
+        	作者：offline
+        	时间：2017-11-18
+        	描述：商品管理
+        -->
+        <link rel="icon" href="../statics/img/login/logo_ioc.png" type="image/x-icon">
+        <link rel="stylesheet" href="../statics/merchant/css/public.css" />
+        <link rel="stylesheet" href="../statics/merchant/css/commodity_management.css" />
+      	<link rel="stylesheet"
+	href="../statics/merchant/css/pagination.css" />
+       <script type="text/javascript" src="../statics/merchant/js/jquery-1.8.3.min.js" ></script>
+ 
+	<body>
+		<div class="commodity_index">
+			    <div></div>
+				<div class="commodity_index_top">
+					<ul>
+						<li class="commodity_index_box">出售中的商品</li>
+					</ul>
+				</div>
+				<!--
+                	作者：offline
+                	时间：2017-11-19
+                	描述：fo表单搜索框
+                -->
+                <div >
+                    <form action="" id="form1">
+				<div class="Product_Search">
+					<div class="Product_Search_colum">
+						<div class="row">
+							<label>商品名称：</label> <input
+								class="Product_Search_colum_input_text" type="text"
+								maxlength="64" name="product_name" value=" ">
+						</div>
+						<div class="row">
+							<label class="row_lable">价格：</label> <input
+								class="Product_Search_colum_to" type="text" value=""
+								onabort="value=value.replace(/[^\d]/g,'')"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" name="startPrice" />&nbsp;到&nbsp;
+							<input class="Product_Search_colum_to" type="text" value=" "
+								onabort="value=value.replace(/[^\d]/g,'')"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" name="endPrice" />
+						</div>
+						<div class="row">
+							<label>商品设置：</label> <select name="status">
+								<option selected="">无</option>
+							</select>
+						</div>
+					</div>
+					<div class="Product_Search_colum">
+						<div class="row">
+							<label for="outer-id">商家编码：</label> <input
+								class="Product_Search_colum_input_text" type="text" name="outId"
+								maxlength="64" value="" />
+						</div>
+						<div class="row">
+							<label class="row_lable">销量：</label> <input
+								class="Product_Search_colum_to" type="text" value=""
+								onabort="value=value.replace(/[^\d]/g,'')"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" name="startNum" />&nbsp;到&nbsp;
+							<input class="Product_Search_colum_to" type="text" value=" "
+								onabort="value=value.replace(/[^\d]/g,'')"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" name="endNum" />
+						</div>
+						<div class="row">
+							<label>审核状态：</label> <select id="itemStepAudit"
+								name="itemStepAudit">
+								<option selected="" value="">无</option>
+								<option value="stepChecking">审核中</option>
+								<option value="stepFailed">审核未通过</option>
+							</select>
+						</div>
+					</div>
+					<div class="Product_Search_colum">
+						<div class="row">
+							<label>宝贝类目：</label> <select name="category">
+								
+							</select>
+						</div>
+						<div class="row Product_Search_colum_but">
+							<input style="border: none;" type="reset" name="" value="清除条件" />
+							<input type="button" id="submin" onclick="showDom()" name=""
+								value="搜索">
+						</div>
+					</div>
+				</div>
+			</form>
+						<!--
+                        	作者：offline
+                        	时间：2017-11-19
+                        	描述：商品内容
+                        -->
+                       <form id="form2"  action="servlet/Commodity" method="post">
+                       <div class="commodity_table_div"  id="commodity_table_div1"></div>
+						<div class="commodity_table_div"  id="commodity_table_div2">
+							<table>
+								<tr class="commodity_table_div_tr">
+									<td>
+									     &nbsp; &nbsp;商品名称	&nbsp; &nbsp;         	       		
+									</td>
+									<td>
+										&nbsp; &nbsp;价格
+									</td>
+									<td class="commodity_table_div_tr_ck commodity_table_div_tr_ck_UP1">
+										<a href="">库存</a>
+									</td>
+									<td class="commodity_table_div_tr_ck commodity_table_div_tr_ck_UP2">
+										<a href="">总销量</a>
+									</td>
+									<td class="commodity_table_div_tr_ck commodity_table_div_tr_ck commodity_table_div_tr_ck_UP3">
+										<a href="">发布时间</a>			
+									</td>
+									<td>
+										操作
+									</td>
+								</tr>
+								<tr style="padding-left: 15px;">
+									<td colspan="6" class="colspan_h" >
+										<input type="checkbox"  class="allCheckBox"/>全选
+										<input class="commodity_table_div_tr_but   delete" type="button"   value="删除"/>
+										<input class="commodity_table_div_tr_but  xiaja" type="button" value="下架"/>
+									</td>
+								</tr>
+							</table>
+							<!--
+                                	作者：offline
+                                	时间：2017-11-19
+                                	描述：商品列表
+                               -->
+                          
+							<table   id="saleList" class="commodity_table_div_tr_table  trs" >
+							
+							</table>
+							<!--
+                            	作者：offline
+                            	时间：2017-11-19
+                            	描述：分页
+                            -->
+                            <table style="width: 100%;">
+                            	<tr style="padding-left: 15px;">
+									<td colspan="6" class="colspan_h" >
+										<input type="checkbox"  class="allCheckBox"/>全选
+										<input class="commodity_table_div_tr_but   delete" type="button"   value="删除"/>
+										<input class="commodity_table_div_tr_but  xiaja" type="button" value="下架"/>
+									</td>
+								</tr>
+								<!--
+                                	作者：offline
+                                	时间：2017-11-19
+                                	描述：分页
+                                -->
+								<tr>
+									<td colspan="6" class="colspan_h "  style="width:100%;">
+										<div class="operations">
+											<span style=" color: red; display: none;  font-size: 20px" id="massege"></span>
+                                    		<ul class="page-nav "  id="page">
+													
+                                    				<li class="prev-page">
+                                 			         </li>
+                                    		        <li class="curr-page"><div class="m-style M-box"></div></li>
+										
+                                    			</ul>
+                                    			<input type="hidden" id="TotalPageCount" />
+                                    			<input type="hidden" id="pageNO" />
+                                    			<input type="hidden" id="pages" />
+                                    		</div>
+									</td>
+								</tr>
+                            </table>
+						</div>
+                	</form>
+                	
+                </div>
+		</div>
+	</body>
+	<script type="text/javascript"
+	src="../statics/merchant/js/merchandise_in_warehouse_index.js"></script>
+<script type="text/javascript" src="../statics/merchant/js/jquery.pagination.js"></script>
+	
+	  </head>
+	
+</html>

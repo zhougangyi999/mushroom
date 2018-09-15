@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="statics/css/footer.css" />
+<link rel="stylesheet" type="text/css" href="statics/css/login.css" />
+<script type="text/javascript" src="statics/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	function as() {
+		var phone_num = $("#phoneNum").val();
+		$.post("login_phone_code", {
+			"phone_num" : phone_num
+		}, function(date) {
+			if (date.respCode == "00000") {
+			$(".error").show().html("验证码发送成功")
+			}
+			if(date.respCode == "00025"){
+				$(".error").show().html("手机号码格式错误")
+			}if(date.respCode == "00141"){
+				$(".error").show().html("验证次数次数超过限制")
+			}
+			
+		}, "JSON")
+	}
+function codeisok(){
+var code_num=$("#code_num").val();
+	var phone_num = $("#phoneNum").val();
+$.post("login_phone_isok",{"code_num":code_num},function(date){
+if(date==1){
+$(".error").hide()
+}
+if(date==3){
+$(".error").show().html("验证码正确")
+}if(date==2){
+if(phone_num==""||phone_num==null){
+$(".error").hide()
+}else{$(".error").show().html("验证码错误")}
+
+}
+},"JSON");
+}
+	function fouck(){
+	
+	$(".error").hide()
+	}
+</script>
+<title>登录</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "微软雅黑";
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+</style>
+
+</head>
+
+<body>
+	<!--头部-->
+	<div class="header">
+		<div class="steps">
+			<!--左边logo-->
+			<div class="mgj_icon fl">
+				<a href="index.html"><img width="200px" height="70px"
+					src="./images/logo_2.0.png" /></a>
+			</div>
+			<!--右边-->
+			<div class="process_bar fl">
+				<div>
+					<a href="#">依《网络安全法》相关要求，即日起潮时尚会员登陆需绑定手机。为保障您的账户安全及正常使用，如您尚未绑定，请尽快完成绑定，感谢您的理解和支持!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--登录-->
+	<!--code版登录-->
+	<div class="login">
+		<div class="login_way">
+			<div class="login_way_pc fr">
+				<div class="top_way_pc fr">
+					<img id="pclogo" src="statics/img/login/way_pc.png" />
+				</div>
+				<div class="flick">
+					<img src="statics/img/login/flicking.png" /> <img class="code"
+						src="statics/img/login/code.png" />
+				</div>
+				<div class="download">
+					<a href="#">点击下载潮时尚APP</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--PC版登录-->
+	<div class="login_code">
+		<p class="br"></p>
+		<div class="code_way">
+
+			<div class="vx_logo fr">
+				<img id="vxlogo" src="statics/img/login_code.png" alt="" />
+			</div>
+			<div class="ways">
+				<li title="普通登入" class="genernal">普通登录</li>
+				<li title="手机无密码登入" class="mobile">手机无密码登录</li>
+			</div>
+			<p class="error"></p>
+			<form action="login" method="post">
+				<input type="hidden" name="ck" class="chose_method" value="普通登录" />
+				<label style="color: red;"></label>
+				<div class="user">
+					<div class="genernal_input">
+						<input class="login_account" name="username" type="text"
+							placeholder="用户名/邮箱/手机号" /> <input class="psw" type="password"
+							name="password" placeholder="密码	" />
+					</div>
+
+					<div class="mobile_input">
+						<input class="login_account" id="phoneNum" name="phone"
+							type="text" placeholder="手机号" /> <input type="button"
+							id="getCodeBtn" class="get_code" value="获取动态密码"
+							onclick="return as()" /> <input type="text" class="dynamic_code"
+							id="code_num"  name="code" onclick ="return fouck()"  onblur="return codeisok()" placeholder="动态码" />
+
+					</div>
+					<input type="submit" id="submit1"  class="btn" value="登录" />
+
+					<p class="qq_vx" style="margin-top: 30px;">
+						<a class="qq" href="qqlogin">QQ登录</a> <a class="VX" href="#">微信登录</a>
+					</p>
+					<p class="forget">
+						<a style="text-decoration: underline;font-size: 12px;opacity: .6;"
+							href="安全中心.html">忘记密码</a>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--底部-->
+	<div class="footer">
+		<div class="footer_guide">
+			<ul class="footer_list">
+				<li class="guide">
+					<div class="guide_way">
+						<p class="help">
+							<a href="#">- 新手帮助 -</a>
+						</p>
+						<ul class="help_list">
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">自助服务</a></li>
+							<li><a href="#">联系客服</a></li>
+							<li><a href="#">意见反馈</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="guide">
+					<div class="guide_way">
+						<p class="help">
+							<a href="#">- 权益保障 -</a>
+						</p>
+						<ul class="help_list">
+							<li><a href="#">全国包邮</a></li>
+							<li><a href="#">7天无理由退货</a></li>
+							<li><a href="#">退货运费补偿</a></li>
+							<li><a href="#">限时发货</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="guide">
+					<div class="guide_way">
+						<p class="help">
+							<a href="#">- 支付方式 -</a>
+						</p>
+						<ul class="help_list">
+							<li><a href="#">微信支付</a></li>
+							<li><a href="#">支付宝</a></li>
+							<li><a href="#">白付美支付</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="guide">
+					<div class="guide_way">
+						<p class="help">
+							<a href="#">- 移动客户端下载 -</a>
+						</p>
+						<ul class="help_list">
+							<li><a href="#">潮时尚</a></li>
+							<li style="margin-right: 0px;"><a href="#">潮时尚说</a></li>
+							<li><a href="#">uni引力</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="about_me">
+			<div class="about_me_list">
+				<ul>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">招聘信息</a></li>
+					<li><a href="#">联系我们</a></li>
+					<li><a href="#">商家入驻</a></li>
+					<li><a href="#">商家后台</a></li>
+					<li><a href="#">mokoπ商学院</a></li>
+					<li><a href="#">商家社区</a></li>
+					<li><a href="#">规则中心</a></li>
+					<li><a href="#">有害信息举报</a></li>
+					<li><a href="#">©2018 www.mokopay.xyz</a></li>
+				</ul>
+			</div>
+			<div class="about_me_license">
+				<ul>
+					<li><a href="#">营业执照 ：xxxxxxxxxxxxxxxx<span class="tiao">|</span></a>
+					</li>
+					<li><a href="#">网络文化经营许可证：x网文（2018）xxx-xxx号<span
+							class="tiao">|</span></a></li>
+					<li><a href="#">增值电信业务经营许可证：xxx-xxxxxxxxx<span
+							class="tiao">|</span></a></li>
+					<li><a href="#">安全责任书<span class="tiao">|</span></a></li>
+					<li><a href="#">湘ICP18016614号<span class="tiao">|</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	$("#pclogo").click(function() {
+		$(".login_code").css("display", "block");
+		$(".login_way").css("display", "none");
+		$("#vxlogo").click(function() {
+			$(".login_code").css("display", "none");
+			$(".login_way").css("display", "block");
+		});
+	});
+
+
+
+
+
+	$(".mobile,.genernal").addClass("method_font_color");
+	$(".genernal").addClass("method_bor_color");
+	$(".genernal").click(function() {
+		pt(this);
+	});
+	//普通登录
+	function pt(id) {
+		$(id).addClass("method_bor_color");
+		$(".mobile").removeClass("method_bor_color");
+		$(".chose_method").val("普通登录");
+		$(".genernal_input").show();
+		$(".mobile_input").hide();
+
+	}
+
+
+	//手机登录
+	function sj(id) {
+		$(id).addClass("method_bor_color");
+		$(".genernal").removeClass("method_bor_color");
+		$(".chose_method").val("手机无密码登入");
+		$(".genernal_input").hide();
+		$(".mobile_input").show();
+	}
+
+
+	var index = "${index}";
+	if (index != null && index != '') {
+		$(".login_code").show();
+		$(".login_way").hide();
+		if (index == '1') {
+			sj(".mobile");
+		} else {
+			pt(".genernal");
+		}
+
+	}
+
+
+	$(".mobile").click(function() {
+		sj(this);
+	});
+
+
+
+
+	var login_account;
+	$(".btn").click(function() {
+		var method = $(".chose_method").val();
+		if (method == "普通登录") {
+			loginCount = $(".login_account").val();
+			if (loginCount == "") {
+				$(".error").show().html("请输入")
+				return;
+			}
+		} else {
+
+		}
+
+	})
+
+
+
+	$(function() {
+		var countdown = 60;
+		function settime(val) {
+			if (countdown == 0) {
+				val.removeAttribute("disabled");
+				val.value = "获取验证码";
+				countdown = 60;
+				return false;
+			} else {
+				val.setAttribute("disabled", true);
+				val.value = "重新发送(" + countdown + ")";
+				countdown--;
+			}
+			setTimeout(function() {
+				settime(val);
+			}, 1000);
+		}
+
+		$("#getCodeBtn").click(function() {
+			var timeOut = 60;
+			var phoneNum = $("#phoneNum").val();
+			if (phoneNum != "") {
+				settime(this);
+				$.ajax({
+					url : "${pageContext.request.contextPath }/getCode?phone=" + phoneNum,
+					dataType : "json",
+					success : function(data) {
+						//alert(data.respDesc);
+					}
+				})
+			}
+		});
+	})
+</script>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform ">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>基本信息_蘑菇街</title>
+<meta name="keywords" content="蘑菇街,mogujie,买手,买手街,网购">
+<meta name="description" content="">
+<meta name="copyright" content="mogujie.com">
+
+
+
+
+
+
+
+
+
+<link href="./css/index.css-ccfdf3f4.css" rel="stylesheet"
+	type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="./css/bottom.css"
+	media="all">
+
+
+<link href="./css/index.css-b68d0ddc.css" rel="stylesheet"
+	type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="sweetalert2/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2/sweetalert2.min.css">
+
+
+
+
+<script type="text/javascript">
+
+$(function(){
+
+	//mu_expand
+	 $("#user_ok").click(function () {
+//        俩个状态来回切换
+        $(this).parent().toggleClass("mu_expand");
+    });
+
+	
+
+})
+
+
+
+
+	$(function() {
+
+			$.post("selectprovinces", function(date) {
+					var city=$("#shi1").html();
+			var jie1=$("#jie1").html();
+			$.post("byidselect_address",{"city_id":city,"jie1":jie1},function(date){
+			$("#city").append("<option value='"+city+"' >"+date[0]+"</option>");
+						$("#area").append("<option value='"+jie1+"' >"+date[1]+"</option>");
+
+			})
+					
+				$("#provinces").empty();
+					
+				$("#provinces").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){	
+				
+			$("#provinces").append("<option  value='"+item.regionid+"'  th:checked=${session.userSession.reserved1 == "+item.regionid+"}>"+item.name+"</option>"); //为Select追加一个Option(下拉项) 
+		
+				});
+			var as=$("#sheng1").html();
+		$("#provinces").val(as); 
+
+			},"JSON")
+	
+	})
+	
+	
+
+	function selectprovinces(as){
+
+	$.post("selectcity",{"provincesid":as},function(date){
+	$("#city").empty();
+				$("#city").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){	
+			$("#city").append("<option value='"+item.regionid+"' >"+item.name+"</option>"); //为Select追加一个Option(下拉项) 
+				});	
+				
+	},"JSON")
+		}
+
+	
+	
+	
+		function selectarea(as){
+	
+	$.post("selectarea",{"cityid":as},function(date){
+	$("#area").empty();
+				$("#area").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){
+					
+			$("#area").append("<option value='"+item.regionid+"' >"+item.name+"</option >"); //为Select追加一个Option(下拉项) 
+				});
+	},"JSON")
+	}
+	
+	function submitfrom(){
+	$.ajax({
+	url:"user_updateUserDate",
+	type:"post",
+	data:$("#infomodify").serialize(),
+	cache:false,
+	dataType:'json',
+          success:function(data){  
+            if(data==true){     
+            
+            swal({
+    title: '修改成功',
+    text: '是否继续',
+    type: 'success',
+    confirmButtonText: '好的~'
+})
+            }else{
+                swal({
+    title: '修改失败',
+    text: '是否继续',
+    type: 'error',
+    confirmButtonText: '好的~',
+    imageUrl:''
+})
+            }
+      },  
+      error:function(e){  
+                        swal({
+    title: '网络出现问题....',
+    text: '是否继续',
+    type: 'error',
+    confirmButtonText: '好的~',
+    imageUrl:''
+})
+       } 
+	});
+	}
+
+	
+
+</script>
+<script src="laydate/laydate.js"></script> 
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1' //指定元素
+});
+</script>
+
+<link rel="stylesheet" href="./css/indexs.css">
+<style type="text/css"></style>
+</head>
+
+<body class="media_screen_960 media_screen_1200">
+
+
+	<div class="mgj_rightbar J_sidebar" data-ptp="_sidebar"
+		style="right: 0px;">
+		<!--空的右侧边栏-->
+		<div id="mgj_rightbar_top_blank" class="mgj_rightbar_960"></div>
+		<!--方便定margin的空dediv-->
+		<div id="mgj_rightbar_blank_div"></div>
+		<!--用户头像-->
+		<div class="sidebar-item mgj-my-avatar">
+			<a target="_blank" href="http://www.mogujie.com/member"
+				rel="nofollow">
+				<div class="img">
+					<img width="20" height="20"
+						alt="" th:src="${session.userSession.headportraitsrc}">
+				</div>
+			</a>
+		</div>
+		<!--购物车-->
+		<div class="sidebar-item mgj-my-cart" style="left: 0px;">
+			<a target="_blank" href="http://cart.mogujie.com/cart/mycart"
+				rel="nofollow"> <i class="s-icon"></i>
+				<div class="s-txt">购物车</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--优惠券-->
+		<div class="sidebar-item mgj-my-coupon">
+			<a target="_blank" rel="nofollow"
+				href="http://promotion.mogujie.com/trade/promotion/user/shopcoupon">
+				<i class="s-icon"></i>
+				<div class="s-txt">优惠券</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--钱包-->
+		<div class="sidebar-item mgj-my-wallet">
+			<a target="_blank" rel="nofollow"
+				href="https://payuserp.mogujie.com/wallet/home" > <i
+				class="s-icon"></i>
+				<div class="s-txt">钱包</div>
+			</a>
+		</div>
+		<!--足迹-->
+		<div class="sidebar-item mgj-my-browserlog">
+			<a target="_blank" rel="nofollow" href="http://track.mogujie.com/">
+				<i class="s-icon"></i>
+				<div class="s-txt">足迹</div>
+			</a>
+		</div>
+		<div class="sideBottom">
+			<!--回到顶部-->
+			<div class="sidebar-item mgj-back2top" style="left: 0px;">
+				<a rel="nofollow" href="javascript:;"><i class="s-icon"></i></a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="header" class="J_sitenav site-top-nav" data-ptp="_head">
+		<div class="wrap">
+			<a href="http://www.mogujie.com/" rel="nofollow" class="home fl">蘑菇街首页</a>
+			<ul class="header-top">
+				<li class="s1 has-icon user-meta"><a rel="nofollow"
+					href="javascript:;" th:text="${session.userSession.username}">
+						11 </a> <a rel="nofollow"
+					href="http://pc.mogujie.com/member/member.html" target="_blank">
+				</a> <i class="icon-delta"></i>
+					<ol class="ext-mode" id="menu-personal">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://www.mogujie.com/settings/personal">个人设置</a></li>
+						<li class="s2"><a rel="nofollow"
+							href="http://www.mogujie.com/logout">退出</a></li>
+					</ol></li>
+				<li class="s1 has-line message-center"><a rel="nofollow"
+					href="javascript:;"
+					class="ext-module mogutalk_btn J_msg open_msg micon"
+					data-from="shopwidget_message"
+					data-trace="global,shopwidget_message,click">消息 <span
+						class="num m_num" style="display: none;"></span>
+				</a></li>
+				<li class="s1 has-icon has-line user-fav"><a rel="nofollow"
+					href="javascript:;">我的收藏</a> <i class="icon-delta"></i>
+					<ul class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/goodsfavs">收藏的商品</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/shopfavs">收藏的小店</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://track.mogujie.com/">浏览足迹</a></li>
+					</ul></li>
+				<li class="s1 myorder has-line"><a
+					href="http://order.mogujie.com/order/list4buyer" target="_blank"
+					class="text display_u" rel="nofollow">我的订单</a></li>
+				<li class="s1 has-line shopping-cart-v2"><a
+					class="cart-info-wrap" href="http://cart.mogujie.com/cart/mycart"
+					target="_blank" rel="nofollow"> <span class="cart_info">购物车</span></a>
+					<i class="icon-delta"></i> <span class="shopping-cart-loading"></span>
+				</li>
+				<li class="s1 has-line has-icon custom-item"><a rel="nofollow"
+					href="http://cs.mogujie.com/help/index.html" target="_blank">客户服务</a>
+					<i class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/help/index.html">消费者服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://service.xiaodian.com/">商家服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/rule/index.html">规则中心</a></li>
+					</ol></li>
+				<li class="s1 has-line has-icon myxiaodian"><a
+					href="http://www.xiaodian.com/" rel="nofollow" target="_blank"
+					class="text display_u">我的小店</a> <i class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://www.xiaodian.com/pc/shopadmin/shopface">管理后台</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://bbs.xiaodian.com/">商家社区</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://peixun.xiaodian.com/">商家培训</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cycle.xiaodian.com/pc/zhaoshang">市场入驻</a></li>
+					</ol></li>
+			</ul>
+		</div>
+	</div>
+
+<a  hidden="hidden" id="sheng1"  th:text="${session.userSession.reserved1}"></a><!--         隐藏标签在这 -->
+<a hidden="hidden" id="shi1" th:text="${session.userSession.reserved2}"></a><!--         隐藏标签在这 -->
+<a hidden="hidden" id="jie1" th:text="${session.userSession.reserved3}"></a><!--         隐藏标签在这 -->
+
+	<div class="promotionTopNavContainer"></div>
+
+	<script type="text/template" class="topnavPromotionTpl">
+
+</script>
+
+	<!-- 中间区域 -->
+	<div class="header_mid clearfix">
+		<div class="wrap">
+			<a rel="nofollow" href="http://www.mogujie.com/" class="logo"
+				title="蘑菇街首页" style="background-image: none;"><img
+				src="./images/logo_2.0.png"
+				alt="蘑菇街，我的买手街"></a>
+			<div class="normal-search-content">
+				<div class="top_nav_search" id="nav_search_form">
+					<!--搜索框 -->
+					<div class="search_inner_box clearfix">
+						<div class="selectbox" data-v="1">
+							<span class="selected">搜商品</span>
+							<ol>
+								<li class="current" data-index="bao"><a href="">商品</a></li>
+								<li data-index="shop"><a href="">店铺</a></li>
+							</ol>
+						</div>
+						<form action="http://www.mogujie.com/search" method="get"
+							id="top_nav_form">
+							<input type="text" data-tel="search_book" name="q"
+								class="ts_txt fl" data-def="迷你登机箱" value="" autocomplete="off"
+								def-v="迷你登机箱"
+								data-acm="3.mce.1_0_1lmqt3c.39084.77211.rP18cr1VTydV0.sd_115-mid_39084-mdt_sketch-dit_23-lc_201">
+							<input type="submit" value="搜  索" class="ts_btn"> <input
+								type="hidden" name="t" value="bao" id="select_type"> <input
+								type="hidden" name="ptp" value="">
+						</form>
+						<div class="top_search_hint is-not-ie8-hack"></div>
+					</div>
+
+					<div class="ts_hotwords">
+						<a rel="nofollow" class="ts_hotword" href="" style="color: #666;">连衣裙</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #666;">牛仔裤</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #666;">衬衫</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #666;">背带裤</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #666;">外套</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #ff4466;">密码箱</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #ff4466;">情侣卫衣</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #666;">卫衣</a><a
+							rel="nofollow" class="ts_hotword" href="" style="color: #ff4466;">时尚套装</a><a
+							rel="nofollow" class="ts_hotword" href="" id="shuiyi"
+							style="color: #666;">睡衣</a>
+					</div>
+				</div>
+			</div>
+			<div class="mid_fr">
+				<img src="./images/171130_8gf90d0d5bgc4ag4kk82gi8kc287d_440x180.png"
+					alt="蘑菇街，我的买手街">
+			</div>
+		</div>
+	</div>
+	<div id="body_wrap">
+		<div id="body_content_wrap">
+			<div id="body" class="fm970">
+				<div class="per_wrap clearfix" id="per_wrap">
+					<div id="navListWrap">
+						<div class="mu_nav_wrap">
+							<div class="mu_nav_info">
+								<div class="mu_nav_info_avatar">
+									<div class="mu_nav_info_avatar_mk"></div>
+									<img
+										th:src="${session.userSession.headportraitsrc}"
+										width="100" height="100">
+								</div>
+								<p class="mu_nav_info_uname">
+									<a th:text="${session.userSession.username}"></a>
+								</p>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">我的订单</div>
+								<ul class="mu_nav_item">
+									<li><a href="">全部订单</a></li>
+									<li><a href=""> 待付款 <i id="unpaidOrder"
+											class="mu_nav_count"> <i class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a href=""> 待收货 <i id="unReceivedOrder"
+											class="mu_nav_count"> <i class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a href=""> 待评价 <i id="waitingRateOrder"
+											class="mu_nav_count"> <i class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a href=""> 退货退款 <i class="mu_nav_count"><i
+												class="mu_nav_count_arw"> </i></i>
+									</a></li>
+									<!-- 新增，stage=8 回收站订单 -->
+									<li><a href=""> 订单回收站 <i id="recyleOrder"
+											class="mu_nav_count"><i class="mu_nav_count_arw"></i></i>
+									</a></li>
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">
+									<a href="">我的钱包</a>
+								</div>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">优惠特权</div>
+								<ul class="mu_nav_item" id="JCouponList">
+									<li><a href="">会员中心</a></li>
+									<li><a href="">店铺优惠券</a></li>
+									<li><a href="">全场优惠券</a></li>
+									<li><a href="">活动优惠券</a></li>
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">
+									<a href="/go_user_address">地址管理</a>
+								</div>
+							</div>
+							<div class="mu_nav mu_expand pb40">
+								<div class="mu_title">安全设置</div>
+								<ul class="mu_nav_item">
+									<li><a href="user_update_password">设置密码</a></li>
+									<li><a href="user_bind_phone">绑定手机</a></li>
+								
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">维权管理</div>
+								<ul class="mu_nav_item">
+									<li><a href="">投诉管理</a></li>
+									<li><a href="">举报管理</a></li>
+								</ul>
+							</div>
+							<div    class="mu_nav mu_expand pb40">
+								<div id="user_ok"  class="mu_title">帐号设置</div>
+								<ul id="nav_item" class="mu_nav_item" >
+									<li class="c"><a href="">基本信息</a></li>
+									<li><a href="bind_user_photo">修改头像</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="per_content_wrap" id="per_content_wrap">
+						<div id="setting_box" class="fl">
+							<div class="settings_title">
+								<span>基本资料</span>
+							</div>
+							<div id="setting_form" class="setting_basic">
+								<form action="" method="post" id="infomodify" class="infomodify"  enctype="multipart/form-data">
+									<dl>
+										<dd>用户名：</dd>
+										<dt class="unick uname" style="padding-top:5px;">
+											<span class="usernickname"
+												th:text="${session.userSession.username}"></span> <input
+												class="r3" type="hidden" name="unick" value="">
+										</dt>
+										<dd>性别：</dd>
+										<dt class="sex" style="line-height: 30px;">
+											<input name="sex" value="2" type="radio" id="female"
+												th:checked="${session.userSession.sex} eq 2? 'true':'false'">女
+											<input name="sex" type="radio" value="1" id="male"
+												th:checked="${session.userSession.sex} eq 1? 'true':'false'">男
+										</dt>
+										<dd>所在地：</dd>
+										<dt class="location">
+										<select id="provinces" name="reserved1"   onchange="return selectprovinces($('#provinces option:selected').val())"></select>
+											<select id="city" name="reserved2"  onchange="return selectarea($('#city option:selected').val())">
+									
+											</select>
+											<select id="area" name="reserved3"  >		
+								</select>
+										</dt>
+										<dd>生日：</dd>
+										<dt class="birthday">
+										<input type="text" class="demo-input" name="birthday" placeholder="请选择日期" id="test1" th:value="${session.userSession.birthday}">
+							
+										</dt>
+										<dd>职业：</dd>
+										<dt class="profession">
+											<select id="profession" name="profession">
+												<option>请选择您的职业</option>
+												<option  th:selected="${session.userSession.profession  eq '白领'}" value="白领">白领</option>
+												<option th:selected="${session.userSession.profession  eq '学生'}" value="学生">学生</option>
+												<option  th:selected="${session.userSession.profession  eq '时尚妈咪'}" value="时尚妈咪">时尚妈咪</option>
+												<option  th:selected="${session.userSession.profession  eq '模特'}" value="模特">模特</option>
+												<option  th:selected="${session.userSession.profession  eq '时尚店主'}" value="时尚店主">时尚店主</option>
+												<option  th:selected="${session.userSession.profession  eq '传媒'}" value="传媒">传媒</option>
+												<option  th:selected="${session.userSession.profession  eq '艺术'}" value="艺术">艺术</option>
+												<option  th:selected="${session.userSession.profession  eq '其他'}" value="其他">其他</option>
+											</select>
+										</dt>
+									</dl>
+									<div class="settings_title mt30">
+										<span>其他信息</span>
+									</div>
+									<dl>
+										<dd>自我介绍：</dd>
+										<dt>
+											<textarea name="presentation" id="introduce" rows="10"
+												class="r3" th:text="${session.userSession.presentation}">随便写点什么，让大家了解你吧。</textarea>
+										</dt>
+										<dd>&nbsp;&nbsp;</dd>
+										<dt>
+											<input id="onsubmit" onclick="submitfrom()" class="green_button r3 modifycomplete"
+												type="button" value="修改完成">
+												<!-- Trigger to open Modal -->
+
+										</dt>
+									</dl>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

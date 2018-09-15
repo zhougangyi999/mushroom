@@ -1,0 +1,217 @@
+/**买中心内容部分**/
+.center_top_bak{
+	    background-color: #b30101;
+	    line-height: 32px;
+	    color: #FFFFFF;
+	    margin-bottom: 10px;
+}
+.center_top_ul>li{
+	font-size:16px ;
+	margin-top: 6px ;
+	border: solid 1px #b30101;
+	padding: 0 15px;
+	padding-bottom: 4px;
+	
+}
+.center_top_ul{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.center_top_ul_li_select{
+	background:#FFFFFF;
+	color:  #b30101;
+	font-weight: 900;
+	position: relative;
+	bottom: -5px;
+	
+}
+.center_top_ul_li_right{
+	float: right;
+}
+.center_top_ul_li_right>a{color: #FFFFFF;}
+/************内容部分**************/
+.center_left{
+	float:  left;
+	 width:187px;
+	 
+}
+.center_right{
+
+	width: 84%;
+
+
+	float: right;
+}
+.center_right_massage{
+	border: #9cd8fe 1px solid;
+	background: #e5f6ff;
+	padding-left: 5px;
+	line-height: 32px;
+	margin-bottom: 10px;
+}
+>h4>span{
+	color: #fda06b;
+}
+
+.page-nav li {
+    float: left;
+    line-height: 20px;
+    color: #666;
+    margin-left: 3px;
+}
+.operations .page-nav li a {
+    color: #333!important;
+}
+
+.page-nav .prev-page a {
+    background: #fff url(//assets.alicdn.com/app/trade/img/page_nav.gif) no-repeat 7px -15px;
+    width: 8px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+.page-nav li a {
+    display: block;
+    padding: 0 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.page-nav a {
+    padding: 0 6px;
+}
+
+.page-nav li a {
+    display: block;
+    padding: 0 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.prev-page a,.prev-page{
+	width: 22px!important;
+}
+
+
+.page-nav .next-page a {
+    background: #fff url(//assets.alicdn.com/app/trade/img/page_nav.gif) no-repeat 45px 5px;
+    width:59px;
+    text-align: left;
+}
+
+
+ .edit-item-title {
+    display: block;
+    background: url(//img.alicdn.com/tps/i4/TB1xCFxGXXXXXXhXFXXAz6UFXXX-16-16.png) no-repeat;
+    width: 24px;
+    height: 18px;
+    margin-left: 180px;
+    margin-top: -16px;
+    overflow: hidden;
+    text-indent: -9999px;
+    position: absolute;
+    z-index: 99;
+    display: none;
+}
+
+.with-sid .edit-item-title {
+    visibility: hidden;
+    margin-left: 190px!important;
+}
+.desc .new-item-title {
+    width: 200px;
+    height: 32px;
+}
+.edit-save {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: url(//img.alicdn.com/tps/i4/T1mgF3XblGXXXXXXXX-100-300.png) no-repeat 0 -55px;
+    width: 41px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #404040;
+}
+.edit-save {
+    margin-left: 165px!important;
+}
+ .edit-save {
+    display: block;
+    margin-left: 163px;
+    border: none;
+    width: 41px;
+    height: 20px;
+    background: url(//img.alicdn.com/tps/i4/T1mgF3XblGXXXXXXXX-100-300.png) no-repeat 0 -55px;
+}
+.edit-save {
+    cursor: pointer;
+    background: #5c98d2!important;
+    display: inline-block!important;
+    color: #fff!important;
+    border: 1px #4a7db0 solid!important;
+    padding: 0 5px;
+    margin-top: 2px!important;
+}
+
+.edit-area{
+	
+}
+.new-item-title {
+    width: 200px;
+    height: 32px;
+}
+
+.dataID{
+	
+	
+	
+	display: none;
+}
+td.price-row p {
+    text-align: right!important;
+}
+
+.item-price-area {
+	padding-right:20px;
+   
+    cursor: pointer;
+   
+}
+.price-row p {
+    padding-right: 20px;
+}
+.new-item-price {
+    display: block;
+    width: 80px;
+    height: 18px;
+    right:0;
+   
+    margin:  2px;
+     margin-left:134px;
+}
+.edit-save {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: url(//img.alicdn.com/tps/i4/T1mgF3XblGXXXXXXXX-100-300.png) no-repeat 0 -55px;
+    width: 41px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #404040;
+}
+.edit-save {
+    cursor: pointer;
+    background: #5c98d2!important;
+    display: inline-block!important;
+    color: #fff!important;
+    border: 1px #4a7db0 solid!important;
+    padding: 0 5px;
+    margin-top: 2px!important;
+}
+.priceUP{
+	
+	display:none;
+	position: relative;
+}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.User_Address_Dao">
+
+<update id="updateDefault_take" parameterType="java.util.List">
+UPDATE mm_address set isDefault_take=0 where isDefault_take != 0 and userId=#{userid}
+</update>
+<!-- 查找所有省 -->
+<select id="selectprovince" resultType="Mm_region">SELECT regionId,NAME FROM mm_region WHERE parentid=0</select>
+<!-- 根据省查找市 -->
+<select id="selectcity" resultType="Mm_region" >SELECT regionId,NAME FROM mm_region WHERE parentid=#{parentid}</select>
+<!-- 根据市查找区/县 -->
+<select id="selectarea" resultType="Mm_region" >SELECT regionId,NAME FROM mm_region WHERE parentid=#{parentid}</select>
+<!-- 根据id查找相应的地名 -->
+<select id="byidselect_address"   resultType="Mm_region">SELECT NAME FROM mm_region WHERE regionId=#{parentid}</select>  
+  <insert id="insertSelective" parameterType="Mm_address">
+    insert into mm_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        addressid,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="iddefaultTake != null">
+        isDefault_take,
+      </if>
+      <if test="isSalesReturn != null">
+        is_sales_return,
+      </if>
+      <if test="postalcode != null">
+        postalCode,
+      </if>
+      <if test="collectname != null">
+        collectName,
+      </if>
+      <if test="types != null">
+        types,
+      </if>
+      <if test="collectphone != null">
+        collectPhone,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="iddefaultTake != null">
+        #{iddefaultTake,jdbcType=INTEGER},
+      </if>
+      <if test="isSalesReturn != null">
+   #{isSalesReturn,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectname != null">
+        #{collectname,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        #{types,jdbcType=INTEGER},
+      </if>
+      <if test="collectphone != null">
+        #{collectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    
+  
+  
+  <resultMap id="BaseResultMaps" type="com.mushroom.pojo.Mm_address">
+    <id column="addressid" jdbcType="INTEGER" property="addressid" />
+    
+    <result column="provincename" jdbcType="VARCHAR" property="provincename" />
+    <result column="cityname" jdbcType="VARCHAR" property="cityname" />
+    <result column="districtname" jdbcType="VARCHAR" property="districtname" />
+    
+    
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="isDefault_take" jdbcType="INTEGER" property="iddefaultTake" />
+    <result column="is_sales_return" jdbcType="INTEGER" property="isSalesReturn" />
+    <result column="postalCode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="collectName" jdbcType="VARCHAR" property="collectname" />
+    <result column="types" jdbcType="INTEGER" property="types" />
+    <result column="collectPhone" jdbcType="VARCHAR" property="collectphone" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+   <sql id="Base_Column_List">
+    addressid, province, city, district, address, userid, isDefault_take, is_sales_return, 
+    postalCode, collectName, types, collectPhone, reserved1, reserved2
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMaps">
+    SELECT
+	ad.*,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.province ) AS provincename,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.city ) AS cityname,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.district ) AS districtname 
+FROM
+	mm_address AS ad 
+WHERE
+	ad.`userId` = #{userid} 
+	
+
+ORDER BY
+	ad.isDefault_take DESC,
+	ad.`addressId` DESC
+  </select>
+   <update id="updateByPrimaryKeySelective" parameterType="Mm_address">
+    update mm_address
+    <set>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="iddefaultTake != null">
+        isDefault_take = #{iddefaultTake,jdbcType=INTEGER},
+      </if>
+      <if test="isSalesReturn != null">
+        is_sales_return = #{isSalesReturn,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null">
+        postalCode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectname != null">
+        collectName = #{collectname,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        types = #{types,jdbcType=INTEGER},
+      </if>
+      <if test="collectphone != null">
+        collectPhone = #{collectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where addressid = #{addressid,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  <select id="select_address_id" parameterType="java.lang.Integer" resultMap="BaseResultMaps">
+    SELECT
+	ad.*,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.province ) AS provincename,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.city ) AS cityname,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.district ) AS districtname 
+FROM
+	mm_address AS ad 
+WHERE
+	ad.`addressId` = #{addressId} 
+  </select>
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_address
+    where addressid = #{addressid,jdbcType=INTEGER}
+  </delete>
+</mapper>

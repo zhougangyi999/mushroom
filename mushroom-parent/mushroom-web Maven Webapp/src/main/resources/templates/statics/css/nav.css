@@ -1,0 +1,362 @@
+/*顶部LOGO*/
+
+.top_banner {
+	width: 100%;
+	height: 150px;
+	background: url(../img/MOGU.jpg) center center;
+}
+
+
+/*搜索栏*/
+
+.search_banner {
+	width: 100%;
+	height: 81px;
+	border-bottom: 1px solid #ddd;
+}
+
+.search_menu {
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.search_menu .selection {
+	position: relative;
+	width: 507px;
+	height: 80px;
+}
+
+.search_menu .selection::after {
+	position: absolute;
+	right: 0px;
+	top: 20px;
+	content: '';
+	height: 40px;
+	border: .5px solid #E6E6E6;
+}
+
+.search_menu .selection .face {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.search_menu .selection .name_wrap {
+	width: 250px;
+	height: 89px;
+	margin-top: 15px;
+	padding-left: 10px;
+}
+
+.selection .name_wrap .name_top {
+	font-size: 14px;
+}
+
+.selection .score .xx {
+	display: inline-block;
+	width: 12px;
+	height: 15px;
+	background: url(../img/star.png) 0 -12px no-repeat;
+	background-size: 13px 26px;
+}
+
+.selection .evaluate {
+	margin-top: -3px;
+}
+
+.selection .evaluate i {
+	display: inline-block;
+	font-size: 12px;
+	opacity: .8;
+}
+
+.selection .evaluate i span {
+	color: #ef2f23;
+}
+
+.selection .consult {
+	position: relative;
+	width: 160px;
+	height: 22px;
+	margin-top: 35px;
+}
+
+.selection .consult .shows {
+	padding: 0 10px 0 20px;
+	background-position: 2px -48px;
+	font-size: 12px;
+	color: #666;
+	height: 20px;
+	line-height: 20px;
+	display: inline-block;
+	border: 1px solid #ddd;
+	background-image: url(https://s10.mogucdn.com/pic/140917/1agxjw_ieygizjshe4wcyjvmmytambqgiyde_270x400.png);
+	background-repeat: no-repeat;
+}
+
+.selection .consult .show {
+	position: absolute;
+	bottom: 0;
+}
+
+.selection .consult .talk {
+	position: absolute;
+	bottom: -3.5px;
+	left: 88px;
+}
+
+.selection .consult .talks {
+	width: 48px;
+	border: 1px solid #ddd;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 5px;
+	background-color: #fff;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.selection .consult .talks {
+	width: 48px;
+	height: 20px;
+	background: url(../img/talk.gif)no-repeat 50%;
+	background-size: 42px;
+}
+
+.selection .consult .icon_bottom {
+	margin-top: 8px;
+	width: 10px;
+	height: 10px;
+	background: url(../img/icon.png) -260px -26px no-repeat;
+}
+
+.selection .score {
+	width: 240px;
+	height: 39px;
+	padding-bottom: 30px;
+}
+
+
+/*搜索框*/
+
+.search_menu .search {
+	width: 585px;
+	height: 36px;
+	margin-top: 20px;
+}
+
+.search .seach_left {
+	position: relative;
+	width: 480px;
+	height: 34px;
+	border: 1px solid #f07;
+	border-bottom: none;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.search .seach_left input {
+	display: block;
+	width: 305px;
+	height: 22px;
+	line-height: 22px;
+	padding: 6px 0 6px 10px;
+	border: none;
+	color: #999;
+	font-size: 12px;
+	background-color: #fff;
+	outline: none;
+}
+
+.search .seach_left .ss {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 100px;
+	height: 34px;
+	background-color: #f07;
+    background-image: linear-gradient(to right,#fe2185,#f25);
+	color: white;
+	line-height: 34px;
+	text-align: center;
+}
+.search .seach_left .ss:hover{
+	background-image: linear-gradient(to left,#fe2185,#f25);
+}
+.search .seach_right {
+	width: 100px;
+	height: 36px;
+	background-color: #f07;
+	color: white;
+	line-height: 36px;
+	text-align: center;
+	margin-left: 3px;
+	border-radius: 5px;
+}
+
+#search {
+	text-indent: 4px;
+	outline: none;
+}
+
+#list {
+	border: 1px solid #f07;
+	margin-top: -1.5px;
+	
+}
+
+#list li {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background: white;
+	border-bottom: 1px solid #fff;
+	text-indent: 12px;
+}
+
+#list li:hover {
+	background: #C0C0C0;
+}
+
+#list li:hover a {
+	font-size: 12px;
+	color: black;
+}
+
+
+/*轮播导航栏 */
+
+.nav_show {
+	
+	width: 100%;
+	height: 30px;
+	background: #333;
+}
+
+.nav {
+	position: relative;
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.nav ul li {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.nav ul a {
+	font-size: 14px;
+	color: white!important;
+}
+
+.nav .page,
+.kit {
+	width: 63px;
+}
+
+.nav .all_goods,
+.beauty {
+	width: 106px;
+}
+
+.nav .household,
+.costume,
+.groceries {
+	width: 78px;
+}
+
+.nav .appliance {
+	width: 76px;
+}
+
+.nav li i{
+	display: inline-block;
+	position: relative;
+	margin-left: 5px;
+	top: 2px;
+	width: 0;
+	height: 0;
+	border-top: 5px solid #fff;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+/*轮播导航栏 二三级菜单*/
+.all-shop {
+					display: none;
+					position: absolute;
+					top: 30px;
+					width: 150px;
+					background: #202020;
+					z-index: 99;
+				}
+				
+				.all-shop li {
+					display: block;
+					height: 30px;
+					line-height: 30px;
+					text-align: left!important;
+					font-size: 12px;
+				}
+				
+				.all_goods:hover .all-shop {
+					display: block;
+				}
+				.household:hover .all-shop {
+					display: block;
+				}
+				.costume:hover .all-shop {
+					display: block;
+				}
+				.beauty:hover .all-shop {
+					display: block;
+				}
+				.groceries:hover .all-shop {
+					display: block;
+				}
+				
+				.all-shop li a {
+					width: 14px;
+					height: 13px;
+					background: url(../img/icon_left.png)14px 6px no-repeat;
+					padding: 0 26px;
+					line-height: 32px;
+				}
+				.all-shop li:hover{
+					background: #C0C0C0;
+				}
+				.account_list {
+					display: none;
+					position: absolute;
+					top:0px;
+					right: -150px;
+					width: 150px;
+					background: #202020;
+					z-index: 99;
+				}
+				.households{
+					display: none;
+					position: absolute;
+					top:0px;
+					right: -150px;
+					width: 150px;
+					background: #202020;
+					z-index: 99;
+				}
+				.account_list li {
+					height: 30px;
+					line-height: 30px;
+					text-align: left!important;
+					font-size: 12px;
+				}
+				.account:hover .account_list{
+					display: block;
+				}
+				
+				
+				

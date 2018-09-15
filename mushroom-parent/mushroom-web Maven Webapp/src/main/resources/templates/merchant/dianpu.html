@@ -1,0 +1,154 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--  <%-- <c:if test="${empty user}">
+    	<script type="text/javascript">
+    		location.href="Tmall/login/tmall_login.jsp";
+        </script>
+    </c:if>
+	<c:if test="${empty shop }">
+		    <script type="text/javascript"> alert()</script>
+			<%response.sendRedirect("../../servlet/SShop?opr=index"); %>
+	</c:if> --%>	
+        <base href="<%=basePath%>"> -->
+<meta charset="utf-8" />
+<title></title>
+<link rel="icon" href="../statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+<link rel="stylesheet" type="text/css"
+	href="../statics/merchant/css/dainpu.css" />
+<link rel="stylesheet" href="../statics/merchant/css/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="../statics/css/index_all.css" />
+<script type="text/javascript" src="../statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"
+	src="../statics/merchant/js/dianpulunbu.js">$("").toggle().removeClass()
+</script>
+</head>
+<body>
+	<div>
+		<div id="page1"></div>
+		<div id="page2"></div>
+
+		<!--头部-->
+		<div>
+			<!--店铺商标-->
+			<div id="">
+				<div style="text-align: left;" class="ddiv-img ddiv">
+					<img style="float: left;"
+						src="../statics/merchant/img/dianpulunbu/log.jpg" />
+				</div>
+			</div>
+
+			<div class="ddiv-ul ddiv">
+				<ul>
+					<li>全部商品分类</li>
+					<li>首页</li>
+					<li>音响专区</li>
+					<li>耳机专区</li>
+					<li>键盘专区</li>
+					<li>其他配件</li>
+				</ul>
+			</div>
+			<!--轮播图-->
+			<div class="img-flag">
+				<div class="img-box">
+					<div class="img-flag-img0"></div>
+					<div class="img-flag-img1"></div>
+					<div class="img-flag-img2"></div>
+				</div>
+
+				<div class="adver">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<div class="arrowLeft">
+						<i style="color: #FFFFFF;" class="iconfont icon-qiehuanqizuo"></i>
+					</div>
+					<div class="arrowRight">
+						<i style="color: #FFFFFF;" class="iconfont icon-qiehuanqiyou"></i>
+					</div>
+				</div>
+			</div>
+			<!--展示-->
+			<div class="div-ul1 ddiv">
+				<ul>
+					<li><img src="../statics/merchant/img/dianpulunbu/img2.png" /></li>
+					<li><img src="../statics/merchant/img/dianpulunbu/img2.png" /></li>
+					<li><img src="../statics/merchant/img/dianpulunbu/img2.png" /></li>
+					<li><img src="../statics/merchant/img/dianpulunbu/img2.png" /></li>
+				</ul>
+			</div>
+			<!--商品展示1区-->
+			<div class="div-shanping1 ddiv">
+				<div class="shangping1-hear">
+					<h1>耳机专区</h1>
+					<h3>
+						<a href="">查看全部</a>
+					</h3>
+				</div>
+				<div class="shangping-ul">
+					<ul>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img1.png" /></li>
+
+					</ul>
+
+				</div>
+			</div>
+
+
+			<div class="div-shanping1 ddiv">
+				<div class="shangping1-hear">
+					<h1>鼠标专区</h1>
+					<h3>
+						<a href="">查看全部</a>
+					</h3>
+				</div>
+				<div class="shangping-ul">
+					<ul>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+						<li><img src="../statics/merchant/img/dianpulunbu/img3.png" /></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="page4"></div>
+
+	<script>
+		$("#page4").load("../headrandfoot/footer.html");
+		$("#page1").load("../headrandfoot/head.html");
+		$("#page2").load("../headrandfoot/search_head.html");
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$("#header").css("display", "none")
+			$(".selectbox").css("display", "none")
+			$(".ts_txt").val("")
+		})
+	</script>
+</body>
+</html>

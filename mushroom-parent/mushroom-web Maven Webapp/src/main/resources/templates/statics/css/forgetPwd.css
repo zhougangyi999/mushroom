@@ -1,0 +1,196 @@
+	body {
+		background: #f5f5f5;
+	}
+	
+	a {
+		text-decoration: none;
+		color: black;
+	}
+	
+	ul {
+		list-style: none;
+	}
+	
+	li {
+		display: inline-block;
+	}
+	
+	.article {
+		width: 100%;
+	}
+	
+	.info {
+		width: 916px;
+		margin: 0 auto;
+	}
+	
+	.header_img {
+		display: block;
+		width:180px;
+		height:60px;
+		margin-top: 54px;
+		background: url(../img/223.jpg) no-repeat;
+		background-size: 180px 60px;
+	}
+	/**/
+	.article .info .for_input{
+		margin-top:50px;
+		background: white;
+		border:1px #D4D4D4 solid
+	}
+	.article .info .safe_forget{
+		margin:85px 60px 60px 30px;
+		text-align: center;
+		
+	}
+	.article .info .safe_forget h3{font-size: 20px;}
+	.step_box .clearfix{border-bottom:1px #D4D4D4 solid;margin-top:40px}
+	.step_box .clearfix li:nth-child(2){margin:0px 180px;}
+	.step_box .clearfix li{color:#999999;}
+	.step_box .clearfix .seqNumber{font-size: 24px;}
+	/*杈撳叆鐧诲綍鍚�*/
+	.formbox{
+		padding-bottom: 250px;
+		/* display: none; */
+	}
+	.formbox .inputbox{
+		margin-left:250px
+	}
+	.formbox .inputbox .accountLabel{font-size: 15px;}
+	.formbox .inputbox .ui-input{
+		width:250px;
+		height:30px;
+		border-radius: 3px;
+		border:1px #D4D4D4 solid;
+		padding-left: 8px;
+		outline: none;
+	}
+	.formbox .lg_chk_wrap .error{
+		font-size: 13px;
+		color:#ff567b;
+		width:240px;
+		margin-left:300px;
+		padding-left:20px;
+		background: url(../img/login/warn.png)0 0px no-repeat;
+		display:none;
+		}
+	.lg_chk_wrap{display: block;}
+	.formbox .subbox{margin-top:20px;}
+	.formbox .subbox .btn_check{
+		background:#ff567b ;
+		color:white;
+		font-size: 14px;
+		border-radius: 3px;
+		padding:8px 40px;
+		margin:10px 0px 0px 340px;
+	}
+	/*楠岃瘉淇℃伅*/
+	.check_formbox{
+		padding-bottom: 250px;
+		display: none;
+	}
+	.check_formbox .formelem h3{
+		text-align:center;
+	}
+	.check_formbox .formelem h3 .red_txt{color:red;}
+	.check_formbox .phonecheck_box {margin:30px 0px 0px 210px;}
+	.check_formbox .phonecheck_box .label_title{font-size: 15px;color:#444444}
+	.check_formbox .phonecheck_box .js_phone{
+		width:130px;
+		height:30px;
+		outline: none;
+		border-radius: 3px;
+		border:1px #D4D4D4 solid;
+		padding-left:6px;
+		}
+	.check_formbox .phonecheck_box .js_getcheck{
+		margin-left:10px;
+		border:1px #D4D4D4 solid;
+		padding:2px 30px;
+		font-size: 13px;
+		border-radius: 3px;
+		background: #F5F5F5;
+	}
+	.check_formbox .phonecheck_box .error{
+		color:#ff567b;
+		padding-left:20px;
+		font-size: 14px;
+		background: url(../img/login/warn.png)0 1px no-repeat;
+		display: none;
+	}
+	.check_formbox .subbox{margin-top:20px;}
+	.check_formbox .subbox .btn_check{
+		margin-left:305px;
+		border-radius: 3px;
+		padding:6px 40px;
+		font-size: 14px;
+		background:#ff567b ;
+		color:white;
+	}
+	.check_formbox .subbox .gray_txt{
+		position: absolute;
+		font-size: 12px;
+		margin:8px 0px 0px 6px;
+		text-decoration: underline;
+		color:#999999
+	}
+	
+	/*閲嶇疆瀵嗙爜*/
+	.again_pwd{padding-bottom: 250px;display: none;}
+	.again_pwd h3,.again_pwd p{
+		text-align: center;
+		color:#ff567b;
+		font-size: 15px;
+		margin:40px 0px;
+	}
+	.again_pwd .formpwd div{
+		margin-left:300px;
+		font-size: 14px;
+	}
+	.again_pwd .formpwd .new_pwd,.again_pwd .formpwd .new_pwd_again{
+		width:250px;
+		height:28px;
+		margin-left:5px;
+		padding-left: 5px;
+		font-size: 14px;
+		border:1px #D4D4D4 solid;
+		border-radius: 4px;
+		outline: none;
+	}
+	.again_pwd .formpwd .new_pwd_again{
+		margin:20px 0px 0px 3.5px;
+	}
+	.again_pwd .formpwd .ok_pwd{
+		outline: none;
+		margin:20px 0px 0px 363px;
+		cursor: pointer;
+		padding:7px 40px;
+		border:none;
+		background:#ff567b ;
+		font-size: 14px;
+		color:white;
+	}
+	
+	.again_pwd .formpwd .error,.again_error{
+		color:#ff567b;
+		padding-left:20px;
+		font-size: 14px;
+		display: none;
+	}
+	.again_error{background: url(../img/login/warn.png)0 1.5px no-repeat;}
+	.forget_error{background: url(../img/login/warn.png)0 1.5px no-repeat;}
+	
+	.again_pwd .formpwd .strong_pwd{
+		padding:15px 17px;
+		position: absolute;
+		margin-left:-41px;
+	}
+	.Pwdstrong_1{
+		background: url(../img/login/weak.png)0px 9px no-repeat;
+	}
+	.Pwdstrong_2{
+		background: url(../img/login/middle.png)0px 9px no-repeat;
+	}
+	.Pwdstrong_3{
+		background: url(../img/login/strong.png)0px 9px no-repeat;
+	}

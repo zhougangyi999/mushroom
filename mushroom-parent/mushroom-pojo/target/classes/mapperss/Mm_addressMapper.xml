@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_addressMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_address">
+    <id column="addressid" jdbcType="INTEGER" property="addressid" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="idDefault_take" jdbcType="INTEGER" property="iddefaultTake" />
+    <result column="is_sales_return" jdbcType="INTEGER" property="isSalesReturn" />
+    <result column="postalCode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="collectName" jdbcType="VARCHAR" property="collectname" />
+    <result column="types" jdbcType="INTEGER" property="types" />
+    <result column="collectPhone" jdbcType="VARCHAR" property="collectphone" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    addressid, province, city, district, address, userid, idDefault_take, is_sales_return, 
+    postalCode, collectName, types, collectPhone, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMaps">
+SELECT
+	ad.*,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.province ) AS provincename,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.city ) AS cityname,
+	( SELECT re.NAME FROM mm_region AS re WHERE re.regionId = ad.district ) AS districtname 
+FROM
+	mm_address AS ad 
+WHERE
+	ad.`userId` = #{userid} 
+	<if test="addressId !=null">
+					   AND ad.`addressId`=#{addressId}
+					</if>
+
+ORDER BY
+	ad.isDefault_take DESC,
+	ad.`addressId` DESC
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_address
+    where addressid = #{addressid,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_address">
+    insert into mm_address (addressid, province, city, 
+      district, address, userid, 
+      idDefault_take, is_sales_return, postalCode, 
+      collectName, types, collectPhone, 
+      reserved1, reserved2)
+    values (#{addressid,jdbcType=INTEGER}, #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, 
+      #{district,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{iddefaultTake,jdbcType=INTEGER}, #{isSalesReturn,jdbcType=INTEGER}, #{postalcode,jdbcType=VARCHAR}, 
+      #{collectname,jdbcType=VARCHAR}, #{types,jdbcType=INTEGER}, #{collectphone,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_address">
+    insert into mm_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        addressid,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="iddefaultTake != null">
+        idDefault_take,
+      </if>
+      <if test="isSalesReturn != null">
+        is_sales_return,
+      </if>
+      <if test="postalcode != null">
+        postalCode,
+      </if>
+      <if test="collectname != null">
+        collectName,
+      </if>
+      <if test="types != null">
+        types,
+      </if>
+      <if test="collectphone != null">
+        collectPhone,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="addressid != null">
+        #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="iddefaultTake != null">
+        #{iddefaultTake,jdbcType=INTEGER},
+      </if>
+      <if test="isSalesReturn != null">
+        #{isSalesReturn,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectname != null">
+        #{collectname,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        #{types,jdbcType=INTEGER},
+      </if>
+      <if test="collectphone != null">
+        #{collectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_address">
+    update mm_address
+    <set>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="iddefaultTake != null">
+        idDefault_take = #{iddefaultTake,jdbcType=INTEGER},
+      </if>
+      <if test="isSalesReturn != null">
+        is_sales_return = #{isSalesReturn,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null">
+        postalCode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectname != null">
+        collectName = #{collectname,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        types = #{types,jdbcType=INTEGER},
+      </if>
+      <if test="collectphone != null">
+        collectPhone = #{collectphone,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where addressid = #{addressid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_address">
+    update mm_address
+    set province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      idDefault_take = #{iddefaultTake,jdbcType=INTEGER},
+      is_sales_return = #{isSalesReturn,jdbcType=INTEGER},
+      postalCode = #{postalcode,jdbcType=VARCHAR},
+      collectName = #{collectname,jdbcType=VARCHAR},
+      types = #{types,jdbcType=INTEGER},
+      collectPhone = #{collectphone,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where addressid = #{addressid,jdbcType=INTEGER}
+  </update>
+</mapper>

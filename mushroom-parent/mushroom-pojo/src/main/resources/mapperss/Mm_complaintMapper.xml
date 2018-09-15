@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_complaintMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_complaint">
+    <id column="complaint_id" jdbcType="INTEGER" property="complaintId" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="complaints_reasons" jdbcType="INTEGER" property="complaintsReasons" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_complaintWithBLOBs">
+    <result column="rights_of_reason" jdbcType="LONGVARCHAR" property="rightsOfReason" />
+    <result column="reserve2" jdbcType="VARBINARY" property="reserve2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    complaint_id, creation_time, nickname, uid, status, order_num, complaints_reasons, 
+    shop_id, reserve1
+  </sql>
+  <sql id="Blob_Column_List">
+    rights_of_reason, reserve2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_complaint
+    where complaint_id = #{complaintId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_complaint
+    where complaint_id = #{complaintId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_complaintWithBLOBs">
+    insert into mm_complaint (complaint_id, creation_time, nickname, 
+      uid, status, order_num, 
+      complaints_reasons, shop_id, reserve1, 
+      rights_of_reason, reserve2)
+    values (#{complaintId,jdbcType=INTEGER}, #{creationTime,jdbcType=DATE}, #{nickname,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
+      #{complaintsReasons,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{reserve1,jdbcType=VARCHAR}, 
+      #{rightsOfReason,jdbcType=LONGVARCHAR}, #{reserve2,jdbcType=VARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_complaintWithBLOBs">
+    insert into mm_complaint
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="complaintId != null">
+        complaint_id,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="complaintsReasons != null">
+        complaints_reasons,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="rightsOfReason != null">
+        rights_of_reason,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="complaintId != null">
+        #{complaintId,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintsReasons != null">
+        #{complaintsReasons,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="rightsOfReason != null">
+        #{rightsOfReason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_complaintWithBLOBs">
+    update mm_complaint
+    <set>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintsReasons != null">
+        complaints_reasons = #{complaintsReasons,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="rightsOfReason != null">
+        rights_of_reason = #{rightsOfReason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where complaint_id = #{complaintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_complaintWithBLOBs">
+    update mm_complaint
+    set creation_time = #{creationTime,jdbcType=DATE},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      complaints_reasons = #{complaintsReasons,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      rights_of_reason = #{rightsOfReason,jdbcType=LONGVARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARBINARY}
+    where complaint_id = #{complaintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_complaint">
+    update mm_complaint
+    set creation_time = #{creationTime,jdbcType=DATE},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      complaints_reasons = #{complaintsReasons,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR}
+    where complaint_id = #{complaintId,jdbcType=INTEGER}
+  </update>
+</mapper>

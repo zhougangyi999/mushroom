@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_regionMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_region">
+    <id column="regionId" jdbcType="INTEGER" property="regionid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parentid" jdbcType="INTEGER" property="parentid" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    regionId, name, parentid, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_region
+    where regionId = #{regionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_region
+    where regionId = #{regionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_region">
+    insert into mm_region (regionId, name, parentid, 
+      reserved1, reserved2)
+    values (#{regionid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_region">
+    insert into mm_region
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regionid != null">
+        regionId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parentid != null">
+        parentid,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regionid != null">
+        #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_region">
+    update mm_region
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where regionId = #{regionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_region">
+    update mm_region
+    set name = #{name,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where regionId = #{regionid,jdbcType=INTEGER}
+  </update>
+</mapper>

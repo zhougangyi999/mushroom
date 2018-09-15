@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_background_userMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_background_user">
+    <id column="background_user" jdbcType="INTEGER" property="backgroundUser" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="background_user_name" jdbcType="VARCHAR" property="backgroundUserName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="stats" jdbcType="INTEGER" property="stats" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    background_user, name, background_user_name, password, role_id, stats, reserve1, 
+    reserve2, creation_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_background_user
+    where background_user = #{backgroundUser,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_background_user
+    where background_user = #{backgroundUser,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_background_user">
+    insert into mm_background_user (background_user, name, background_user_name, 
+      password, role_id, stats, 
+      reserve1, reserve2, creation_time, 
+      update_time)
+    values (#{backgroundUser,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{backgroundUserName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, #{stats,jdbcType=INTEGER}, 
+      #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{creationTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_background_user">
+    insert into mm_background_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="backgroundUser != null">
+        background_user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="backgroundUserName != null">
+        background_user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="stats != null">
+        stats,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="backgroundUser != null">
+        #{backgroundUser,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundUserName != null">
+        #{backgroundUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_background_user">
+    update mm_background_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundUserName != null">
+        background_user_name = #{backgroundUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        stats = #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+    </set>
+    where background_user = #{backgroundUser,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_background_user">
+    update mm_background_user
+    set name = #{name,jdbcType=VARCHAR},
+      background_user_name = #{backgroundUserName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=INTEGER},
+      stats = #{stats,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR},
+      creation_time = #{creationTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE}
+    where background_user = #{backgroundUser,jdbcType=INTEGER}
+  </update>
+</mapper>

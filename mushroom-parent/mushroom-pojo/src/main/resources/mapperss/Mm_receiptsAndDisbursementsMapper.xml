@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_receiptsAndDisbursementsMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_receiptsAndDisbursements">
+    <id column="receiptsAndDisbursementsid" jdbcType="INTEGER" property="receiptsanddisbursementsid" />
+    <result column="creationTime" jdbcType="DATE" property="creationtime" />
+    <result column="types" jdbcType="INTEGER" property="types" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="balance" jdbcType="DOUBLE" property="balance" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    receiptsAndDisbursementsid, creationTime, types, money, userid, balance, reserved1, 
+    reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_receiptsAndDisbursements
+    where receiptsAndDisbursementsid = #{receiptsanddisbursementsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_receiptsAndDisbursements
+    where receiptsAndDisbursementsid = #{receiptsanddisbursementsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_receiptsAndDisbursements">
+    insert into mm_receiptsAndDisbursements (receiptsAndDisbursementsid, creationTime, 
+      types, money, userid, 
+      balance, reserved1, reserved2
+      )
+    values (#{receiptsanddisbursementsid,jdbcType=INTEGER}, #{creationtime,jdbcType=DATE}, 
+      #{types,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{userid,jdbcType=INTEGER}, 
+      #{balance,jdbcType=DOUBLE}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_receiptsAndDisbursements">
+    insert into mm_receiptsAndDisbursements
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="receiptsanddisbursementsid != null">
+        receiptsAndDisbursementsid,
+      </if>
+      <if test="creationtime != null">
+        creationTime,
+      </if>
+      <if test="types != null">
+        types,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="receiptsanddisbursementsid != null">
+        #{receiptsanddisbursementsid,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="types != null">
+        #{types,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_receiptsAndDisbursements">
+    update mm_receiptsAndDisbursements
+    <set>
+      <if test="creationtime != null">
+        creationTime = #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="types != null">
+        types = #{types,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where receiptsAndDisbursementsid = #{receiptsanddisbursementsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_receiptsAndDisbursements">
+    update mm_receiptsAndDisbursements
+    set creationTime = #{creationtime,jdbcType=DATE},
+      types = #{types,jdbcType=INTEGER},
+      money = #{money,jdbcType=DOUBLE},
+      userid = #{userid,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DOUBLE},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where receiptsAndDisbursementsid = #{receiptsanddisbursementsid,jdbcType=INTEGER}
+  </update>
+</mapper>

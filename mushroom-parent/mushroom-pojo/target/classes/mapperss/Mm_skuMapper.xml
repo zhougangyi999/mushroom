@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_skuMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_sku">
+    <id column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="attribute_color_value" jdbcType="VARCHAR" property="attributeColorValue" />
+    <result column="colour_src" jdbcType="VARCHAR" property="colourSrc" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+    <result column="reserve3" jdbcType="VARCHAR" property="reserve3" />
+    <result column="reserve4" jdbcType="VARCHAR" property="reserve4" />
+    <result column="reserve5" jdbcType="VARCHAR" property="reserve5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sku_id, commodity_id, attribute_color_value, colour_src, reserve1, reserve2, reserve3, 
+    reserve4, reserve5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_sku
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_sku">
+    insert into mm_sku (sku_id, commodity_id, attribute_color_value, 
+      colour_src, reserve1, reserve2, 
+      reserve3, reserve4, reserve5
+      )
+    values (#{skuId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{attributeColorValue,jdbcType=VARCHAR}, 
+      #{colourSrc,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, 
+      #{reserve3,jdbcType=VARCHAR}, #{reserve4,jdbcType=VARCHAR}, #{reserve5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_sku">
+    insert into mm_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="attributeColorValue != null">
+        attribute_color_value,
+      </if>
+      <if test="colourSrc != null">
+        colour_src,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+      <if test="reserve3 != null">
+        reserve3,
+      </if>
+      <if test="reserve4 != null">
+        reserve4,
+      </if>
+      <if test="reserve5 != null">
+        reserve5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skuId != null">
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="attributeColorValue != null">
+        #{attributeColorValue,jdbcType=VARCHAR},
+      </if>
+      <if test="colourSrc != null">
+        #{colourSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null">
+        #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null">
+        #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_sku">
+    update mm_sku
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="attributeColorValue != null">
+        attribute_color_value = #{attributeColorValue,jdbcType=VARCHAR},
+      </if>
+      <if test="colourSrc != null">
+        colour_src = #{colourSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        reserve3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve4 != null">
+        reserve4 = #{reserve4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve5 != null">
+        reserve5 = #{reserve5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_sku">
+    update mm_sku
+    set commodity_id = #{commodityId,jdbcType=INTEGER},
+      attribute_color_value = #{attributeColorValue,jdbcType=VARCHAR},
+      colour_src = #{colourSrc,jdbcType=VARCHAR},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR},
+      reserve3 = #{reserve3,jdbcType=VARCHAR},
+      reserve4 = #{reserve4,jdbcType=VARCHAR},
+      reserve5 = #{reserve5,jdbcType=VARCHAR}
+    where sku_id = #{skuId,jdbcType=INTEGER}
+  </update>
+</mapper>

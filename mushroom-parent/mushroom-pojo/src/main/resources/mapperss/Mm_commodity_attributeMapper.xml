@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_commodity_attributeMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_commodity_attribute">
+    <id column="commodity_attribute_id" jdbcType="INTEGER" property="commodityAttributeId" />
+    <result column="commodity_name_d" jdbcType="INTEGER" property="commodityNameD" />
+    <result column="attribute_value_id" jdbcType="INTEGER" property="attributeValueId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commodity_attribute_id, commodity_name_d, attribute_value_id, commodity_id, reserved1, 
+    reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_commodity_attribute
+    where commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_commodity_attribute
+    where commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_commodity_attribute">
+    insert into mm_commodity_attribute (commodity_attribute_id, commodity_name_d, 
+      attribute_value_id, commodity_id, reserved1, 
+      reserved2)
+    values (#{commodityAttributeId,jdbcType=INTEGER}, #{commodityNameD,jdbcType=INTEGER}, 
+      #{attributeValueId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_commodity_attribute">
+    insert into mm_commodity_attribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityAttributeId != null">
+        commodity_attribute_id,
+      </if>
+      <if test="commodityNameD != null">
+        commodity_name_d,
+      </if>
+      <if test="attributeValueId != null">
+        attribute_value_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityAttributeId != null">
+        #{commodityAttributeId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityNameD != null">
+        #{commodityNameD,jdbcType=INTEGER},
+      </if>
+      <if test="attributeValueId != null">
+        #{attributeValueId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_commodity_attribute">
+    update mm_commodity_attribute
+    <set>
+      <if test="commodityNameD != null">
+        commodity_name_d = #{commodityNameD,jdbcType=INTEGER},
+      </if>
+      <if test="attributeValueId != null">
+        attribute_value_id = #{attributeValueId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_commodity_attribute">
+    update mm_commodity_attribute
+    set commodity_name_d = #{commodityNameD,jdbcType=INTEGER},
+      attribute_value_id = #{attributeValueId,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER}
+  </update>
+</mapper>

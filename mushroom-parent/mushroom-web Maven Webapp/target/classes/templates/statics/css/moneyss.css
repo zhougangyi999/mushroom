@@ -1,0 +1,176 @@
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+div:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.money-left{
+	width: 100%;
+	float: left;
+}
+.money-right{
+	width: 50%;
+	float: left;
+}
+/*    --------------------------------------------公共css*/
+.ddd{
+	transform: translate(-1px, -1px);
+	box-shadow: 0px 0px 20px  #3E3E3E;
+	transition: all 1s ;
+	cursor: pointer;
+}
+em{font-style: normal;}
+.xiayi{
+	transform: translate(0, 10px);
+	box-shadow: 0px 0px 20px ;
+	cursor: pointer;
+	transition: all 1s ;
+	background-color: #000000;
+	color: white;
+}
+
+.mh3{
+	font-size: 20px;
+}
+.annu{
+	padding: 5px 8px;
+	border: 1px solid #000000;
+	background-color: #fb8318;
+	border-radius: 5px;
+	cursor: pointer;
+}
+a{
+	cursor: pointer; /*----------------------------------所以A标签  小手*/
+}
+.ye-div{
+	margin: 20px;
+}
+.yue{
+	margin-top: 10px;
+	font-size: 18px;
+	display: inline-block;
+	margin-right: 20px;
+}
+.yue strong{
+	font-size: 30Px;
+}
+
+/*------------------------------------ 500/140-余额*/
+.td-ye{
+	width: 100%;
+	height: 140px;
+	border: 1px solid #e1e1e1;
+}
+
+
+
+.ye-div ul li,.ye-div ul{
+	display: inline-block;
+}
+
+/*-------------------------------------余额宝*/
+.td-yeb{
+	border: 1px solid #e1e1e1;
+	width: 100%;
+	height: 140px;
+}
+/*-------------------------------------花呗*/
+.td-hb{
+	border: 1px solid #e1e1e1;	
+	width: 49%;
+	height: 282px;
+	float: left;
+}
+.td-hb div,.td-zcb div{
+	margin-top: 20px;
+}
+.yue1 strong{
+	font-size: 30Px;
+}
+.yue2{
+	margin-bottom: 30px;
+}
+/*-------------------------------------招财宝*/
+.td-zcb{
+	border: 1px solid #e1e1e1;
+	width: 49%;
+	height: 282px;
+	float: left;
+	
+}
+.bfb{
+	color: #fb7823;
+}
+
+
+/*----------------------------------------转账记录*/
+.money1{
+	border: 1px solid #e3e3e3;
+	margin: 20px auto;	
+}
+.money1-div h3{
+	margin: 3px;
+	width: 7%;
+	padding: 12px 15px 12px 21px;
+	background-color: #e3e3e3;
+	color: #989898;
+}
+.money1-div1 h3{
+	margin: 3px;
+	width: 10%;
+	margin:20px auto;
+}
+
+.money1-div2{
+	border:1px solid #e3e3e3;
+}
+.money1-div2 a,.money1-div2 h2{
+	display: inline-block;
+	margin-left: 20px;
+	padding: 15px 0px;
+}
+
+
+
+
+/*-----------------------------------------------------------转账记录  表格*/
+.table-div table tr{
+	height: 50px;	
+}
+.table-div table tr td{
+	border-bottom: 1px solid #e3e3e3;	
+	
+}
+
+
+.table-div table tr td:first-child{
+	text-align: center;
+	width: 20%;
+}
+.table-div table tr td:nth-child(2){
+	text-align: center;
+	width: 40%;
+}
+.table-div table tr td:nth-child(3){
+	text-align: center;
+	width: 15%;
+}
+.table-div table tr td:nth-child(4){
+	text-align: center;
+	width: 12%;
+	color: red;
+}
+.table-div table tr td:nth-child(5){
+	text-align: center;
+	width: 15%;
+}
+ 
+
+
+.money{
+	margin-top: 10px;
+}

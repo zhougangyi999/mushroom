@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>页面找不到了</title>
+		<!--描述：控制搜索框的css-->
+		<link rel="stylesheet" href="../statics/css/SearchPage.css">
+		<style type="text/css">
+ 
+		</style>
+		<script type="text/javascript" src="../statics/js/jquery-2.1.4.min.js"></script>
+	</head>
+	<body><div id="content" style="width: 960px;margin: 0 auto;text-align: center;padding-top: 30px;font-size: 14px;">
+    <div class="piece1">
+        <div class="piece1_hd"></div>
+        <div class="piece1_bd">
+            <div id="fail">
+                <img src="http://s16.mogucdn.com/p1/160103/upload_ifqtgnbtgeytgzteguzdambqgyyde_100x151.png" alt="">
+                <p>您访问的网页,可能权限不足哦,看看其他的吧<！/p>
+                <p class="redirect-part">将在<span id="error_time">2</span>秒后自动<a href="be_opened_for_occupancy.html" style="color: #f46;">返回首页 &gt;</a></p>
+            </div>
+        </div>
+        <div class="piece1_ft"></div>
+    </div>
+</div>
+<script src="https://s10.mogucdn.com/__/mfp/meili-lib/assets/0.0.6/jquery.2.1.1.js"></script>
+<script>
+  $(function(){
+    if(/(juangua.com)|(weshop.com)/g.test(location.host)) {
+        $('.redirect-part').html("");
+    } else {
+        if($("#error_time")){
+            setInterval(function(){
+               if($("#error_time").html()>1){
+                   $("#error_time").html($("#error_time").html()-1);
+               }
+               else{
+                   location.href="be_opened_for_occupancy.html";
+               }
+            },1000);
+        }
+    }
+});  
+</script>
+</body>
+</html>

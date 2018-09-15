@@ -1,0 +1,7 @@
+.menu{
+    display: inline-block;
+    padding-left: 26px;
+    height: 30px;
+    line-height: 30px;
+    background: url(statics/img/all.png)-4px -420px no-repeat;
+}

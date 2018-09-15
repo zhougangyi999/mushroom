@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_permissions_haveMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_permissions_have">
+    <id column="permissions_have" jdbcType="INTEGER" property="permissionsHave" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="permissions_id" jdbcType="INTEGER" property="permissionsId" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    permissions_have, role_id, permissions_id, reserve1
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_permissions_have
+    where permissions_have = #{permissionsHave,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_permissions_have
+    where permissions_have = #{permissionsHave,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_permissions_have">
+    insert into mm_permissions_have (permissions_have, role_id, permissions_id, 
+      reserve1)
+    values (#{permissionsHave,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{permissionsId,jdbcType=INTEGER}, 
+      #{reserve1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_permissions_have">
+    insert into mm_permissions_have
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionsHave != null">
+        permissions_have,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="permissionsId != null">
+        permissions_id,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionsHave != null">
+        #{permissionsHave,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionsId != null">
+        #{permissionsId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_permissions_have">
+    update mm_permissions_have
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionsId != null">
+        permissions_id = #{permissionsId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permissions_have = #{permissionsHave,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_permissions_have">
+    update mm_permissions_have
+    set role_id = #{roleId,jdbcType=INTEGER},
+      permissions_id = #{permissionsId,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR}
+    where permissions_have = #{permissionsHave,jdbcType=INTEGER}
+  </update>
+</mapper>

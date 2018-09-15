@@ -1,0 +1,238 @@
+/******************出售中的商品*******************/
+.commodity_index{
+	width:1032px;
+	background: none;
+	font-size: 13px;
+	zoom: 1;
+}
+.commodity_index_top{
+	line-height: 36px;
+	border-bottom: #9cd8fe 1px solid;
+	position: relative;
+	z-index: 0;
+	padding-left: 100px;
+}
+.commodity_index_top li{
+	cursor: pointer;
+}
+.commodity_index_box{
+	z-index: 2;
+	bottom: -1px;
+	position: relative;
+	float: left;
+	font-size:14px ;
+	margin-left: ;
+	width: 110px;
+	text-align: center;
+    border: #9cd8fe 1px solid;
+    border-bottom: 0;
+	background: #FFFFFF;
+	
+}
+.Product_Search{
+	background: #f9f9f9;
+
+     padding:10px;
+    padding-top: 17px;
+    height: 127px;
+     background: #FFFFFF;
+    
+}
+.Product_Search_colum {
+	float: left;
+    width: 32%;
+    position: relative;
+    height: 100%;
+    margin-left: 12px;
+    }
+    
+.Product_Search_colum_input_text{
+	width: 152px;
+}
+.Product_Search_colum select{
+	width: 152px;
+}
+.Product_Search_colum_to{
+	    width: 64px;
+}   
+.row {
+    margin-bottom: 5px;
+    height: 26px;
+    padding: 5px 0;
+}
+.row_lable{
+	margin-right: 26px;
+}
+.Product_Search_colum_but{
+	position: absolute;
+	right: 32%;
+	bottom:11%;
+}
+  .Product_Search_colum_but input{  
+    padding: 2px 20px;
+    border-radius: 0!important;
+    border: 1px solid #ddd;
+    background: #f5f5f5!important;
+}
+/****************商品表格******************/
+.commodity_table_div{
+	
+	width: 100%;
+}
+.commodity_table_div>table:first-child{width: 100%;border-collapse:collapse ;line-height: 30px; }
+.commodity_table_div_tr{
+	text-align: center;
+	background:-webkit-linear-gradient(top,#ffffff,#e9f4ff);
+	border-top:#9cd8fe 1px solid ;
+	border-bottom: #9cd8fe 1px solid ;
+	position: relative;
+}
+.commodity_table_div_tr_ck{
+	
+	width: 120px;
+}
+.commodity_table_div_tr_ck_UP1{
+	background: url(../images/TB10WpyGXXXXXaSXFXXZBWn.VXX-12-12.png) 75PX center no-repeat;
+}
+.commodity_table_div_tr_ck_UP2{
+	background: url(../images/TB10WpyGXXXXXaSXFXXZBWn.VXX-12-12.png) 82PX center no-repeat;
+}
+.commodity_table_div_tr_ck_UP3{
+	background: url(../images/TB1w7tsGXXXXXXIXVXXZBWn.VXX-12-12.png) 90PX center no-repeat;
+}
+
+.commodity_table_div_tr_ck a,.commodity_table_div_tr_table a{
+	  color: #0579c6;
+}
+.commodity_table_div_tr_ck a:hover,.commodity_table_div_tr_table a:hover{
+	color: #0579c6;
+	text-decoration: none;
+	text-decoration: underline;
+	color: #EA8010 ;
+}
+.commodity_table_div_tr_but{
+	padding: 2px 10px;
+    border-radius: 0!important;
+    border: 1px solid #ddd;
+    background: #f5f5f5!important;
+    margin: 0 2px;
+}
+
+.colspan_h{
+	padding: 10px 0px;
+	padding-left: 1px;
+	background: #cce1ff;
+    border-bottom: #99c2ff 1px solid;
+}
+.colspan_h input[type=checkbox]{
+	position: relative;
+	margin-right: 4px;
+	bottom: -1px;
+	
+}
+.commodity_table_div_tr_table{
+	padding-left:16px;
+	width: 100%;
+}
+.item-title-area p,.item-title-area div{
+	line-height: 10px;
+}
+.item-cate{
+	position:relative ;
+	bottom: 8px;
+}
+
+.commodity_table_div_tr_table_img{
+	display: block;
+    border: #cdcdcd 1px solid;
+    width: 52px;
+    height: 52px;
+    margin-left: 16px
+}
+.commodity_table_div_tr_table tr{  padding-left: 10px; position: relative;}
+.item-title-area2{width: 260px;   }
+.item-title-are1{ width: 70px;padding:20px 0 ;}
+.item-title-area2_2{height: 36px;display: block; }
+.item-cate{height: 36px;display: block; border: solid 1px;}
+.item-title-area3{width: 150px;text-align: right;}
+.item-title-area4{width: 116px; text-align: right;}
+.item-title-area5{width: 120px; text-align: right;}
+.item-title-area6{width: 170px; text-align: right;}
+.item-title-area7{width: 110px; text-align: right;padding-right: 30px;}
+.page-nav{float: right; padding: 3px 4px 0;}
+.page-nav:after{content: "";display: block;clear: both;}
+.operations{position:relative;right: 0; width: 100%; }
+.selected{
+	float: left;
+    line-height: 20px;
+    color: #666;
+    padding: 0 6px;
+    margin-left: 3px;
+    background: #5997d4!important;
+    color: #fff!important;
+}
+
+.trs{
+	background: #fff;
+}
+.trbor{
+
+	    background: #fcfcfc;
+    border-bottom:    1px solid #e6b6b6;
+}
+  table{
+   border-collapse:collapse;
+}
+.trbor:hover{
+	  background: #fff8e1;
+}
+.selector {
+    position: absolute;
+    margin-top: 23px;
+}
+
+.page-nav li {
+    float: left;
+    line-height: 20px;
+    color: #666;
+    margin-left: 3px;
+}
+.operations .page-nav li a {
+    color: #333!important;
+}
+
+.page-nav .prev-page a {
+    background: #fff url(//assets.alicdn.com/app/trade/img/page_nav.gif) no-repeat 7px -15px;
+    width: 8px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+.page-nav li a {
+    display: block;
+    padding: 0 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.page-nav a {
+    padding: 0 6px;
+}
+
+.page-nav li a {
+    display: block;
+    padding: 0 6px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.prev-page a,.prev-page{
+	width: 22px!important;
+}
+
+
+.page-nav .next-page a {
+    background: #fff url(//assets.alicdn.com/app/trade/img/page_nav.gif) no-repeat 45px 5px;
+    width:59px;
+    text-align: left;
+}

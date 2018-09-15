@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- saved from url=(0070)http://portal.mogujie.com/user/bindtel?ptp=1.urjKK.0.0.rSRuf42&f=mgjlm -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+	window.__trace__headstart = +new Date;
+	window.__server__startTime = 1535377947126;
+	window.__token = "2jKvdfQ9m4prPUM2YfVPorx%2B%2FJVF%2FI522Tqfxq5KLDb7IsmjLdJAEqSkw9gMuFuy";
+</script>
+
+
+<link rel="dns-prefetch" href="http://s6.mogucdn.com/">
+<link rel="dns-prefetch" href="http://s7.mogucdn.com/">
+<link rel="dns-prefetch" href="http://s6.mogujie.cn/">
+<link rel="dns-prefetch" href="http://s7.mogujie.cn/">
+<link rel="dns-prefetch" href="http://s8.mogujie.cn/">
+<link rel="dns-prefetch" href="http://s9.mogujie.cn/">
+<link rel="dns-prefetch" href="http://s12.mogujie.cn/">
+<link rel="dns-prefetch" href="http://s13.mogujie.cn/">
+
+<meta http-equiv="Cache-Control" content="no-transform ">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>绑定手机_蘑菇街</title>
+<meta name="keywords" content="蘑菇街,mogujie,买手,买手街,网购">
+<meta name="description" content="">
+<meta name="copyright" content="mogujie.com">
+
+
+
+
+<link rel="search" type="application/opensearchdescription+xml"
+	href="http://portal.mogujie.com/opensearch.xml">
+
+<link rel="icon"
+	href="https://s10.mogucdn.com/mlcdn/c45406/170401_16fj5k6k4174bfd21d03a4gf6a7hg_48x48.png"
+	type="image/x-icon">
+
+
+
+
+<link href="./css/index.css-ccfdf3f4.css" rel="stylesheet"
+	type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="./css/bottom.css"
+	media="all">
+
+
+<link href="./css/index.css-f3e6042a.css" rel="stylesheet"
+	type="text/css">
+
+
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="sweetalert2/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2/sweetalert2.min.css">
+<script type="text/javascript">
+			
+					
+	$(function() { 
+	$("#getcode").click(function(){
+
+		var old_phone=$("#old_phone").val()
+	$.post("login_phone_code",{"phone_num":old_phone},function(date){
+	if (date.respCode == "00000") {
+		$("#getcode").css('cursor','not-allowed')
+												log=false;
+													var i=59;
+												var  dit=setInterval(function(){
+														i--;//cursor:;pointer
+														 
+														$("#getcode").css('disabled','true')
+														$("#codemsg").text("手机验证码发送成功！"+i+"秒后可以重新发送").show();
+														if(i<=0){
+															$("#getcode").css('disabled','folse')
+															window.clearInterval(dit);
+															$("#codemsg").text("").hide();
+															log=true;
+														}
+													},1000);
+	}if(date.respCode=="00025"){
+		$("#codemsg").show().text("手机号码格式错误")
+
+	}if(date.respCode=="00141"){
+		$("#codemsg").show().text("验证次数次数超过限制")
+
+	}if(date.respCode=="00142"){
+		$("#codemsg").show().text("24小时内验证次数次数超过限制")
+
+	}
+	 
+	},"JSON")
+	})
+
+	
+	$("#code").blur(function(){
+
+
+
+
+	codeisok();
+	})
+function codeisok(){
+
+var code_num=$("#code").val();	
+$.post("login_phone_isok",{"code_num":code_num},function(date){
+if(date==1){
+$("#codemsg").hide()
+}
+if(date==3){
+	$("#codemsg").text("").hide();
+	swal({
+  title: '验证码正确,请输入您的新手机号码:',
+ html:
+    '<input id="swal-input1" class="swal2-input">',
+  showCancelButton: true,
+  confirmButtonText: '提交',
+  cancelButtonText:	'取消',
+  width:	'388px',
+  showLoaderOnConfirm: true,
+  preConfirm: function() {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+      var  newphoone=$("#swal-input1").val();
+      $.post("user_update_phone",{"phone":newphoone},function(date){
+      if(date>0){
+      //成功
+      swal({
+    type: 'success',
+    title: '手机号码更改成功！',
+    html: '新手机号码是：' + newphoone,
+     width:	'388px',
+  });
+  setTimeout(function(){window.location.reload();}, 2000);
+      }else{
+      //失败
+         swal({
+    type: 'error',
+    title: '手机号码更改失败！',
+   
+     width:	'388px',
+  });
+      }
+      })
+  
+      }, 2000);
+    });
+  },
+  allowOutsideClick: false
+}).then(function(email) {
+
+})
+
+
+}if(date==2){
+if(phone_num==""||phone_num==null){
+var i=0;
+	$("#codemsg").text("").hide();
+}else{
+$("#codemsg").show().text("验证码错误")}
+swal({
+  title: '错误',
+  html: $('<div>')
+    .addClass('some-class')
+    .text('验证码错误!~'),
+  animation: false,
+  customClass: 'animated tada'
+})
+}
+},"JSON");
+}
+	
+	})
+
+
+
+</script>
+
+<link rel="stylesheet" href="./css/indexs.css">
+<style type="text/css">
+</style>
+</head>
+
+<body class="media_screen_960 media_screen_1200">
+
+
+	<script type="text/javascript">
+ 
+</script>
+	<div class="mgj_rightbar J_sidebar" data-ptp="_sidebar"
+		style="right: 0px;">
+		<!--空的右侧边栏-->
+		<div id="mgj_rightbar_top_blank" class="mgj_rightbar_960"></div>
+		<!--方便定margin的空dediv-->
+		<div id="mgj_rightbar_blank_div"></div>
+		<!--用户头像-->
+		<div class="sidebar-item mgj-my-avatar">
+			<a target="_blank" href="http://www.mogujie.com/member"
+				rel="nofollow">
+				<div class="img">
+					<img width="20" height="20"
+						th:src="${session.userSession.headportraitsrc}"
+						alt="">
+				</div>
+			</a>
+		</div>
+		<!--购物车-->
+		<div class="sidebar-item mgj-my-cart" style="left: 0px;">
+			<a target="_blank" href="http://cart.mogujie.com/cart/mycart"
+				rel="nofollow"> <i class="s-icon"></i>
+				<div class="s-txt">购物车</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--优惠券-->
+		<div class="sidebar-item mgj-my-coupon">
+			<a target="_blank" rel="nofollow"
+				href="http://promotion.mogujie.com/trade/promotion/user/shopcoupon">
+				<i class="s-icon"></i>
+				<div class="s-txt">优惠券</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--钱包-->
+		<div class="sidebar-item mgj-my-wallet">
+			<a target="_blank" rel="nofollow"
+				href="https://payuserp.mogujie.com/wallet/home"> <i
+				class="s-icon"></i>
+				<div class="s-txt">钱包</div>
+			</a>
+		</div>
+		<!--足迹-->
+		<div class="sidebar-item mgj-my-browserlog">
+			<a target="_blank" rel="nofollow" href="http://track.mogujie.com/">
+				<i class="s-icon"></i>
+				<div class="s-txt">足迹</div>
+			</a>
+		</div>
+		<div class="sideBottom">
+			<!--回到顶部-->
+			<div class="sidebar-item mgj-back2top" style="left: 0px;">
+				<a rel="nofollow" href="javascript:;"><i class="s-icon"></i></a>
+			</div>
+		</div>
+	</div>
+	<div id="header" class="J_sitenav site-top-nav" data-ptp="_head">
+		<div class="wrap">
+			<a href="http://www.mogujie.com/" rel="nofollow" class="home fl">蘑菇街首页</a>
+			<ul class="header-top">
+				<li class="s1 has-icon user-meta"><a rel="nofollow"
+					href="javascript:;" th:text="${session.userSession.username}">
+				</a> <a rel="nofollow" href="http://pc.mogujie.com/member/member.html"
+					target="_blank"> </a> <i class="icon-delta"></i>
+					<ol class="ext-mode" id="menu-personal">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://www.mogujie.com/settings/personal">个人设置</a></li>
+						<li class="s2"><a rel="nofollow"
+							href="http://www.mogujie.com/logout">退出</a></li>
+					</ol></li>
+				<li class="s1 has-line message-center"><a rel="nofollow"
+					href="javascript:;"
+					class="ext-module mogutalk_btn J_msg open_msg micon"
+					data-from="shopwidget_message"
+					data-trace="global,shopwidget_message,click">消息<span
+						class="num m_num" style="display: none;"></span>
+				</a></li>
+				<li class="s1 has-icon has-line user-fav"><a rel="nofollow"
+					href="javascript:;">我的收藏</a> <i class="icon-delta"></i>
+					<ul class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/goodsfavs">收藏的商品</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/shopfavs">收藏的小店</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://track.mogujie.com/">浏览足迹</a></li>
+					</ul></li>
+				<li class="s1 myorder has-line"><a
+					href="http://order.mogujie.com/order/list4buyer" target="_blank"
+					class="text display_u" rel="nofollow">我的订单</a></li>
+				<li class="s1 has-line shopping-cart-v2"><a
+					class="cart-info-wrap" href="http://cart.mogujie.com/cart/mycart"
+					target="_blank" rel="nofollow"><span class="cart_info">购物车</span></a>
+					<i class="icon-delta"></i> <span class="shopping-cart-loading"></span>
+				</li>
+				<li class="s1 has-line has-icon custom-item"><a rel="nofollow"
+					href="http://cs.mogujie.com/help/index.html" target="_blank">客户服务</a>
+					<i class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/help/index.html">消费者服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://service.xiaodian.com/">商家服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/rule/index.html">规则中心</a></li>
+					</ol></li>
+				<li class="s1 has-line has-icon myxiaodian"><a
+					href="http://www.xiaodian.com/" rel="nofollow" target="_blank"
+					class="text display_u">我的小店</a> <i class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://www.xiaodian.com/pc/shopadmin/shopface">管理后台</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://bbs.xiaodian.com/">商家社区</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://peixun.xiaodian.com/">商家培训</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cycle.xiaodian.com/pc/zhaoshang">市场入驻</a></li>
+					</ol></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="promotionTopNavContainer"></div>
+
+
+	<!-- 中间区域 -->
+	<div class="header_mid clearfix">
+		<div class="wrap">
+			<a rel="nofollow" href="http://www.mogujie.com/" class="logo"
+				title="蘑菇街首页" style="background-image: none;"><img
+				src="./images/170904_1fj9406416501i4lkabcc0hjb8341_480x180.png"
+				alt="蘑菇街，我的买手街"></a>
+			<div class="normal-search-content">
+				<div class="top_nav_search" id="nav_search_form">
+					<!--搜索框 -->
+					<div class="search_inner_box clearfix">
+						<div class="selectbox" data-v="1">
+							<span class="selected">搜商品</span>
+							<ol>
+								<li class="current" data-index="bao"><a
+									href="http://portal.mogujie.com/user/bindtel?ptp=1.urjKK.0.0.rSRuf42&amp;f=mgjlm#">商品</a></li>
+								<li data-index="shop"><a
+									href="http://portal.mogujie.com/user/bindtel?ptp=1.urjKK.0.0.rSRuf42&amp;f=mgjlm#">店铺</a></li>
+							</ol>
+						</div>
+						<form action="http://list.mogujie.com/s" method="get"
+							id="top_nav_form">
+							<input type="text" data-tel="search_book" name="q"
+								class="ts_txt fl" data-def="中长款长袖t恤裙" value=""
+								autocomplete="off" def-v="中长款长袖t恤裙"
+								data-acm="3.mce.1_0_1lulsbi.39084.77211.fMamVr1VTozGy.sd_115-mid_39084-mdt_sketch-dit_40-lc_201">
+							<input type="submit" value="搜  索" class="ts_btn"> <input
+								type="hidden" name="t" value="bao" id="select_type"> <input
+								type="hidden" name="ptp" value="">
+						</form>
+						<div class="top_search_hint is-not-ie8-hack"></div>
+					</div>
+
+					<div class="ts_hotwords">
+						<a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E7%9D%A1%E8%A1%A3&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">睡衣</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E8%83%8C%E5%B8%A6%E8%A3%A4&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">背带裤</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E5%8D%AB%E8%A1%A3&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">卫衣</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E8%BF%9E%E8%A1%A3%E8%A3%99&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">连衣裙</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E7%89%9B%E4%BB%94%E8%A3%A4&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">牛仔裤</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E6%83%85%E4%BE%A3%E5%8D%AB%E8%A1%A3&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_0_619027396-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #ff4466;">情侣卫衣</a><a rel="nofollow"
+							class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E5%A4%96%E5%A5%97&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">外套</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E6%97%B6%E5%B0%9A%E5%A5%97%E8%A3%85&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_0_658334555-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #ff4466;">时尚套装</a><a rel="nofollow"
+							class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E8%A1%AC%E8%A1%AB&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_3_hotSearchKeywordRec-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #666;">衬衫</a><a rel="nofollow" class="ts_hotword"
+							href="http://list.mogujie.com/s?q=%E5%AF%86%E7%A0%81%E7%AE%B1&amp;from=hotword&amp;acm=3.mce.1_10_11k.37705.28553.pC6Ulr1VTozHb.p_0_654748414-sd_115-mid_37705-mdt_hotWord-dit_40-lc_201"
+							style="color: #ff4466;">密码箱</a>
+					</div>
+				</div>
+			</div>
+			<div class="mid_fr">
+				<img src="./images/171130_8gf90d0d5bgc4ag4kk82gi8kc287d_440x180.png"
+					alt="蘑菇街，我的买手街">
+			</div>
+		</div>
+	</div>
+	<div id="body_wrap">
+		<div id="body_content_wrap">
+			<div id="body" class="fm970">
+				<div class="per_wrap clearfix" id="per_wrap">
+					<div id="navListWrap">
+						<div class="mu_nav_wrap">
+							<div class="mu_nav_info">
+								<div class="mu_nav_info_avatar">
+									<div class="mu_nav_info_avatar_mk"></div>
+									<img
+										th:src="${session.userSession.headportraitsrc}"
+										width="100" height="100">
+								</div>
+								<p class="mu_nav_info_uname" th:text="${session.userSession.username}">qq_sbbeam7z4sojo</p>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">我的订单</div>
+								<ul class="mu_nav_item">
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?status=all&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">全部订单</a>
+									</li>
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?status=created&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">
+											待付款 <i id="unpaidOrder" class="mu_nav_count"><i
+												class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?status=unshipped_and_unreceived&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">
+											待收货 <i id="unReceivedOrder" class="mu_nav_count"><i
+												class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?status=received_and_completed&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">
+											待评价 <i id="waitingRateOrder" class="mu_nav_count"><i
+												class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?status=refund_orders&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">
+											退货退款 <i class="mu_nav_count"><i class="mu_nav_count_arw"></i></i>
+									</a></li>
+									<!-- 新增，stage=8 回收站订单 -->
+									<li><a
+										href="http://order.mogujie.com/order/list4buyer?orderVisibleStatusCode=DELETED&amp;_uk=k4poozm9agmfjrjxcuudtfr2a5e3xroqhsfolgmk">
+											订单回收站 <i id="recyleOrder" class="mu_nav_count"><i
+												class="mu_nav_count_arw"></i></i>
+									</a></li>
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">
+									<a href="http://payuserp.mogujie.com/wallet/home">我的钱包</a>
+								</div>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">优惠特权</div>
+								<ul class="mu_nav_item" id="JCouponList">
+									<li><a href="http://pc.mogujie.com/member/member.html">会员中心</a></li>
+									<!-- <li ><a href="//www.mogujie.com/trade/credit/modouv2/index">我的蘑豆</a></li> -->
+									<li><a
+										href="http://promotion.mogujie.com/trade/promotion/user/shopcoupon">店铺优惠券</a></li>
+									<li><a
+										href="http://promotion.mogujie.com/trade/promotion/user/cashcoupon">全场优惠券</a></li>
+									<li><a
+										href="http://promotion.mogujie.com/trade/promotion/user/activitycoupon">活动优惠券</a></li>
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">
+									<a href="http://logistics.mogujie.com/trade/address">地址管理</a>
+								</div>
+							</div>
+							<div class="mu_nav mu_expand">
+								<div class="mu_title">安全设置</div>
+								<ul class="mu_nav_item">
+									<li><a href="http://portal.mogujie.com/trade/safety">设置密码</a></li>
+									<li class="c"><a
+										href="http://portal.mogujie.com/user/bindtel">绑定手机</a></li>
+								
+								</ul>
+							</div>
+							<div class="mu_nav">
+								<div class="mu_title">维权管理</div>
+								<ul class="mu_nav_item">
+									<li><a
+										href="http://cs.mogujie.com/dispute/complaint/list.html">投诉管理</a></li>
+									<li><a
+										href="http://cs.mogujie.com/dispute/report/list.html">举报管理</a></li>
+								</ul>
+							</div>
+							<div class="mu_nav mu_expand">
+								<div class="mu_title">帐号设置</div>
+								<ul class="mu_nav_item">
+									<li><a href="http://www.mogujie.com/settings/personal">基本</a></li>
+									<li><a href="http://www.mogujie.com/settings/avatar">修改头像</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="per_content_wrap" id="per_content_wrap">
+						<div class="main_content">
+							<div class="content_header">手机绑定</div>
+							<div class="content_form">
+								<form class="phone_input_form formbox" id="modelform">
+									<div class="binded">
+										<p class="changetip infoset">*变更绑定手机请先获取验证码</p>
+										<p class="infoset bindedinfo">
+											<span class="label">当前手机</span> <input type="text"
+												class="info_input bindedphone"  id="old_phone"
+												readonly=""  th:value="${session.userSession.phone}"> <a href="javascript:void(0);"
+												class="label_identify no_use_phone" id="no_use_phone"></a><label  id="codemsg" style="color:#F00"></label>
+										</p>
+										<p class="infoset validateitem oldverify">
+											<span class="label" >验证码</span> <input id="code" type="text"
+												class="code_input js_changeCode ui-input hide_error"
+												data-type="code">
+											<button type="button" class="code_get js_getChangeCode" id="getcode">获取验证码</button>
+										</p>
+									</div>
+									<div class="newbind hide">
+
+										<p class="infoset validateitem inputbox">
+											<span class="label">手机号</span> <input type="text"
+												class="info_input js_phone ui-input" data-type="mobile">
+											<span class="tips display_u"></span>
+										</p>
+										<p class="infoset validateitem newverify">
+											<span class="label">验证码</span> <input type="text" id="code"
+											  onblur="return codeisok()"	 class="code_input js_code ui-input hide_error"
+												data-type="code">
+											<button type="button" class="code_get js_getcode">获取验证码</button>
+										</p>
+									</div>
+									<div id="lg_chk_wrap" class="lg_chk_wrap"></div>
+									<div id="_content"></div>
+									<p class="error" id="v2error"></p>
+									<input type="hidden" class="imgchecklevel"> <input
+										type="hidden" class="changeMobileToken" value="">
+									<div class="subbox">
+										<input type="hidden" value="" id="imgcheckvalue">
+										<button type="button" class="confirm_button phone_change">确认变更</button>
+									</div>
+								</form>
+							</div>
+							<div class="identify_form hide"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+    window.isDev = !!0;
+  </script>
+
+
+
+
+</body>
+</html>

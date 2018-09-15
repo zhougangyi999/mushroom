@@ -1,0 +1,300 @@
+body {
+	background: #F5F5F5;
+	margin: 0px;
+}
+
+#context {
+	width: 100%;
+}
+
+.container {
+	width: 1200px;
+	margin: 0px auto;
+}
+
+.container ul {
+	margin: 0px;
+	margin-top: 3px;
+	padding: 0px;
+}
+
+li {
+	list-style: none;
+	display: inline-block;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.container li:first-child a {
+	padding-left: 20px;
+	background: url(../img/login/home.png)0 3px no-repeat;
+}
+
+.container li:nth-child(2) {
+	margin: 0px 24px 0px 854px;
+}
+.u_name {
+	font-style: initial;
+	font-size: 13.5px;
+}
+.mbtn_b_a{
+	position: relative; 
+	margin: 5px 0px 0px 193px;
+	background: #EEEEEE;
+	border: 1px silver solid;
+	font-size: 12px;
+	border-radius: 3px;
+	outline:none;
+	cursor:pointer;
+}
+.pay_article {
+	margin: 0px auto;
+	border-top: 3px #C0C0C0 solid;
+	width: 960px;
+	margin-top: 65px;
+}
+
+.pay_article .pay_kuai {
+	padding: 13px 0px 13px 110px;
+	background: white url(../img/login/pay.jpg)35px 36px no-repeat;
+	margin-bottom: 30px;
+}
+
+.pay_article .pay_input {
+	/*height: 200px;*/
+	background: white;
+	padding: 50px 0px;
+	
+}
+
+.pay_article .pay_input .info {
+	border: 1px #ffe76e solid;
+	width: 560px;
+	text-align: center;
+	font-size: 14px;
+	margin: 0px auto;
+	padding: 5px 0px;
+	background: #ffffc6;
+	color: #878787;
+}
+/*输入卡号*/
+.J_cardNoCheck{/*display: none;*/}
+.pay_input .J_cardNoCheck .mb_c{
+	text-align: center;
+	margin: 0px auto;
+	margin: 30px 0px 0px 60px;
+	width: 700px;
+}
+
+.pay_input .J_cardNoCheck .mb_c label ,.main-wrap-form label{
+	font-size: 14px;
+	color: #5E5E5E;
+}
+
+.pay_input .J_cardNoCheck .mb_c .J_cardNoCheckTxt {
+	width: 290px;
+	height: 25px;
+	padding-left: 10px;
+	border: 1px #D4D4D4 solid;
+	outline: none;
+}
+
+.mb_d {
+	height: 45px;
+	text-align: center;
+	margin: 0px auto;
+	margin: 40px 0px 0px 59px;
+	width: 700px;
+}
+
+.pay_input .J_cardNoCheck .mb_c .J_cardNoCheckTxt:focus{
+	border: 1px #66AFE9 solid
+}
+
+.pay_input .J_cardNoCheck .card_numtip {
+	display: block;
+	position: absolute;
+	white-space: nowrap;
+	font-size: 22px;
+	width: 292px;
+	padding: 8px 0px 8px 10px;
+	height: 29px;
+	margin: -45px 0px 0px 310px;
+	text-align: left;
+	background: #E5E5E5;
+	z-index: 6;
+}
+
+.mb_d .J_cardNoCheckBtn {
+	margin-left: -110px;
+	padding: 13px 25px;
+	color: white;
+	border: none;
+	outline: none;
+}
+
+.B_cardBtn {
+	background: #DDDDDD;
+	cursor: default;
+}
+
+.F_cardBtn {
+	background: orange;
+	cursor: pointer;
+}
+/*遮罩*/
+.zhe{
+				width:100%;
+				height:99%;
+				background: #000000;
+				opacity: 0.3;
+				position: absolute;
+				display: none;
+				z-index: 7;
+			}
+			.pay_warn{
+				position: absolute;
+				width:400px;
+				height:210px;
+				margin-top:220px;
+				margin-left:480px;
+				background: white;
+				display: none;
+				z-index: 8;
+			}
+			.pay_warn p:first-child{
+				margin:0px;
+				padding:15px 0px 10px 20px;
+				color: #555555;
+				background:#F7F7F7;
+			}
+			.pay_warn p img{
+			
+				float: right;
+				margin-right:15px;
+				cursor: pointer;
+			}
+
+			.pay_warn p:nth-child(2){
+				margin:0px;
+				text-align: center;
+				padding:40px 0px;
+				font-size: 14px;
+				color: #555555;
+				
+			}
+			.pay_warn .close{
+				font-size: 12.5px;;
+				background:#ff5777;
+				color:white;
+				padding:5px 30px;
+				margin-left:150px;
+			}
+			
+/*完整信息*/
+.main-wrap-form{
+	padding:20px 0px 0px 240px;
+	display: none;
+}
+.main-wrap-form .bank{
+	border: 1px #D4D4D4 solid;
+	padding:11px 0px;
+	font-size: 14px;
+}
+
+.main-wrap-form .bank img{
+	position: relative;
+	margin-bottom: -15px;
+}
+.main-wrap-form .bank .card_T{
+	margin-left:15px;
+	padding:3px 75px 0px 10px;
+	background: url(../img/login/pay.jpg)55px 3px no-repeat;
+}
+.main-wrap-form .mb_c{margin-bottom: 20px;}
+.main-wrap-form .mb_safe{
+	margin:35px 0px 20px 86px;
+	padding-left:15px;
+	
+	width:150px;
+	font-size: 14px;
+	color:#5CB85C;
+	background: url(../img/login/bk.png)-5px -5px no-repeat;
+}
+.main-wrap-form .cardnoDis{font-size: 14px; color:#333333}
+.main-wrap-form .mb_c .tlarge{
+	height:25px;
+	width:300px;
+}
+.main-wrap-form .mb_c .tlarge,.main-wrap-form .tsmall,.main-wrap-form .card_code{
+	padding-left:5px;
+	border: 1px #D4D4D4 solid;
+	outline: none;
+}
+.main-wrap-form .tsmall,.main-wrap-form  .card_code{
+	height:25px;
+	width:80px;
+}
+.main-wrap-form .tlarge:focus,.main-wrap-form .tsmall:focus,.main-wrap-form .card_code:focus {border: 1px #66AFE9 solid;}
+.main-wrap-form .J_smscode{
+	font-size: 13px;
+	border-radius: 3px;
+	padding:4.5px 10px;
+	margin-left: 10px;
+	color:#555555;
+	background: #E3E3E3;
+}
+.main-wrap-form k{font-size: 13px;}
+.main-wrap-form p:nth-child(5){margin-left:27px;}
+.main-wrap-form p:nth-child(2),.main-wrap-form p:nth-child(7),.main-wrap-form p:nth-child(10){
+	margin-left:14px;
+}
+.main-wrap-form .mb_d{
+	text-align: left;
+	margin-left:85px;
+}
+.main-wrap-form .agre_mes{margin-top:-5px;	}
+.main-wrap-form  .J_btn{margin-top:-75px;}
+.main-wrap-form .mb_d .lab{
+	font-size: 14px;
+	color:#ADADAD
+}
+.main-wrap-form .mb_d .lab a{color:#31B0D5}
+.main-wrap-form .J_submit{
+	padding:8px 15px;
+	background:#FFA500;
+	color:white;
+}
+.main-wrap-form .notice{
+	padding-left: 20px;
+	font-size: 13px;
+	color:#ff567b;
+	background: url(../img/login/warn.png)0 0px no-repeat;
+	display: none;
+}
+.main-wrap-form .card_yan{display: none;}
+.main-wrap-form .card_yan .wen,.main-wrap-form .card_yan .wen2{
+	font-size: 13px;
+	padding-left: 15px;
+	background: url(../img/login/bk.png) -5px -60px no-repeat;
+	margin-right: 3px;
+}
+.main-wrap-form .tishi{
+	padding:40px 100px;
+	background: url(../img/login/bk.png)0px -224px no-repeat;
+	position: absolute;
+	margin:-62px 0px 0px 231px;
+	display: none;
+}
+.main-wrap-form .tishi2{
+	padding:30px 95px;
+	background: url(../img/login/bk.png)0px -136px no-repeat;
+	position: absolute;
+	margin:-65px 0px 0px 193px;
+	display: none;
+}
+

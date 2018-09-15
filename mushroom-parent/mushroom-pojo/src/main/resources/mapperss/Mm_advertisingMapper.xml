@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_advertisingMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_advertising">
+    <id column="advertising_id" jdbcType="INTEGER" property="advertisingId" />
+    <result column="advertising_src" jdbcType="VARCHAR" property="advertisingSrc" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="commodity_di" jdbcType="INTEGER" property="commodityDi" />
+    <result column="stats" jdbcType="INTEGER" property="stats" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+    <result column="reserve3" jdbcType="VARCHAR" property="reserve3" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_advertising">
+    <result column="links" jdbcType="LONGVARCHAR" property="links" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    advertising_id, advertising_src, title, shop_id, commodity_di, stats, start_time, 
+    end_time, reserve1, reserve2, reserve3
+  </sql>
+  <sql id="Blob_Column_List">
+    links
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_advertising
+    where advertising_id = #{advertisingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_advertising
+    where advertising_id = #{advertisingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_advertising">
+    insert into mm_advertising (advertising_id, advertising_src, title, 
+      shop_id, commodity_di, stats, 
+      start_time, end_time, reserve1, 
+      reserve2, reserve3, links
+      )
+    values (#{advertisingId,jdbcType=INTEGER}, #{advertisingSrc,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=INTEGER}, #{commodityDi,jdbcType=INTEGER}, #{stats,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{reserve1,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, #{links,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_advertising">
+    insert into mm_advertising
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="advertisingId != null">
+        advertising_id,
+      </if>
+      <if test="advertisingSrc != null">
+        advertising_src,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="commodityDi != null">
+        commodity_di,
+      </if>
+      <if test="stats != null">
+        stats,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+      <if test="reserve3 != null">
+        reserve3,
+      </if>
+      <if test="links != null">
+        links,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="advertisingId != null">
+        #{advertisingId,jdbcType=INTEGER},
+      </if>
+      <if test="advertisingSrc != null">
+        #{advertisingSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityDi != null">
+        #{commodityDi,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="links != null">
+        #{links,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_advertising">
+    update mm_advertising
+    <set>
+      <if test="advertisingSrc != null">
+        advertising_src = #{advertisingSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityDi != null">
+        commodity_di = #{commodityDi,jdbcType=INTEGER},
+      </if>
+      <if test="stats != null">
+        stats = #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        reserve3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="links != null">
+        links = #{links,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where advertising_id = #{advertisingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_advertising">
+    update mm_advertising
+    set advertising_src = #{advertisingSrc,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      commodity_di = #{commodityDi,jdbcType=INTEGER},
+      stats = #{stats,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR},
+      reserve3 = #{reserve3,jdbcType=VARCHAR},
+      links = #{links,jdbcType=LONGVARCHAR}
+    where advertising_id = #{advertisingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_advertising">
+    update mm_advertising
+    set advertising_src = #{advertisingSrc,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      commodity_di = #{commodityDi,jdbcType=INTEGER},
+      stats = #{stats,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR},
+      reserve3 = #{reserve3,jdbcType=VARCHAR}
+    where advertising_id = #{advertisingId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,163 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 12px/1.5 tahoma, arial, Hiragino Sans GB, Microsoft Yahei, \\5B8B\4F53;
+	min-width: 1000px;
+}
+
+#name{
+	width: 10%;
+	position: relative;
+	/*background: url(../img/13MOuvt6j7.png) no-repeat;
+	background-position: -100px 100px;*/
+}
+/*隐藏头像 div*/
+.name-div{
+	display: none;
+	border: 1px solid #CCCCCC;
+	width: 800%;
+	position: absolute;
+	right: 0px;
+	z-index: 5;
+
+}
+.name-id-div{
+	display: inline-block;
+}
+.name-id-div p a{
+}
+
+#name:hover .name-div{
+	display: block;
+	color:#696969 ;
+	background-color: #CCCCCC;
+}
+#name:hover{
+	color:#696969 ;
+	background-color: #CCCCCC;
+}
+/*--------------------------------------------------隐藏头像*/
+
+ol,ul {
+	list-style: none;
+}
+a:hover,a:link {
+	color: #08c;
+}
+a:hover {
+	text-decoration: underline;
+}
+a,ins {
+	text-decoration: none;
+}
+/*------------------------------清除浮动*/
+.fn-clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.fn-left {
+	display: inline;
+	float: left;
+}
+
+
+
+
+body .global-common-a .global-header {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+body .global-common-a .global .global-subheader {
+	position: relative;
+	z-index: 1;
+	background-color: hsla(0, 0%, 100%, .7);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+}
+
+
+body .global-common-a .global-subnav-item-current a {
+	background-color: rgba(61, 71, 74, .6);
+	color: #fff;
+}
+
+
+
+
+/*               -----------------------------------------------       头像背景--------------------------------------*/
+.i-banner {
+	background: url(../img/tao.jpg) no-repeat center;
+	position: relative;
+} 
+
+.i-banner,.i-banner a {
+	color: #fff;
+}
+/*                         ------------------div宽度   居中*/
+.i-banner-content {
+	margin: auto ;
+	width: 990px;
+	padding: 10px;
+}
+
+.i-banner-portrait {
+	display: inline;
+	float: left;
+	width: 86px;
+}
+
+.i-banner-main {
+	display: inline;
+	float: left;
+	width: 900px;
+}
+
+.ie6 .i-banner-main {
+	width: auto;
+}
+
+
+.i-banner-portrait a {
+	border-radius: 50%;
+	background-clip: padding-box;
+	overflow: hidden;
+	border: 2px solid #e1e1e1;
+	display: block;
+}
+
+
+/*                                         ------------------头像*/
+.i-banner-portrait a,
+.i-banner-portrait img {
+	width: 80px;
+	height: 80px;
+}
+
+.i-banner-main-hello {
+	padding-top: 26px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.i-banner-main-hello .userName {
+	font-size: 16px;
+	line-height: 16px;
+}
+
+
+
+
+.i-banner-main-detail {
+	padding-top: 12px;
+	padding-left: 20px;
+	position: relative;
+}
+

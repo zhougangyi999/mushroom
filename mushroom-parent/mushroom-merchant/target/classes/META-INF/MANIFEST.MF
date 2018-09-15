@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Administrator
+Build-Jdk: 10.0.1
+Implementation-Title: mushroom-merchant
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: mushroom-parent
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/mushroom-parent/mushroom-merchant
+Created-By: Maven Integration for Eclipse
+

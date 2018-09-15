@@ -1,0 +1,145 @@
+#search{
+	height: 90px;
+}
+.logo{
+	float: left;
+    overflow: hidden;
+}
+.search-list{
+	margin-top: 13px;
+	margin-left: 20px;
+}
+.search-list input{
+	width: 315px;
+	height: 34px;
+	border: 1px solid hotpink;	
+}
+.search-list button{
+	float: right;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    width: 100px;
+    background-color: #f07;
+    background-image: linear-gradient(to right,#f25,#ff1581);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+}
+.search-list a{
+	font-size: 12px;
+	color: #737373;
+	padding: 0 5px;
+}
+.bg-img{
+	display: inline-block;
+	width: 100%;
+	height: 420px;
+	background: url(../img/dayang999x999.v1c0.70.webp)no-repeat center;
+}
+.bgcolor{	
+	background: #a80e18;
+}
+.bgwidth{
+	margin: auto;
+	width: 960px;
+}
+.bgcont .bgcont-list{
+	background: #f42e25;
+	border-bottom: 2px solid #f8f4b5;
+}
+.bgcont .bgcont-list li{
+	width: 222px;
+	list-style-type: none;
+	display: inline-block;
+	border: 2px solid #f8f4b5;
+	border-bottom: none;
+	border-radius: 6px 6px 0 0;
+	margin:0 5px;
+	text-align: center;
+}
+.bgcont .bgcont-list a{
+	padding: 0 5px;
+	color: #FFFFFF;
+	font-weight:450;
+    font-size: 26px;
+    line-height: 46px;
+    text-align: center;
+}
+.bgcont .bgcont-list li:hover a{
+	color:red;
+}
+.bgcont .bgcont-list li:hover{
+	background:#f8f4b5;
+}
+.bg-mei{
+	margin:20px 0;
+}
+.mei-list ul li{
+	list-style-type: none;
+	position: relative;
+    background: #fff;
+    margin-right: 13px;
+    margin-bottom: 30px;
+    width: 220px;
+    height: 400px;
+    overflow: hidden;
+    border: 5px solid #FFF;
+}
+.mei-list .m-li{
+	float: left;
+	margin-right:10px;
+}
+.mei-list .mei-one{
+	position: relative;
+    display: block;
+    height: 286px;
+    overflow: hidden;
+}
+.mei-list .mei-two p{
+	margin:5px 0;
+}
+.mei-list .p-text{
+	color: #666;
+	font-size: 16px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.mei-list .k-span{
+	width: 44px;
+	border: 1px solid #f94587;
+	border-radius: 5px;
+	font-size: 13px;
+	color: #f94587;
+	padding:0 3px;
+}
+.mei-list .y-span{
+	font-size: 22px;
+	color: #F94587;
+}
+.mei-list .btn-span{
+	display: block;
+	background: #e93a32;
+	color: #fff;
+	width: 210px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.fix {
+position: fixed;
+z-index: 9999;
+top: 0;
+}
+.ons{
+	background: orange;
+}
+
+
+
+
+

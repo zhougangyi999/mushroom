@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_service_evaluationMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_service_evaluation">
+    <id column="service_evaluation_id" jdbcType="INTEGER" property="serviceEvaluationId" />
+    <result column="describes" jdbcType="DOUBLE" property="describes" />
+    <result column="graded" jdbcType="DOUBLE" property="graded" />
+    <result column="quality" jdbcType="DOUBLE" property="quality" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="shopId" jdbcType="INTEGER" property="shopid" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    service_evaluation_id, describes, graded, quality, userId, location, shopId, reserve1, 
+    reserve2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_service_evaluation
+    where service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_service_evaluation
+    where service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_service_evaluation">
+    insert into mm_service_evaluation (service_evaluation_id, describes, graded, 
+      quality, userId, location, 
+      shopId, reserve1, reserve2
+      )
+    values (#{serviceEvaluationId,jdbcType=INTEGER}, #{describes,jdbcType=DOUBLE}, #{graded,jdbcType=DOUBLE}, 
+      #{quality,jdbcType=DOUBLE}, #{userid,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
+      #{shopid,jdbcType=INTEGER}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_service_evaluation">
+    insert into mm_service_evaluation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serviceEvaluationId != null">
+        service_evaluation_id,
+      </if>
+      <if test="describes != null">
+        describes,
+      </if>
+      <if test="graded != null">
+        graded,
+      </if>
+      <if test="quality != null">
+        quality,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="shopid != null">
+        shopId,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serviceEvaluationId != null">
+        #{serviceEvaluationId,jdbcType=INTEGER},
+      </if>
+      <if test="describes != null">
+        #{describes,jdbcType=DOUBLE},
+      </if>
+      <if test="graded != null">
+        #{graded,jdbcType=DOUBLE},
+      </if>
+      <if test="quality != null">
+        #{quality,jdbcType=DOUBLE},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_service_evaluation">
+    update mm_service_evaluation
+    <set>
+      <if test="describes != null">
+        describes = #{describes,jdbcType=DOUBLE},
+      </if>
+      <if test="graded != null">
+        graded = #{graded,jdbcType=DOUBLE},
+      </if>
+      <if test="quality != null">
+        quality = #{quality,jdbcType=DOUBLE},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="shopid != null">
+        shopId = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_service_evaluation">
+    update mm_service_evaluation
+    set describes = #{describes,jdbcType=DOUBLE},
+      graded = #{graded,jdbcType=DOUBLE},
+      quality = #{quality,jdbcType=DOUBLE},
+      userId = #{userid,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      shopId = #{shopid,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where service_evaluation_id = #{serviceEvaluationId,jdbcType=INTEGER}
+  </update>
+</mapper>

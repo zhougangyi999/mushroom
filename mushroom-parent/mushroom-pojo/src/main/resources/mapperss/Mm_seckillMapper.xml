@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_seckillMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_seckill">
+    <id column="seckill_id" jdbcType="INTEGER" property="seckillId" />
+    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="commodity_attribute_id" jdbcType="INTEGER" property="commodityAttributeId" />
+    <result column="seconds_to_bargain" jdbcType="DOUBLE" property="secondsToBargain" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="picture_main" jdbcType="VARCHAR" property="pictureMain" />
+    <result column="original_pric" jdbcType="DOUBLE" property="originalPric" />
+    <result column="picture6" jdbcType="VARCHAR" property="picture6" />
+    <result column="picture1" jdbcType="VARCHAR" property="picture1" />
+    <result column="picture2" jdbcType="VARCHAR" property="picture2" />
+    <result column="picture3" jdbcType="VARCHAR" property="picture3" />
+    <result column="picture4" jdbcType="VARCHAR" property="picture4" />
+    <result column="picture5" jdbcType="VARCHAR" property="picture5" />
+    <result column="picture7" jdbcType="VARCHAR" property="picture7" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_seckill">
+    <result column="particulars" jdbcType="LONGVARCHAR" property="particulars" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seckill_id, commodity_name, shop_id, user_id, style, commodity_attribute_id, seconds_to_bargain, 
+    start_time, creation_time, num, picture_main, original_pric, picture6, picture1, 
+    picture2, picture3, picture4, picture5, picture7, reserved1, reserved2, reserved3, 
+    reserved4
+  </sql>
+  <sql id="Blob_Column_List">
+    particulars
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_seckill
+    where seckill_id = #{seckillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_seckill
+    where seckill_id = #{seckillId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_seckill">
+    insert into mm_seckill (seckill_id, commodity_name, shop_id, 
+      user_id, style, commodity_attribute_id, 
+      seconds_to_bargain, start_time, creation_time, 
+      num, picture_main, original_pric, 
+      picture6, picture1, picture2, 
+      picture3, picture4, picture5, 
+      picture7, reserved1, reserved2, 
+      reserved3, reserved4, particulars
+      )
+    values (#{seckillId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{style,jdbcType=VARCHAR}, #{commodityAttributeId,jdbcType=INTEGER}, 
+      #{secondsToBargain,jdbcType=DOUBLE}, #{startTime,jdbcType=DATE}, #{creationTime,jdbcType=DATE}, 
+      #{num,jdbcType=INTEGER}, #{pictureMain,jdbcType=VARCHAR}, #{originalPric,jdbcType=DOUBLE}, 
+      #{picture6,jdbcType=VARCHAR}, #{picture1,jdbcType=VARCHAR}, #{picture2,jdbcType=VARCHAR}, 
+      #{picture3,jdbcType=VARCHAR}, #{picture4,jdbcType=VARCHAR}, #{picture5,jdbcType=VARCHAR}, 
+      #{picture7,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, 
+      #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}, #{particulars,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_seckill">
+    insert into mm_seckill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seckillId != null">
+        seckill_id,
+      </if>
+      <if test="commodityName != null">
+        commodity_name,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="commodityAttributeId != null">
+        commodity_attribute_id,
+      </if>
+      <if test="secondsToBargain != null">
+        seconds_to_bargain,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="pictureMain != null">
+        picture_main,
+      </if>
+      <if test="originalPric != null">
+        original_pric,
+      </if>
+      <if test="picture6 != null">
+        picture6,
+      </if>
+      <if test="picture1 != null">
+        picture1,
+      </if>
+      <if test="picture2 != null">
+        picture2,
+      </if>
+      <if test="picture3 != null">
+        picture3,
+      </if>
+      <if test="picture4 != null">
+        picture4,
+      </if>
+      <if test="picture5 != null">
+        picture5,
+      </if>
+      <if test="picture7 != null">
+        picture7,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="particulars != null">
+        particulars,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seckillId != null">
+        #{seckillId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityName != null">
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityAttributeId != null">
+        #{commodityAttributeId,jdbcType=INTEGER},
+      </if>
+      <if test="secondsToBargain != null">
+        #{secondsToBargain,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="pictureMain != null">
+        #{pictureMain,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPric != null">
+        #{originalPric,jdbcType=DOUBLE},
+      </if>
+      <if test="picture6 != null">
+        #{picture6,jdbcType=VARCHAR},
+      </if>
+      <if test="picture1 != null">
+        #{picture1,jdbcType=VARCHAR},
+      </if>
+      <if test="picture2 != null">
+        #{picture2,jdbcType=VARCHAR},
+      </if>
+      <if test="picture3 != null">
+        #{picture3,jdbcType=VARCHAR},
+      </if>
+      <if test="picture4 != null">
+        #{picture4,jdbcType=VARCHAR},
+      </if>
+      <if test="picture5 != null">
+        #{picture5,jdbcType=VARCHAR},
+      </if>
+      <if test="picture7 != null">
+        #{picture7,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="particulars != null">
+        #{particulars,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_seckill">
+    update mm_seckill
+    <set>
+      <if test="commodityName != null">
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityAttributeId != null">
+        commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER},
+      </if>
+      <if test="secondsToBargain != null">
+        seconds_to_bargain = #{secondsToBargain,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="pictureMain != null">
+        picture_main = #{pictureMain,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPric != null">
+        original_pric = #{originalPric,jdbcType=DOUBLE},
+      </if>
+      <if test="picture6 != null">
+        picture6 = #{picture6,jdbcType=VARCHAR},
+      </if>
+      <if test="picture1 != null">
+        picture1 = #{picture1,jdbcType=VARCHAR},
+      </if>
+      <if test="picture2 != null">
+        picture2 = #{picture2,jdbcType=VARCHAR},
+      </if>
+      <if test="picture3 != null">
+        picture3 = #{picture3,jdbcType=VARCHAR},
+      </if>
+      <if test="picture4 != null">
+        picture4 = #{picture4,jdbcType=VARCHAR},
+      </if>
+      <if test="picture5 != null">
+        picture5 = #{picture5,jdbcType=VARCHAR},
+      </if>
+      <if test="picture7 != null">
+        picture7 = #{picture7,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="particulars != null">
+        particulars = #{particulars,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where seckill_id = #{seckillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_seckill">
+    update mm_seckill
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      style = #{style,jdbcType=VARCHAR},
+      commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER},
+      seconds_to_bargain = #{secondsToBargain,jdbcType=DOUBLE},
+      start_time = #{startTime,jdbcType=DATE},
+      creation_time = #{creationTime,jdbcType=DATE},
+      num = #{num,jdbcType=INTEGER},
+      picture_main = #{pictureMain,jdbcType=VARCHAR},
+      original_pric = #{originalPric,jdbcType=DOUBLE},
+      picture6 = #{picture6,jdbcType=VARCHAR},
+      picture1 = #{picture1,jdbcType=VARCHAR},
+      picture2 = #{picture2,jdbcType=VARCHAR},
+      picture3 = #{picture3,jdbcType=VARCHAR},
+      picture4 = #{picture4,jdbcType=VARCHAR},
+      picture5 = #{picture5,jdbcType=VARCHAR},
+      picture7 = #{picture7,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      particulars = #{particulars,jdbcType=LONGVARCHAR}
+    where seckill_id = #{seckillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_seckill">
+    update mm_seckill
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      style = #{style,jdbcType=VARCHAR},
+      commodity_attribute_id = #{commodityAttributeId,jdbcType=INTEGER},
+      seconds_to_bargain = #{secondsToBargain,jdbcType=DOUBLE},
+      start_time = #{startTime,jdbcType=DATE},
+      creation_time = #{creationTime,jdbcType=DATE},
+      num = #{num,jdbcType=INTEGER},
+      picture_main = #{pictureMain,jdbcType=VARCHAR},
+      original_pric = #{originalPric,jdbcType=DOUBLE},
+      picture6 = #{picture6,jdbcType=VARCHAR},
+      picture1 = #{picture1,jdbcType=VARCHAR},
+      picture2 = #{picture2,jdbcType=VARCHAR},
+      picture3 = #{picture3,jdbcType=VARCHAR},
+      picture4 = #{picture4,jdbcType=VARCHAR},
+      picture5 = #{picture5,jdbcType=VARCHAR},
+      picture7 = #{picture7,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR}
+    where seckill_id = #{seckillId,jdbcType=INTEGER}
+  </update>
+</mapper>

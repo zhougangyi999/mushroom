@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_custom_classifyMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_custom_classify">
+    <id column="custom_classify_id" jdbcType="INTEGER" property="customClassifyId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    custom_classify_id, name, shop_id, reserve1, reserve2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_custom_classify
+    where custom_classify_id = #{customClassifyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_custom_classify
+    where custom_classify_id = #{customClassifyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_custom_classify">
+    insert into mm_custom_classify (custom_classify_id, name, shop_id, 
+      reserve1, reserve2)
+    values (#{customClassifyId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_custom_classify">
+    insert into mm_custom_classify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customClassifyId != null">
+        custom_classify_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customClassifyId != null">
+        #{customClassifyId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_custom_classify">
+    update mm_custom_classify
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where custom_classify_id = #{customClassifyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_custom_classify">
+    update mm_custom_classify
+    set name = #{name,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where custom_classify_id = #{customClassifyId,jdbcType=INTEGER}
+  </update>
+</mapper>

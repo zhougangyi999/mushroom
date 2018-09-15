@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script async="" src="./js/analytics.js"></script>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform ">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>地址管理</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="copyright" content="mogujie.com">
+
+
+
+
+<link rel="search" type="application/opensearchdescription+xml"
+	href="http://logistics.mogujie.com/opensearch.xml">
+
+<link rel="icon"
+	href="https://s10.mogucdn.com/mlcdn/c45406/170401_16fj5k6k4174bfd21d03a4gf6a7hg_48x48.png"
+	type="image/x-icon">
+
+<script type="text/javascript">
+	var curl = {
+		apiName : 'require'
+	};
+	var MOGU = {};
+	var MoGu = {};
+	var MOGU_DEV = 0 || "online" == "pre";
+	var M_ENV = "online";
+</script>
+
+
+<link href="./css/bindex.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="./css/bottom.css"
+	media="all">
+
+
+<link href="./css/index.css-93c948fe.css" rel="stylesheet"
+	type="text/css">
+
+
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="sweetalert2/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2/sweetalert2.min.css">
+<script type="text/javascript" src="./js/pkg-pc-base.js"></script>
+
+
+
+</head>
+<body class="media_screen_1200" id=" site-mogujie">
+
+	<script type="text/javascript">
+$(function(){
+$("#city").prepend("<option value='9999'>请选择</option>"); 
+$("#area").prepend("<option value='9999'>请选择</option>"); 
+
+$("#J_saddAddress").click(function(){
+$(".address_wrapper").slideToggle("slow");
+})
+
+
+
+	$.post("selectprovinces", function(date) {
+	
+				
+				$("#provinces").empty();
+					
+			//	$("#provinces").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){	
+				
+			$("#provinces").append("<option  value='"+item.regionid+"' >"+item.name+"</option>"); //为Select追加一个Option(下拉项) 
+			$("#area").prepend("<option value='9999'>请选择</option>"); 
+				});
+	
+
+			},"JSON")
+
+})
+function selectprovinces(as){
+$("#area").val("9999"); 
+	$("#dizhitishi").html("")
+	$.post("selectcity",{"provincesid":as},function(date){
+	$("#city").empty();
+				$("#city").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){	
+			$("#city").append("<option value='"+item.regionid+"' >"+item.name+"</option>"); //为Select追加一个Option(下拉项) 
+		
+				});	
+	},"JSON")
+		}
+function selectarea(as){
+		$("#dizhitishi").html("")
+	$.post("selectarea",{"cityid":as},function(date){
+	$("#area").empty();
+				$("#area").prepend("<option value='9999'>请选择</option>"); 
+				$.each(date,function(index,item){
+					
+			$("#area").append("<option value='"+item.regionid+"' >"+item.name+"</option >"); //为Select追加一个Option(下拉项) 
+				});
+	},"JSON")
+	}
+	
+	function queren(){
+	var isDefault_take=$("#isDefault_take").val();
+	var addressid=$("#addressid").val();
+	var sheng=$("#provinces").val();
+	var shi=$("#city").val();
+	var area=$("#area").val();
+	var email=$("#email").val();
+	var jiedao=$("#jiedao").val();
+	var reserved1=$("#reserved1").val();
+	var phone=$("#phone").val();
+	if(sheng=="9999"||shi=="9999"){
+	$("#dizhitishi").html("请正确选择地址")
+	
+	return false;
+	}
+	if(email==""||email==null){
+			$("#email").css("border","1px solid #f36")
+	$("#emailtishi").html("请正确填写邮政编码")
+
+	return false;
+	}
+	if(jiedao.length<5||jiedao.length>100||jiedao==""||jiedao==null){
+		$("#jiedao").css("border","1px solid #f36")
+		$("#jiedaotishi").html("请填写街道地址，最少5个字，最多不能超过100个字")
+	return false;
+	}
+	if(reserved1==null||reserved1==""){
+		$("#reserved1").css("border","1px solid #f36")
+	$("#reserved1tishi").html("请填写收货人")
+	return false;}
+	var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+	if(!pattern.test(reserved1)){
+		$("#reserved1").css("border","1px solid #f36")
+	$("#reserved1tishi").html("请正确填写收货人")
+	return false;
+	}
+		if(phone==null||phone==""){
+			$("#phone").css("border","1px solid #f36")
+	$("#phonetishi").html("请填写手机号码")
+	return false;
+	}
+	 var myreg =/^(1([358][0-9]|(47)|[7][0178]))[0-9]{8}$/;
+	if(!myreg.test(phone)){
+		$("#phone").css("border","1px solid #f36")
+	$("#phonetishi").html("请正确填写手机号码")
+	return false;
+	}
+	$.post("user_add_address",{
+	"isDefault_take":isDefault_take,
+	"addressid":addressid,
+	"sheng":sheng,
+	"city":shi,
+	"area":area,
+	"email":email,
+	"jiedao":jiedao,
+	"reserved1":reserved1,
+	"phone":phone},
+	function(date){
+	if(date=="xg"){
+	swal({
+    title: '修改成功',
+    text: '是否继续',
+    type: 'success',
+  showConfirmButton:'false'
+  
+})
+ setTimeout(function(){window.location.reload();}, 2000);
+	}
+	if(date=="cg"){	         swal({
+    title: '新增成功',
+    text: '是否继续',
+    type: 'success',
+  showConfirmButton:'false'
+})
+ setTimeout(function(){window.location.reload();}, 2000);
+}if(date=="as"){
+    swal({
+    title: '新增失败',
+    text: '是否继续',
+    type: 'error',
+      showConfirmButton:'false'
+})
+ setTimeout(function(){window.location.reload();}, 2000);
+
+}
+		
+
+	})
+	}
+	
+	
+	 
+	
+	
+function byecss(date){
+	$("#"+date+"").css("border","1px solid #c7c7c7");
+$("#"+date+"").next().html("");
+	$("#phonetishi").html("")
+}
+	
+	function isdefolt(date){
+	$.post("update_isDefault_take",{"addressId":date},function(date){
+window.location.reload();
+	
+	})
+	}
+	
+function select_useraddress(date){
+$(".address_wrapper").css("display","block");
+$.post("by_addressid_selelct",{"addressid":date},function(dates){
+$("#provinces").val(dates.province);
+$("#city").empty();
+$("#area").empty();
+	$("#city").append("<option value='"+dates.city+"' >"+dates.cityname+"</option>");
+	$("#city").append("<option value='9999' >请选择</option>");
+	$("#city").val(dates.city);
+		$("#area").append("<option value='"+dates.district+"' >"+dates.districtname+"</option>");
+		$("#area").append("<option value='9999' >请选择</option>");
+		$("#addressid").val(dates.addressid)
+	$("#area").val(dates.district);
+	$("#email").val(dates.postalcode);
+	$("#jiedao").val(dates.address)
+	$("#reserved1").val(dates.reserved1)
+	$("#phone").val(dates.collectphone)
+	$("#isDefault_take").val(dates.iddefaultTake)
+},'json');
+
+}
+function clean_allinput(){
+$("#provinces").val(11);
+$("#area").val(9999);
+$("#city").val(9999);
+$("#email").val("");
+$("#jiedao").val("");
+$("#reserved1").val("");
+$("#phone").val("");
+$(".address_wrapper").css("display","none");
+}
+function delete_useraddress(date){
+$.post("delete_useraddress",{"addressid":date},function(date){
+if(date=="1"){
+  swal(
+  '删除',
+  '成功删除..',
+  'success'
+)
+setTimeout(function(){window.location.reload();}, 2000);
+}else{
+  swal(
+  '删除',
+  '删除失败..',
+  'error'
+)
+setTimeout(function(){window.location.reload();}, 2000);
+}
+
+
+}
+
+
+
+)
+}
+</script>
+	<div class="mgj_rightbar J_sidebar" data-ptp="_sidebar"
+		style="right: 0px;">
+		<!--空的右侧边栏-->
+		<div id="mgj_rightbar_top_blank" class="mgj_rightbar_960"></div>
+		<!--方便定margin的空dediv-->
+		<div id="mgj_rightbar_blank_div"></div>
+		<!--用户头像-->
+		<div class="sidebar-item mgj-my-avatar">
+			<a target="_blank" href=""
+				rel="nofollow">
+				<div class="img">
+					<img width="20" height="20"
+						 th:src="${session.userSession.headportraitsrc}"
+						alt="">
+				</div>
+			</a>
+		</div>
+		<!--购物车-->
+		<div class="sidebar-item mgj-my-cart" style="left: 0px;">
+			<a target="_blank" href="http://cart.mogujie.com/cart/mycart"
+				rel="nofollow"> <i class="s-icon"></i>
+				<div class="s-txt">购物车</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--优惠券-->
+		<div class="sidebar-item mgj-my-coupon">
+			<a target="_blank" rel="nofollow"
+				href="http://promotion.mogujie.com/trade/promotion/user/shopcoupon">
+				<i class="s-icon"></i>
+				<div class="s-txt">优惠券</div>
+				<div class="num" style="display: none;"></div>
+			</a>
+		</div>
+		<!--钱包-->
+		<div class="sidebar-item mgj-my-wallet">
+			<a target="_blank" rel="nofollow"
+				href="https://payuserp.mogujie.com/wallet/home"> <i
+				class="s-icon"></i>
+				<div class="s-txt">钱包</div>
+			</a>
+		</div>
+		<!--足迹-->
+		<div class="sidebar-item mgj-my-browserlog">
+			<a target="_blank" rel="nofollow" href="http://track.mogujie.com/">
+				<i class="s-icon"></i>
+				<div class="s-txt">足迹</div>
+			</a>
+		</div>
+		<div class="mgj-my-browserlog" id="qrcode">
+			<a target="_blank" rel="nofollow" href="javascript:;"> <i
+				class="qr-icon"></i>
+			</a>
+			<div id="detail-qrcode">
+				<img src="./images/180521_73ibbgh52kj2dceg869h50b0bgfl6_181x200.png">
+			</div>
+		</div>
+		<div class="sideBottom">
+		
+			<!--回到顶部-->
+			<div class="sidebar-item mgj-back2top" style="left: 0px;">
+				<a rel="nofollow" href="javascript:;"><i class="s-icon"></i></a>
+			</div>
+		</div>
+	</div>
+	<div id="header" class="J_sitenav site-top-nav" data-ptp="_head">
+		<div class="wrap">
+			<a href="http://www.mogujie.com/" rel="nofollow" class="home fl">蘑菇街首页</a>
+			<ul class="header-top">
+				<li class="s1 has-icon user-meta"><a rel="nofollow"
+					href="javascript:;" th:text="${session.userSession.username}"> qq_sbbeam7z4sojo </a> <a rel="nofollow"
+					href="http://pc.mogujie.com/member/member.html" target="_blank">
+				</a> <i class="icon-delta"></i>
+					<ol class="ext-mode" id="menu-personal">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://www.mogujie.com/settings/personal">个人设置</a></li>
+						<li class="s2"><a rel="nofollow"
+							href="http://www.mogujie.com/logout">退出</a></li>
+					</ol></li>
+				<li class="s1 has-line message-center"><a rel="nofollow"
+					href="javascript:;"
+					class="ext-module mogutalk_btn J_msg open_msg micon"
+					data-from="shopwidget_message"
+					data-trace="global,shopwidget_message,click">消息<span
+						class="num m_num" style="display: none;"></span>
+				</a></li>
+				<li class="s1 has-icon has-line user-fav"><a rel="nofollow"
+					href="javascript:;">我的收藏</a> <i class="icon-delta"></i>
+					<ul class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/goodsfavs">收藏的商品</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://favorite.mogujie.com/active/shopfavs">收藏的小店</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://track.mogujie.com/">浏览足迹</a></li>
+					</ul></li>
+				<li class="s1 myorder has-line"><a
+					href="http://order.mogujie.com/order/list4buyer" target="_blank"
+					class="text display_u" rel="nofollow">我的订单</a></li>
+				<li class="s1 has-line shopping-cart-v2"><a
+					class="cart-info-wrap" href="http://cart.mogujie.com/cart/mycart"
+					target="_blank" rel="nofollow"><span class="cart_info">购物车</span></a>
+					<i class="icon-delta"></i> <span class="shopping-cart-loading"></span>
+				</li>
+				<li class="s1 has-line has-icon custom-item"><a rel="nofollow"
+					href="http://cs.mogujie.com/help/index.html" target="_blank">客户服务</a>
+					<i class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/help/index.html">消费者服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://seller.mogujie.com/service">商家服务</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cs.mogujie.com/rule/index.html">规则中心</a></li>
+					</ol></li>
+				<li class="s1 has-line has-icon myxiaodian"><a
+					href="http://xd.mogujie.com/work/home" rel="nofollow"
+					target="_blank" class="text display_u">商家后台</a> <i
+					class="icon-delta"></i>
+					<ol class="ext-mode">
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://xd.mogujie.com/work/home">管理后台</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://bbs.mogujie.com/">商家社区</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://peixun.mogujie.com/">商家培训</a></li>
+						<li class="s2"><a target="_blank" rel="nofollow"
+							href="http://cycle.mogujie.com/pc/zhaoshang">市场入驻</a></li>
+					</ol></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="promotionTopNavContainer"></div>
+
+<a  hidden="hidden" id="sheng1"  th:text="${session.userSession.reserved1}"></a><!--         隐藏标签在这 -->
+<a hidden="hidden" id="shi1" th:text="${session.userSession.reserved2}"></a><!--         隐藏标签在这 -->
+<a hidden="hidden" id="jie1" th:text="${session.userSession.reserved3}"></a><!--         隐藏标签在这 -->
+
+
+	<!-- 中间区域 -->
+	<div class="header_mid clearfix">
+		<div class="wrap">
+			<a rel="nofollow" href="http://www.mogujie.com/" class="logo"
+				title="蘑菇街首页" style="background-image: none;"><img
+				src="./images/logo_2.0.png"
+				alt="蘑菇街，我的买手街"></a>
+			<div class="normal-search-content">
+				<div class="top_nav_search" id="nav_search_form">
+					<!--搜索框 -->
+					<div class="search_inner_box clearfix">
+						<div class="selectbox" data-v="1">
+							<span class="selected">搜商品</span>
+							<ol>
+								<li class="current" data-index="bao"><a
+									href="http://logistics.mogujie.com/trade/address?ptp=1.aK0Oz.0.0.N3SubdF#">商品</a></li>
+								<li data-index="shop"><a
+									href="http://logistics.mogujie.com/trade/address?ptp=1.aK0Oz.0.0.N3SubdF#">店铺</a></li>
+							</ol>
+						</div>
+						<form action="http://list.mogujie.com/s" method="get"
+							id="top_nav_form">
+							<input type="text" data-tel="search_book" name="q"
+								class="ts_txt fl" data-def="甜美透明文胸" value="" autocomplete="off"
+								def-v="甜美透明文胸"
+								data-acm="3.mce.1_0_1lq3h30.39084.77211.8airpr1Z16WmF.sd_115-mid_39084-mdt_sketch-dit_28-lc_201">
+							<input type="submit" value="搜  索" class="ts_btn"> <input
+								type="hidden" name="t" value="bao" id="select_type"> <input
+								type="hidden" name="ptp" value="">
+						</form>
+						<div class="top_search_hint is-not-ie8-hack"></div>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="mid_fr">
+				<img src="./images/171130_8gf90d0d5bgc4ag4kk82gi8kc287d_440x180.png"
+					alt="蘑菇街，我的买手街">
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="body_wrap">
+		<div class="mu_wrap wrap clearfix">
+			<div id="navListWrap">
+				<div class="mu_nav_wrap">
+					<div class="mu_nav_info">
+						<div class="mu_nav_info_avatar">
+							<div class="mu_nav_info_avatar_mk"></div>
+							<img
+									 th:src="${session.userSession.headportraitsrc}"
+								width="100" height="100">
+						</div>
+						<p class="mu_nav_info_uname" th:text="${session.userSession.username}">qq_sbbeam7z4sojo</p>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">我的订单</div>
+						<ul class="mu_nav_item">
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?status=all&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">全部订单</a>
+							</li>
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?status=created&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">
+									待付款 <i id="unpaidOrder" class="mu_nav_count"><i
+										class="mu_nav_count_arw"></i></i>
+							</a></li>
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?status=unshipped_and_unreceived&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">
+									待收货 <i id="unReceivedOrder" class="mu_nav_count"><i
+										class="mu_nav_count_arw"></i></i>
+							</a></li>
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?status=received_and_completed&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">
+									待评价 <i id="waitingRateOrder" class="mu_nav_count"><i
+										class="mu_nav_count_arw"></i></i>
+							</a></li>
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?status=refund_orders&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">
+									退货退款 <i class="mu_nav_count"><i class="mu_nav_count_arw"></i></i>
+							</a></li>
+							<!-- 新增，stage=8 回收站订单 -->
+							<li><a
+								href="http://order.mogujie.com/order/list4buyer?orderVisibleStatusCode=DELETED&amp;_uk=uuwfh3lrlyowphr6o8tfipmrf9hf7stfouceq3zj">
+									订单回收站 <i id="recyleOrder" class="mu_nav_count"><i
+										class="mu_nav_count_arw"></i></i>
+							</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">
+							<a href="http://payuserp.mogujie.com/wallet/home">我的钱包</a>
+						</div>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">优惠特权</div>
+						<ul class="mu_nav_item" id="JCouponList">
+							<li><a href="http://pc.mogujie.com/member/member.html">会员中心</a></li>
+							<!-- <li ><a href="//www.mogujie.com/trade/credit/modouv2/index">我的蘑豆</a></li> -->
+							<li><a
+								href="http://promotion.mogujie.com/trade/promotion/user/shopcoupon">店铺优惠券</a></li>
+							<li><a
+								href="http://promotion.mogujie.com/trade/promotion/user/cashcoupon">全场优惠券</a></li>
+							<li><a
+								href="http://promotion.mogujie.com/trade/promotion/user/activitycoupon">活动优惠券</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">
+							<a href="http://logistics.mogujie.com/trade/address">地址管理</a>
+						</div>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">安全设置</div>
+						<ul class="mu_nav_item">
+							<li><a href="http://portal.mogujie.com/trade/safety">设置密码</a></li>
+							<li><a href="http://portal.mogujie.com/user/bindtel">绑定手机</a></li>
+							<li><a href="http://payuserp.mogujie.com/wallet/realname">实名认证</a></li>
+							<li><a href="http://110.mogujie.com/">账户锁定</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">维权管理</div>
+						<ul class="mu_nav_item">
+							<li><a
+								href="http://cs.mogujie.com/dispute/complaint/list.html">投诉管理</a></li>
+							<li><a href="http://cs.mogujie.com/dispute/report/list.html">举报管理</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav pb40">
+						<div class="mu_title">帐号设置</div>
+						<ul class="mu_nav_item">
+							<li><a href="http://www.mogujie.com/settings/personal">基本信息</a></li>
+							<li><a href="http://www.mogujie.com/settings/avatar">修改头像</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="address_wrap">
+				<div class="addr_right topay" isaddress="true">
+					<!-- <select id="provinceId"></select> <select id="cityId"></select> <select id="areaId"></select> -->
+					<h2 class="addr_title">地址管理</h2>
+					<div class="addr_edit" id="J_s_addr_edit">
+						<div class="add_new_addr clearfix">
+							<span id="J_saddAddress">+添加地址</span>
+						</div>
+						<div class="addressbox_warp">
+							<div class="addressbox" id="J_sAddrWrap"></div>
+							<div class="address_wrapper" style="display: none;">
+								<div class="__addressPop">
+									<dl class="address_pop">
+								
+										<input type="hidden" class="J_addressid" name="addressId"
+											value="">
+										<input type="hidden" class="J_isdefault" name="addressId"
+											value="false">
+										<dt>省：</dt>
+										<dd class="pt_ie6hack">
+											<i class="needicon">*</i> <select id="provinces" name="province"
+											onchange="return selectprovinces($('#provinces option:selected').val())"
+												class="J_province J_select w140 vm">
+											</select> <label class="dt" for="">市：</label> <select name="city"  	id="city" onchange="return selectarea($('#city option:selected').val())"
+											 class="J_city J_select w100 vm"></select>
+											<label class="dt" for="">区：</label> <select name="area"
+												id="area" class="J_area J_select w100 vm"></select>
+											<span class="prompt city_select" id="dizhitishi"></span>
+										</dd>
+										<dt>邮政编码：</dt>
+										<dd>
+											<i class="needicon">*</i> <input type="text" data-type="c"
+											id="email"  onfocus="return byecss(this.id)"
+												data-errormsg="请填写正确的邮政编码" data-normal=""
+												class="text formsize_normal J_postcode J_form vm"
+												name="postcode" value=""> <span
+												class="prompt mail_select" id="emailtishi"></span>
+										</dd>
+										<dt>街道地址：</dt>
+										<dd>
+											<i class="needicon">*</i>
+											<textarea data-type="*" data-min="5" data-max="100"
+											id="jiedao" onfocus="return byecss(this.id)"
+												data-normal="请填写街道地址，最少5个字，最多不能超过100个字"
+												data-errormsg="请填写街道地址，最少5个字，最多不能超过100个字"
+												class="textarea formsize_large J_street J_form"
+												name="street" cols="30" rows="3"></textarea>
+											<span class="prompt breakline" id="jiedaotishi"></span>
+										</dd>
+										<dt>收货人姓名：</dt>
+										
+										<dd>
+										
+											<i class="needicon">*</i> <input type="text" data-type="*"
+												data-errormsg="请填写收货人" data-normal=""
+												id="reserved1" onfocus="return byecss(this.id)"
+												class="text formsize_normal J_name J_form vm" name="name"
+												value=""> <span class="prompt name_select" id="reserved1tishi"></span>
+										</dd>
+										<dt>手机：</dt>
+										<dd>
+											<i class="needicon">*</i> <input type="text"
+												data-type="phone" data-errormsg="请填写正确的联系号码" data-normal=""
+												id="phone" onfocus="return byecss(this.id)"
+												class="text formsize_normal J_mobile J_form vm"
+												name="mobile" value=""> <span
+												class="prompt mobile_select" id="phonetishi"></span>
+										</dd>
+										<dt><input  style="display: none;" id="addressid"><input style="display: none;" id="isDefault_take"/></dt>
+										<dd class="pt10 oper_btn">
+											<a href="javascript:;" class="confirm_btn J_okbtn mr10" onclick="return queren()">确认地址</a>
+											<a href="javascript:;" class="cancel_btn J_cancelbtn" onclick="return clean_allinput()">取消</a>
+										</dd>
+									</dl>
+								</div>
+							</div>
+							<!-- <div class="addressbox addressfirst addresslist" action="/trade/address/addfororder"> </div> -->
+						</div>
+						
+						<div class="addr_section " aid="575870718"  th:each="ud :${user_addresslist}" th:style="'background-color:'+@{(${ud.iddefaultTake} ne 1 ? '#fafafa' :'pink')}+''">
+							<ul class="clearfix">
+						
+								<li class="name" th:text="${ud.reserved1}">啧啧啧</li>
+								<li class="addr" data-province="北京市" data-city="北京市"
+									data-area="朝阳区" data-street="单位前端前端"th:text="${ud.provincename}+${ud.cityname}+${ud.districtname}+${ud.address}">北京市北京市朝阳区单位前端前端</li>
+								<li class="zcode" th:text="${ud.postalcode}">113123</li>
+								<li class="mobile" th:text="${ud.collectphone}">132****7852</li>
+								<li class="oper">
+								<a href="javascript:;" class="J_default"aid="575870718" th:onclick="'return isdefolt('+${ud.addressid}+')'" th:text="${ud.iddefaultTake ne 1?'设为默认':'默认地址'}">设为默认</a> 
+								<a href="javascript:;" class="edit" aid="575870718"  th:onclick="'return select_useraddress('+${ud.addressid}+')'">编辑</a> 
+								<a href="javascript:;" class="del nobd"aid="575870718"   th:onclick="'return delete_useraddress('+${ud.addressid}+')'">删除</a></li>
+								<li class="enaddr"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="foot J_siteFooter" data-ptp="_foot">
+		<div class="mgj_copyright">
+			<div class="mgj_footer_helper">
+				<div class="mgj_footer_helper_mod">
+					<div class="mgj_footer_helper_mod_container">
+						<h4 class="mgj_footer_helper_title color_666">- 新手帮助 -</h4>
+						<ul>
+							<li class="mgj_footer_helper_item"><a rel="nofollow"
+								target="_blank" class="color_999"
+								href="https://cs.mogujie.com/help/faq.html?acm=3.mce.1_10_19kyo.32260..rQFkur1Z0I7ZW.pos_1-m_223508-sd_119">常见问题</a></li>
+							<li class="mgj_footer_helper_item"><a rel="nofollow"
+								target="_blank" class="color_999"
+								href="https://cs.mogujie.com/help/selfservice.html?acm=3.mce.1_10_19kyk.32260..rQFkur1Z0I7ZX.pos_2-m_223506-sd_119">自助服务</a></li>
+							<li class="mgj_footer_helper_item"><a rel="nofollow"
+								target="_blank" class="color_999"
+								href="https://cs.mogujie.com/help/contactus.html?acm=3.mce.1_10_19kym.32260..rQFkur1Z0I7ZY.pos_3-m_223507-sd_119">联系客服</a></li>
+							<li class="mgj_footer_helper_item"><a rel="nofollow"
+								target="_blank" class="color_999"
+								href="https://cs.mogujie.com/help/feedback.html?acm=3.mce.1_10_19kyi.32260..rQFkur1Z0I7ZZ.pos_4-m_223505-sd_119">意见反馈</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="mgj_footer_helper_mod">
+					<div class="mgj_footer_helper_mod_container">
+						<h4 class="mgj_footer_helper_title color_666">- 权益保障 -</h4>
+						<ul>
+							<li class="mgj_footer_helper_item"><div class="color_999">全国包邮</div></li>
+							<li class="mgj_footer_helper_item"><div class="color_999">7天无理由退货</div></li>
+							<li class="mgj_footer_helper_item"><div class="color_999">退货运费补贴</div></li>
+							<li class="mgj_footer_helper_item"><div class="color_999">限时发货</div></li>
+						</ul>
+					</div>
+				</div>
+				<div class="mgj_footer_helper_mod">
+					<div class="mgj_footer_helper_mod_container">
+						<h4 class="mgj_footer_helper_title color_666">- 支付方式 -</h4>
+						<ul>
+							<li class="mgj_footer_helper_item"><div class="color_999">微信支付</div></li>
+							<li class="mgj_footer_helper_item"><div class="color_999">支付宝</div></li>
+							<li class="mgj_footer_helper_item"><div class="color_999">白付美支付</div></li>
+						</ul>
+					</div>
+				</div>
+				<div class="mgj_footer_helper_mod">
+					<div class="mgj_footer_helper_mod_container">
+						<h4 class="mgj_footer_helper_title color_666">- 移动客户端下载 -</h4>
+						<ul>
+							<li class="mgj_footer_helper_item mgj_footer_helper_item_last"><div
+									class="color_999">蘑菇街</div>
+								<img class="mgj_footer_helper_quoer_code"
+								src="./images/171023_3ef94c11e31g34lghgbac75k2e4fb_1000x1000.png"></li>
+							<li class="mgj_footer_helper_item mgj_footer_helper_item_last"><div
+									class="color_999">美丽说</div>
+								<img class="mgj_footer_helper_quoer_code"
+								src="./images/upload_5ii9f90fdide17hj3jkj3bfd121e3_280x280.png"></li>
+							<li class="mgj_footer_helper_item mgj_footer_helper_item_last"><div
+									class="color_999">uni引力</div>
+								<img class="mgj_footer_helper_quoer_code"
+								src="./images/upload_892b80cj47j51h95f44cai2e0b002_280x280.png"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="mgj_footer_mgjinfo">
+				<ul>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://www.mogujie.com/us?acm=3.mce.1_10_19kz6.32163..rQFkvr1Z0I7Z0.pos_0-m_223517-sd_119">关于我们</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://job.mogujie.com/?acm=3.mce.1_10_19kz8.32163..rQFkvr1Z0I7Z1.pos_1-m_223518-sd_119">招聘信息</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://www.mogujie.com/about?acm=3.mce.1_10_19kza.32163..rQFkvr1Z0I7Z2.pos_2-m_223519-sd_119">联系我们</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://cycle.mogujie.com/pc/zhaoshang?acm=3.mce.1_10_19kzg.32163..rQFkvr1Z0I7Z3.pos_3-m_223522-sd_119">商家入驻</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="http://xd.mogujie.com/work/home?acm=3.mce.1_10_19kzi.32163..rQFkvr1Z0I7Z4.pos_4-m_223523-sd_119">商家后台</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://peixun.mogujie.com/?acm=3.mce.1_10_19kzk.32163..rQFkvr1Z0I7Z5.pos_5-m_223524-sd_119">蘑菇商学院</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="http://bbs.mogujie.com/?acm=3.mce.1_10_19kzm.32163..rQFkvr1Z0I7Z6.pos_6-m_223525-sd_119">商家社区</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://cs.mogujie.com/rule/index.html?acm=3.mce.1_10_1epzq.32163..rQFkvr1Z0I7Z7.pos_7-m_343407-sd_119">规则中心</a></li>
+					<li class="mgj_footer_mgjinfo_item"><a rel="nofollow"
+						target="_blank" class="color_666"
+						href="https://securityreport.mogujie.com/index?acm=3.mce.1_10_1fnr8.32163..rQFkvr1Z0I7Z8.pos_8-m_365286-sd_119">有害信息举报</a></li>
+				</ul>
+				<p class="mgjhostname color_999">©2018 Mogujie.com 杭州卷瓜网络有限公司</p>
+			</div>
+			<div class="mgj_footer_copyright">
+				<p class="mgj_footer_copyright_container">
+					<span class="mgj_footer_copyright_span color_999">营业执照：</span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s10.mogucdn.com/mlcdn/c45406/171109_4746k790gj7hke076llk3a8c2l6a8_1239x1754.jpg?acm=3.mce.1_10_19kyq.32170..rQFkvr1Z0I80a.pos_0-m_223509-sd_119">913301065526808764</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999">网络文化经营许可证：</span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s18.mogucdn.com/p2/160831/upload_59405ekk9ieijjcidl1fijcg04c69_960x1385.jpg?acm=3.mce.1_10_19kyu.32170..rQFkvr1Z0I80b.pos_1-m_223511-sd_119">浙网文（2016）0349-219号</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999">增值电信业务经营许可证：</span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s10.mogucdn.com/mlcdn/c45406/171109_1ll0b37l83lj8e3i35h28a92g31i3_1239x1754.jpg?acm=3.mce.1_10_19kys.32170..rQFkvr1Z0I80c.pos_2-m_223510-sd_119">浙B2-20110349</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s16.mogucdn.com/p2/160831/upload_506h1d771b5k20j9148ldjj0kdaab_960x1344.jpg?acm=3.mce.1_10_19l02.32170..rQFkvr1Z0I80d.pos_3-m_223533-sd_119">安全责任书</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002329&amp;acm=3.mce.1_10_19kz0.32170..rQFkvr1Z0I80e.pos_4-m_223514-sd_119">浙公网安备
+						33010602002329号</a><b class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s3.mogucdn.com/mlcdn/c45406/180517_18k2jb35bgj4k7hc7jlkdaakb6haf.pdf?acm=3.mce.1_10_1i4u6.32170..rQFkvr1Z0I80f.pos_5-m_423011-sd_119">互联网药品信息服务资格证书编号：（浙)-经营性-2018-0002</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="http://fw.zjfda.gov.cn/fda/info!detail.do?search[%27infoType%27]=30&amp;search[%27xxgkGzdtType%27]=&amp;id=59252&amp;acm=3.mce.1_10_1i94i.32170..rQFkvr1Z0I80g.pos_6-m_425789-sd_119">浙网食A33010003</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s3.mogucdn.com/mlcdn/c45406/180622_7ad26gl9e679l0ilk6ic2bcdl2l0h.pdf?acm=3.mce.1_10_1ihmo.32170..rQFkvr1Z0I80h.pos_7-m_431300-sd_119">出版物网络交易平台服务经营备案证</a><b
+						class="mgj_footer_b color_999"> | </b><span
+						class="mgj_footer_copyright_span color_999"></span><a
+						rel="nofollow" target="_blank" class="mgj_footer_a color_999"
+						href="https://s3.mogucdn.com/mlcdn/c45406/180713_224e9f4ggdi3ic10lkck0989b4e03.pdf?acm=3.mce.1_10_1ineu.32170..rQFkvr1Z0I80i.pos_8-m_435047-sd_119">（浙）网械平台备字[2018]第00006号</a><b
+						class="mgj_footer_b color_999"> | </b>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- IE低版本处理方式 -->
+	<!--[if lte IE 8]>
+    <script src="https://s10.mogucdn.com/__mfp/meili-mgj-browser-update/assets/1.0.0/index.js,mfp/meili-mgj-ie67-upgrade/assets/0.1.8/ie67upgrade.js"></script>
+ <![endif]-->
+
+
+	<script type="text/javascript" src="./js/index.js"></script>
+
+	<script type="text/javascript" src="./js/bottom.js"></script>
+
+
+	<script type="text/javascript" src="./js/index.js-ce42c3ce.js"></script>
+
+
+
+
+	<div id="userdata_el" style="visibility: hidden; position: absolute;"></div>
+</body>
+</html>

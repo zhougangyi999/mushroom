@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_jurisdictionMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_jurisdiction">
+    <id column="jurisdiction_id" jdbcType="INTEGER" property="jurisdictionId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    jurisdiction_id, name, reserve1, reserve2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_jurisdiction
+    where jurisdiction_id = #{jurisdictionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_jurisdiction
+    where jurisdiction_id = #{jurisdictionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_jurisdiction">
+    insert into mm_jurisdiction (jurisdiction_id, name, reserve1, 
+      reserve2)
+    values (#{jurisdictionId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_jurisdiction">
+    insert into mm_jurisdiction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jurisdictionId != null">
+        jurisdiction_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jurisdictionId != null">
+        #{jurisdictionId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_jurisdiction">
+    update mm_jurisdiction
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jurisdiction_id = #{jurisdictionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_jurisdiction">
+    update mm_jurisdiction
+    set name = #{name,jdbcType=VARCHAR},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where jurisdiction_id = #{jurisdictionId,jdbcType=INTEGER}
+  </update>
+</mapper>

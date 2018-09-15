@@ -1,0 +1,191 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>	
+ 
+		<meta charset="UTF-8">
+		<title>已经卖出的商品</title>
+		<!--
+        	作者：offline
+        	时间：2017-11-18
+        	描述：商品管理
+        -->
+        <link rel="icon" href="../statics/img/login/logo_ioc.png" type="image/x-icon">
+        <link rel="stylesheet" href="../statics/merchant/css/public.css" />
+        <link rel="stylesheet" href="../statics/merchant/css/Sold goods.css" />
+        <link rel="stylesheet"
+	href="../statics/merchant/css/pagination.css" />
+        </head>
+	<body>
+		<div class="commodity_index">
+			    <div></div>
+				<div class="commodity_index_top">
+					<ul>
+						<li class="commodity_index_box">已经卖出的商品</li>
+					</ul>
+				</div>
+				<!--
+                	作者：offline
+                	时间：2017-11-19
+                	描述：fo表单搜索框
+                -->
+                <div >
+                	<form action="" method="post">
+                		<div class="Product_Search" >
+							 <div  class="Product_Search_colum">
+                            	<div class="row">
+                            	    <label >商品名称：</label>
+									<input class="Product_Search_colum_input_text" name="otitle"  type="text"maxlength="64" value="">
+                            </div>
+                            </div>
+        					<div class="Product_Search_colum">
+                                <div class="row">
+                                    <label>订单编号： </label>
+									<input class="Product_Search_colum_input_text" name="ordernum"  type="text"maxlength="64" value="">
+                               </div>
+							</div>
+                            <div class="Product_Search_colum">
+                                <div class="row">
+                                    <label>买家昵称： </label>
+									<input class="Product_Search_colum_input_text" name="ouname"  type="text"maxlength="64" value="">
+                                </div>
+							    <div class="row Product_Search_colum_but">
+							    	<input style="border: none;" type="reset" name=""  value="清除条件" />
+									<input type="button" name="" onclick="showDom()" value="搜索">
+		                        </div>
+		                    </div>
+		                    <div class="row_PO"  >
+                            	    <label>成交时间：</label>
+                            	    <input  type="month" value=""  name="startPrice" />&nbsp;到&nbsp;
+                            	    <input type="month" value=""  name="endPrice" />
+                            </div>
+						</div>
+						<!--
+                        	作者：offline
+                        	时间：2017-11-19
+                        	描述：商品内容
+                        -->
+                        <div class="tabs-mod__main___2JCC6 tabs-mod__container___1rSlZ " >
+                        	 <div class="tabs-mod__tab___3wsmt tabs-mod__selected___3F9lM" data-reactid=".0.3.0.$latest3Months">
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(1)' >近三个月订单</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt">
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(2)'>等待买家付款</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(3)'>等待发货</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(4)'>已发货</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(5)'>退款中</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(6)'>需要评价</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(7)'>成功的订单</span>
+                        		<span class="tabs-mod__sep___qf7lo" >|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(8)'>关闭的订单</span>
+                        		<span class="tabs-mod__sep___qf7lo">|</span>
+                        	</div>
+                        	<div class="tabs-mod__tab___3wsmt" >
+                        		<span class="nav-mod__tab___2Jdwe" onclick='agin(9)'>三个月前订单</span>
+                        	</div>
+                        </div>
+						<div class="commodity_table_div">
+							<table>		
+								<!-- <tr style="padding-left: 15px; width: 100%;">
+									<td colspan="7" width="" class="colspan_h" >
+										<input type="checkbox" />全选
+										<input class="commodity_table_div_tr_but" type="button"  value="批量发货"/>
+										<input class="commodity_table_div_tr_but" type="button" value="批量免运费"/>
+									</td>
+									
+								</tr>	 -->
+								<tr class="commodity_table_div_tr">
+									<td>
+									     &nbsp; &nbsp;商品名称	&nbsp; &nbsp;         	       		
+									</td>
+									<td>
+										&nbsp; &nbsp;单价
+									</td>
+									<td class="commodity_table_div_tr_ck ">
+										数量
+									</td>
+									<td class="commodity_table_div_tr_ck ">
+										交易状态
+									</td>
+									<td class="commodity_table_div_tr_ck commodity_table_div_tr_ck">
+										实收款	
+									</td>
+									<td>
+										买家
+									</td>
+									<td>
+										发货
+									</td>
+								</tr>
+								
+							</table>
+							<!--
+                                	作者：offline
+                                	时间：2017-11-19
+                                	描述：商品列表
+                               -->
+                             <!-- 待发后商品信息 -->
+							<table class="commodity_table_div_tr_table" ></table>
+							<!--
+                            	作者：offline
+                            	时间：2017-11-19
+                            	描述：分页
+                            -->
+                            <table style="width: 100%;">
+                            	<!-- <tr style="padding-left: 15px;">
+									<td colspan="6" class="colspan_h" >
+										<input type="checkbox" />全选
+										<input class="commodity_table_div_tr_but" type="button"  value="批量发货"/>
+										<input class="commodity_table_div_tr_but" type="button" value="批量免运费"/>
+									</td>
+								</tr> -->
+								<!--
+                                	作者：offline
+                                	时间：2017-11-19
+                                	描述：分页
+                                -->
+								<tr>
+									<td colspan="6" class="colspan_h "  style="width:100%;">
+										<div class="operations">
+                                    		<ul class="page-nav ">
+													
+                                    		       	<li class="curr-page"><div class="m-style M-box"></div></li>
+
+                                    			</ul>
+                                    		</div>
+									</td>
+								</tr>
+                            </table>
+						</div>
+                	</form>
+                	
+                </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../statics/merchant/js/jquery-1.8.3.min.js" ></script>
+ <script type="text/javascript"
+	src="../statics/merchant/js/jquery.pagination.js"></script>
+	<script type="text/javascript" src="../statics/merchant/js/sold_goods.js"></script>
+   
+	
+
+	  
+</html>

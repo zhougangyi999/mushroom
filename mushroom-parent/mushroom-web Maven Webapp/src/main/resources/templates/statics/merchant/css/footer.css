@@ -1,0 +1,89 @@
+/*尾部帮助中心*/
+.hple {
+	margin: 10px 0;
+	}
+.hple >ul{
+	width:98%;
+	padding:30px 0;
+    border-bottom:#ededed solid 1px;
+	}
+.hple >ul>li{
+	line-height:26px;
+	margin:0 20px 0 50px;
+	text-align:center;
+	width:20%;
+	}
+.hple >ul li:last-child{
+	text-align:center;
+	width:15%;
+	}
+.hple >ul>li p{
+	margin-left:10px;
+	color:#000;
+	font-weight:bolder;
+	float:left
+	}
+.hple >ul>li p:last-child{
+	color: #999;
+	}
+.hple >ul>li img{
+	float:left
+	}
+
+.sopIndenx{
+	padding-top:10px;
+	line-height:20px;
+	}
+.sopIndenx dd{
+	line-height:25px;
+	font-weight:bolder;
+	color: #666;
+	}
+.sopIndenx dt{
+	font-size:13px;
+	}
+.sopIndenx  li:first-child{
+	margin-left:50px;
+	}
+.sopIndenx  li{
+	margin-left:180px;
+	}
+.sopIndenx>div{
+	background: url(../images/footer/20171006100057.png) 50px no-repeat;
+	height:24px;
+	}
+/*版权*/
+.copy{
+	line-height:35px;
+	font-size:10px;
+	padding-left:35px;
+	padding-bottom:30px;
+	}
+.copy ul:first-child li{
+	margin-right: 6px;
+	
+}
+.copy li a{
+	 color:#FFF;
+	}
+.copy ul:nth-child(2) li{
+	line-height:30px;
+	margin-right:2px;
+	}
+.copy ul:nth-child(3) li{
+	margin-right:60px;
+	color: #a4a4a4;
+    line-height:23px;
+	}
+.copy li img{line-height:23px; vertical-align:middle; }
+.copy ul:nth-child(4) li,.copy p {
+	margin-right:60px;
+    line-height:23px;
+	}
+.copy ul:nth-child(3) li a,.copy ul:nth-child(3) li,.copy ul:nth-child(4) li a,.copy ul:nth-child(4) li,.copy  p{
+	 color: #a4a4a4;
+	}
+footer a:hover{
+	text-decoration: underline;
+	color: red;
+}

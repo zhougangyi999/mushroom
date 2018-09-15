@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_shopMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_shop">
+    <id column="shopId" jdbcType="INTEGER" property="shopid" />
+    <result column="categiryID" jdbcType="INTEGER" property="categiryid" />
+    <result column="storeStylePositionint" jdbcType="VARCHAR" property="storestylepositionint" />
+    <result column="registeredCapital" jdbcType="DOUBLE" property="registeredcapital" />
+    <result column="totalTeamMembers" jdbcType="INTEGER" property="totalteammembers" />
+    <result column="applyPhone" jdbcType="VARCHAR" property="applyphone" />
+    <result column="applyName" jdbcType="VARCHAR" property="applyname" />
+    <result column="addressId" jdbcType="INTEGER" property="addressid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="applyQQ" jdbcType="VARCHAR" property="applyqq" />
+    <result column="stats" jdbcType="INTEGER" property="stats" />
+    <result column="shopName" jdbcType="VARCHAR" property="shopname" />
+    <result column="regionId_province" jdbcType="INTEGER" property="regionidProvince" />
+    <result column="regionId_district" jdbcType="INTEGER" property="regionidDistrict" />
+    <result column="creationTime" jdbcType="DATE" property="creationtime" />
+    <result column="shopLogSrc" jdbcType="VARCHAR" property="shoplogsrc" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+    <result column="reserved5" jdbcType="VARCHAR" property="reserved5" />
+    <result column="reserved6" jdbcType="VARCHAR" property="reserved6" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_shopWithBLOBs">
+    <result column="warehousingAndLogistice" jdbcType="LONGVARCHAR" property="warehousingandlogistice" />
+    <result column="licebseSrc" jdbcType="LONGVARCHAR" property="licebsesrc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shopId, categiryID, storeStylePositionint, registeredCapital, totalTeamMembers, applyPhone, 
+    applyName, addressId, userId, applyQQ, stats, shopName, regionId_province, regionId_district, 
+    creationTime, shopLogSrc, reserved1, reserved2, reserved3, reserved4, reserved5, 
+    reserved6
+  </sql>
+  <sql id="Blob_Column_List">
+    warehousingAndLogistice, licebseSrc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_shop
+    where shopId = #{shopid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_shop
+    where shopId = #{shopid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_shopWithBLOBs">
+    insert into mm_shop (shopId, categiryID, storeStylePositionint, 
+      registeredCapital, totalTeamMembers, applyPhone, 
+      applyName, addressId, userId, 
+      applyQQ, stats, shopName, 
+      regionId_province, regionId_district, creationTime, 
+      shopLogSrc, reserved1, reserved2, 
+      reserved3, reserved4, reserved5, 
+      reserved6, warehousingAndLogistice, 
+      licebseSrc)
+    values (#{shopid,jdbcType=INTEGER}, #{categiryid,jdbcType=INTEGER}, #{storestylepositionint,jdbcType=VARCHAR}, 
+      #{registeredcapital,jdbcType=DOUBLE}, #{totalteammembers,jdbcType=INTEGER}, #{applyphone,jdbcType=VARCHAR}, 
+      #{applyname,jdbcType=VARCHAR}, #{addressid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, 
+      #{applyqq,jdbcType=VARCHAR}, #{stats,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR}, 
+      #{regionidProvince,jdbcType=INTEGER}, #{regionidDistrict,jdbcType=INTEGER}, #{creationtime,jdbcType=DATE}, 
+      #{shoplogsrc,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, 
+      #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}, #{reserved5,jdbcType=VARCHAR}, 
+      #{reserved6,jdbcType=VARCHAR}, #{warehousingandlogistice,jdbcType=LONGVARCHAR}, 
+      #{licebsesrc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_shopWithBLOBs">
+    insert into mm_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopid != null">
+        shopId,
+      </if>
+      <if test="categiryid != null">
+        categiryID,
+      </if>
+      <if test="storestylepositionint != null">
+        storeStylePositionint,
+      </if>
+      <if test="registeredcapital != null">
+        registeredCapital,
+      </if>
+      <if test="totalteammembers != null">
+        totalTeamMembers,
+      </if>
+      <if test="applyphone != null">
+        applyPhone,
+      </if>
+      <if test="applyname != null">
+        applyName,
+      </if>
+      <if test="addressid != null">
+        addressId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="applyqq != null">
+        applyQQ,
+      </if>
+      <if test="stats != null">
+        stats,
+      </if>
+      <if test="shopname != null">
+        shopName,
+      </if>
+      <if test="regionidProvince != null">
+        regionId_province,
+      </if>
+      <if test="regionidDistrict != null">
+        regionId_district,
+      </if>
+      <if test="creationtime != null">
+        creationTime,
+      </if>
+      <if test="shoplogsrc != null">
+        shopLogSrc,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="reserved6 != null">
+        reserved6,
+      </if>
+      <if test="warehousingandlogistice != null">
+        warehousingAndLogistice,
+      </if>
+      <if test="licebsesrc != null">
+        licebseSrc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="categiryid != null">
+        #{categiryid,jdbcType=INTEGER},
+      </if>
+      <if test="storestylepositionint != null">
+        #{storestylepositionint,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredcapital != null">
+        #{registeredcapital,jdbcType=DOUBLE},
+      </if>
+      <if test="totalteammembers != null">
+        #{totalteammembers,jdbcType=INTEGER},
+      </if>
+      <if test="applyphone != null">
+        #{applyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="applyname != null">
+        #{applyname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressid != null">
+        #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyqq != null">
+        #{applyqq,jdbcType=VARCHAR},
+      </if>
+      <if test="stats != null">
+        #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionidProvince != null">
+        #{regionidProvince,jdbcType=INTEGER},
+      </if>
+      <if test="regionidDistrict != null">
+        #{regionidDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="shoplogsrc != null">
+        #{shoplogsrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved6 != null">
+        #{reserved6,jdbcType=VARCHAR},
+      </if>
+      <if test="warehousingandlogistice != null">
+        #{warehousingandlogistice,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="licebsesrc != null">
+        #{licebsesrc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_shopWithBLOBs">
+    update mm_shop
+    <set>
+      <if test="categiryid != null">
+        categiryID = #{categiryid,jdbcType=INTEGER},
+      </if>
+      <if test="storestylepositionint != null">
+        storeStylePositionint = #{storestylepositionint,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredcapital != null">
+        registeredCapital = #{registeredcapital,jdbcType=DOUBLE},
+      </if>
+      <if test="totalteammembers != null">
+        totalTeamMembers = #{totalteammembers,jdbcType=INTEGER},
+      </if>
+      <if test="applyphone != null">
+        applyPhone = #{applyphone,jdbcType=VARCHAR},
+      </if>
+      <if test="applyname != null">
+        applyName = #{applyname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressid != null">
+        addressId = #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyqq != null">
+        applyQQ = #{applyqq,jdbcType=VARCHAR},
+      </if>
+      <if test="stats != null">
+        stats = #{stats,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        shopName = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionidProvince != null">
+        regionId_province = #{regionidProvince,jdbcType=INTEGER},
+      </if>
+      <if test="regionidDistrict != null">
+        regionId_district = #{regionidDistrict,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        creationTime = #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="shoplogsrc != null">
+        shopLogSrc = #{shoplogsrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved6 != null">
+        reserved6 = #{reserved6,jdbcType=VARCHAR},
+      </if>
+      <if test="warehousingandlogistice != null">
+        warehousingAndLogistice = #{warehousingandlogistice,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="licebsesrc != null">
+        licebseSrc = #{licebsesrc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where shopId = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_shopWithBLOBs">
+    update mm_shop
+    set categiryID = #{categiryid,jdbcType=INTEGER},
+      storeStylePositionint = #{storestylepositionint,jdbcType=VARCHAR},
+      registeredCapital = #{registeredcapital,jdbcType=DOUBLE},
+      totalTeamMembers = #{totalteammembers,jdbcType=INTEGER},
+      applyPhone = #{applyphone,jdbcType=VARCHAR},
+      applyName = #{applyname,jdbcType=VARCHAR},
+      addressId = #{addressid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
+      applyQQ = #{applyqq,jdbcType=VARCHAR},
+      stats = #{stats,jdbcType=INTEGER},
+      shopName = #{shopname,jdbcType=VARCHAR},
+      regionId_province = #{regionidProvince,jdbcType=INTEGER},
+      regionId_district = #{regionidDistrict,jdbcType=INTEGER},
+      creationTime = #{creationtime,jdbcType=DATE},
+      shopLogSrc = #{shoplogsrc,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      reserved5 = #{reserved5,jdbcType=VARCHAR},
+      reserved6 = #{reserved6,jdbcType=VARCHAR},
+      warehousingAndLogistice = #{warehousingandlogistice,jdbcType=LONGVARCHAR},
+      licebseSrc = #{licebsesrc,jdbcType=LONGVARCHAR}
+    where shopId = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_shop">
+    update mm_shop
+    set categiryID = #{categiryid,jdbcType=INTEGER},
+      storeStylePositionint = #{storestylepositionint,jdbcType=VARCHAR},
+      registeredCapital = #{registeredcapital,jdbcType=DOUBLE},
+      totalTeamMembers = #{totalteammembers,jdbcType=INTEGER},
+      applyPhone = #{applyphone,jdbcType=VARCHAR},
+      applyName = #{applyname,jdbcType=VARCHAR},
+      addressId = #{addressid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
+      applyQQ = #{applyqq,jdbcType=VARCHAR},
+      stats = #{stats,jdbcType=INTEGER},
+      shopName = #{shopname,jdbcType=VARCHAR},
+      regionId_province = #{regionidProvince,jdbcType=INTEGER},
+      regionId_district = #{regionidDistrict,jdbcType=INTEGER},
+      creationTime = #{creationtime,jdbcType=DATE},
+      shopLogSrc = #{shoplogsrc,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      reserved5 = #{reserved5,jdbcType=VARCHAR},
+      reserved6 = #{reserved6,jdbcType=VARCHAR}
+    where shopId = #{shopid,jdbcType=INTEGER}
+  </update>
+</mapper>

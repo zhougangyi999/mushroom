@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mushroom.dao.Mm_ordersMapper">
+
+	<sql id="condition">
+		<if test="otitle!=null and otitle!=''">
+			AND oi.`name` like concat('%',#{otitle},'%')
+		</if>
+		<if test="ordernum!=null and ordernum!=0 and ordernum!=''">
+			AND oi.`order_item_num` = #{ordernum}
+		</if>
+		<if test="ordernums!=null and ordernums!=0 and ordernums!=''">
+			AND ors.`order_num` = #{ordernums}
+		</if>
+		<if test="ouname!=null and ouname!=0 and ouname!='' and ouname!=0.0">
+			AND us.`username`=#{ouname}
+		</if>
+		<if test="status !=null and status!=-9 and status!='' and status!=0">
+			AND ors.`status`=#{status}
+		</if>
+
+	</sql>
+
+	<select id="selectOrderAll" resultType="map" parameterType="com.mushroom.merchant.vo.OrderAllFind">
+		SELECT
+		oi.`name` oiname,oi.`price`,oi.`item_num`,ors.`status`,
+		oi.`order_img`,oi.`price_old`,oi.`order_item_num`,
+		oi.`price`,ors.`userid`,us.`username`,ors.`order_num_parent`,
+		ors.`deal_time`, re1.`name` name1,re2.`name` name2,re3.`name` name3
+		FROM `mm_orders` ors
+		LEFT JOIN `mm_order_item` oi ON
+		oi.`order_item_num`=ors.`order_num`
+		RIGHT JOIN `mm_region` re1 ON
+		ors.`emit_id_province`=re1.`regionId`
+		RIGHT JOIN `mm_region`re2 ON
+		ors.`emit_id_county`=re2.`regionId`
+		RIGHT JOIN `mm_region` re3 ON
+		ors.`emit_id_city`=re3.`regionId`
+		RIGHT JOIN `mm_users` us ON
+		ors.`userid`=us.`uid`
+		WHERE ors.`shopid`=#{shopid}
+		<include refid="condition"></include>
+	</select>
+
+	<select id="selectOrderNum" resultType="map">
+		SELECT s.`order_num` FROM
+		`mm_orders` s
+		WHERE s.`shopid`=#{shopid}
+	</select>
+
+	<select id="selectAdd" resultType="map">
+		SELECT
+		ad.`district`,ad.`province`,ad.`city`,ad.`addressId`,
+		ad.`reserved1`,ad.`collectPhone`,ad.`isDefault_take`,re2.`name` name2,
+		re1.`name` name1,re.`name` name3,ad.`address`,ad.`postalCode`
+		FROM
+		`mm_address` ad
+		INNER JOIN `mm_region` re ON
+		ad.`district`=re.`regionId`
+		INNER JOIN `mm_region` re1 ON
+		ad.`province`=re1.`regionId`
+		INNER JOIN `mm_region` re2 ON
+		ad.`city`=re2.`regionId`
+		WHERE ad.`userId`=#{userid}
+
+	</select>
+
+	<update id="updateByPrimaryKeySelective" parameterType="Mm_orders">
+		update mm_orders
+
+		<set>
+			delivery_time = now(),
+			<if test="orderNumParent != null">
+				order_num_parent = #{orderNumParent,jdbcType=VARCHAR},
+			</if>
+			<if test="dealTime != null">
+				deal_time = #{dealTime,jdbcType=DATE},
+			</if>
+			<if test="total != null">
+				total = #{total,jdbcType=DOUBLE},
+			</if>
+			<if test="mergePrice != null">
+				merge_price = #{mergePrice,jdbcType=DOUBLE},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="consignee != null">
+				consignee = #{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="regionIdProvince != null">
+				region_id_province = #{regionIdProvince,jdbcType=VARCHAR},
+			</if>
+			<if test="regionIdCity != null">
+				region_id_city = #{regionIdCity,jdbcType=VARCHAR},
+			</if>
+			<if test="regionIdCounty != null">
+				region_id_county = #{regionIdCounty,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="verificationCode != null">
+				verification_code = #{verificationCode,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="freight != null">
+				freight = #{freight,jdbcType=DOUBLE},
+			</if>
+			<if test="storeTheUser != null">
+				store_the_user = #{storeTheUser,jdbcType=INTEGER},
+			</if>
+			<if test="shopid != null">
+				shopid = #{shopid,jdbcType=INTEGER},
+			</if>
+			<if test="emitDaddress != null">
+				emit_daddress = #{emitDaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="emitIdProvince != null">
+				emit_id_province = #{emitIdProvince,jdbcType=INTEGER},
+			</if>
+			<if test="emitIdCity != null">
+				emit_id_city = #{emitIdCity,jdbcType=INTEGER},
+			</if>
+			<if test="emitIdCounty != null">
+				emit_id_county = #{emitIdCounty,jdbcType=INTEGER},
+			</if>
+			<if test="emitConsignee != null">
+				emit_consignee = #{emitConsignee,jdbcType=INTEGER},
+			</if>
+			<if test="emitCode != null">
+				emit_code = #{emitCode,jdbcType=VARCHAR},
+			</if>
+			<if test="payDate != null">
+				pay_date = #{payDate,jdbcType=DATE},
+			</if>
+
+			<if test="notarizeTime != null">
+				notarize_time = #{notarizeTime,jdbcType=DATE},
+			</if>
+			<if test="trackingNumber != null">
+				tracking_number = #{trackingNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="logisticsCompany != null">
+				logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluateTime != null">
+				evaluate_time = #{evaluateTime,jdbcType=DATE},
+			</if>
+			<if test="cancel != null">
+				cancel = #{cancel,jdbcType=INTEGER},
+			</if>
+			<if test="emitPhone != null">
+				emit_phone = #{emitPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="reserved1 != null">
+				reserved1 = #{reserved1,jdbcType=VARCHAR},
+			</if>
+			<if test="reserved2 != null">
+				reserved2 = #{reserved2,jdbcType=VARCHAR},
+			</if>
+			<if test="reserved3 != null">
+				reserved3 = #{reserved3,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where order_num = #{orderNum,jdbcType=INTEGER}
+	</update>
+
+
+	<update id="updateByPrimaryKey" parameterType="int">
+		update mm_order_item
+		set status = 3
+		where order_item_num = #{orderItemId}
+	</update>
+
+	<update id="updateconsolidated" parameterType="int">
+		UPDATE `mm_consolidated_order`
+		SET `stats`=3
+		WHERE `order_num`=#{orderItemId}
+
+	</update>
+
+</mapper>

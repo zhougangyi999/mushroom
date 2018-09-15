@@ -1,0 +1,108 @@
+#sss{
+	background-color: #f4f5fa;
+}
+
+
+.bill{
+	border-bottom: 1px solid #ABABAB;
+	padding-top: 20px;
+	height: 50px;
+}
+
+.bill-le{
+	font-size: 20px;
+	color: #ABABAB;
+	float: left;
+}
+.bill-ring{
+	float: right;
+	padding: 10px;
+}
+.bill-ring p span{
+	color: #53a000;
+	margin: 0px 10px;
+	font-weight: 600;
+}
+
+
+.query{
+	border-bottom: 1px dashed #ABABAB;
+}
+.query-div{
+	margin-left: 20px;
+	padding: 20px 0px;
+}
+.query-div input{
+	width: 10%;
+	padding: 5px;
+}
+.query-div ul,.query-div li{
+	display: inline-block;
+}
+.query-div ul li{
+	padding: 2px 5px;
+	border-radius:5px ;
+	border: 1px dashed #ABABAB;
+	
+}
+
+.query1{
+	margin-left: 20px;
+}
+.query1 ul{
+	padding: 10px 0px;
+}
+.query1 li{
+	display: inline-block;
+	margin: 0px 5px;
+	padding: 4px 9px;
+	border: 1px dashed #ABABAB;
+}
+
+.query span,.query1 span{
+	font-weight: 600;
+}
+.global-top{
+    border-bottom: 1px #2a2639 solid;
+	line-height: 30px;
+	height:32px!important;
+}
+
+.global-top ul{
+	margin-top: 4px!important;
+	line-height: 33px!important;
+}
+
+.tao-div{
+	background-color: #000000;
+}
+.tao-divd{
+	margin: 0 auto 12px;
+	width: 990px;	
+}
+.tao-divd div{
+	float: left;
+}
+.tao-img{
+	color: white;
+	padding: 34px 58px; 
+}
+.tao-div1{
+	color: #999999;
+	padding: 60px 54px; 
+	font-size: 20px;
+}
+.an div{
+	padding: 5px;
+	display: inline-block;
+	margin: 5px;
+}
+.an{
+	float: right;
+}
+.table-div th{
+	border-bottom: 1px solid #000000;
+}
+
+
+

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.UserDao">
+
+<select id="Veri_now_password"  resultType="Mm_users">
+select password from mm_users where uid=#{uid}
+</select>
+
+<select id="userLogin"  resultType="Mm_users">
+select * from mm_users where username=#{username} and password=#{password}
+</select>
+
+  <select id="selectQID" resultType="int" parameterType="java.lang.String" >
+    select 
+    COUNT(1)
+    from mm_users
+    where userQQ = #{userqq,jdbcType=VARCHAR}
+  </select>
+
+<select id="userQid" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+  
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_users
+    where userQQ = #{userqq,jdbcType=VARCHAR}
+  </select>
+<select id="selectKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+  
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_users
+  </select>
+
+<select id="selectByName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+  
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_users
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <select id="selectByParam" resultMap="ResultMapWithBLOBs" parameterType="com.mushroom.pojo.Mm_users">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_users
+   	where 1=1
+   	<if test="username != null and username!=''">
+   		and username=#{username}
+   	</if>
+   	<if test="phone != null and phone!=''">
+   		and phone=#{phone}
+   	</if>
+  </select>
+
+ <update id="updateUserByOpenID" parameterType="Mm_users">
+    update mm_users
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        identitycard = #{identitycard,jdbcType=VARCHAR},
+      </if>
+      <if test="userqq != null">
+        userQQ = #{userqq,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="profession != null">
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        creationTime = #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="certificationdate != null">
+        certificationDate = #{certificationdate,jdbcType=DATE},
+      </if>
+      <if test="withdrawaloffunds != null">
+        withdrawalOfFunds = #{withdrawaloffunds,jdbcType=DOUBLE},
+      </if>
+      <if test="merchantdeposit != null">
+        merchantDeposit = #{merchantdeposit,jdbcType=DOUBLE},
+      </if>
+      <if test="securedfunds != null">
+        securedFunds = #{securedfunds,jdbcType=DOUBLE},
+      </if>
+      <if test="availablecapital != null">
+        availableCapital = #{availablecapital,jdbcType=DOUBLE},
+      </if>
+      <if test="payforaredenvelope != null">
+        payForARedEnvelope = #{payforaredenvelope,jdbcType=DOUBLE},
+      </if>
+      <if test="headportraitsrc != null">
+        headPortraitSrc = #{headportraitsrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved6 != null">
+        reserved6 = #{reserved6,jdbcType=VARCHAR},
+      </if>
+      <if test="presentation != null">
+        presentation = #{presentation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qquser = #{qquser,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="Mm_users">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="identitycard" jdbcType="VARCHAR" property="identitycard" />
+    <result column="userQQ" jdbcType="VARCHAR" property="userqq" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="creationTime" jdbcType="DATE" property="creationtime" />
+    <result column="certificationDate" jdbcType="DATE" property="certificationdate" />
+    <result column="withdrawalOfFunds" jdbcType="DOUBLE" property="withdrawaloffunds" />
+    <result column="merchantDeposit" jdbcType="DOUBLE" property="merchantdeposit" />
+    <result column="securedFunds" jdbcType="DOUBLE" property="securedfunds" />
+    <result column="availableCapital" jdbcType="DOUBLE" property="availablecapital" />
+    <result column="payForARedEnvelope" jdbcType="DOUBLE" property="payforaredenvelope" />
+    <result column="headPortraitSrc" jdbcType="VARCHAR" property="headportraitsrc" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+    <result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+    <result column="reserved5" jdbcType="VARCHAR" property="reserved5" />
+    <result column="reserved6" jdbcType="VARCHAR" property="reserved6" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Mm_users">
+    <result column="presentation" jdbcType="LONGVARCHAR" property="presentation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, username, password, phone, email, identitycard, userQQ, sex, birthday, profession, 
+    status, creationTime, certificationDate, withdrawalOfFunds, merchantDeposit, securedFunds, 
+    availableCapital, payForARedEnvelope, headPortraitSrc, reserved1, reserved2, reserved3, 
+    reserved4, reserved5, reserved6
+  </sql>
+  <sql id="Blob_Column_List">
+    presentation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_users
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_users
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Mm_users">
+    insert into mm_users (uid, username, password, 
+      phone, email, identitycard, 
+      userQQ, sex, birthday, 
+      profession, status, creationTime, 
+      certificationDate, withdrawalOfFunds, merchantDeposit, 
+      securedFunds, availableCapital, payForARedEnvelope, 
+      headPortraitSrc, reserved1, reserved2, 
+      reserved3, reserved4, reserved5, 
+      reserved6, presentation)
+    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{identitycard,jdbcType=VARCHAR}, 
+      #{userqq,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, 
+      #{profession,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{creationtime,jdbcType=DATE}, 
+      #{certificationdate,jdbcType=DATE}, #{withdrawaloffunds,jdbcType=DOUBLE}, #{merchantdeposit,jdbcType=DOUBLE}, 
+      #{securedfunds,jdbcType=DOUBLE}, #{availablecapital,jdbcType=DOUBLE}, #{payforaredenvelope,jdbcType=DOUBLE}, 
+      #{headportraitsrc,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, 
+      #{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}, #{reserved5,jdbcType=VARCHAR}, 
+      #{reserved6,jdbcType=VARCHAR}, #{presentation,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="Mm_users">
+    insert into mm_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="identitycard != null">
+        identitycard,
+      </if>
+      <if test="userqq != null">
+        userQQ,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="profession != null">
+        profession,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="creationtime != null">
+        creationTime,
+      </if>
+      <if test="certificationdate != null">
+        certificationDate,
+      </if>
+      <if test="withdrawaloffunds != null">
+        withdrawalOfFunds,
+      </if>
+      <if test="merchantdeposit != null">
+        merchantDeposit,
+      </if>
+      <if test="securedfunds != null">
+        securedFunds,
+      </if>
+      <if test="availablecapital != null">
+        availableCapital,
+      </if>
+      <if test="payforaredenvelope != null">
+        payForARedEnvelope,
+      </if>
+      <if test="headportraitsrc != null">
+        headPortraitSrc,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+      <if test="reserved4 != null">
+        reserved4,
+      </if>
+      <if test="reserved5 != null">
+        reserved5,
+      </if>
+      <if test="reserved6 != null">
+        reserved6,
+      </if>
+      <if test="presentation != null">
+        presentation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        #{identitycard,jdbcType=VARCHAR},
+      </if>
+      <if test="userqq != null">
+        #{userqq,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="profession != null">
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="certificationdate != null">
+        #{certificationdate,jdbcType=DATE},
+      </if>
+      <if test="withdrawaloffunds != null">
+        #{withdrawaloffunds,jdbcType=DOUBLE},
+      </if>
+      <if test="merchantdeposit != null">
+        #{merchantdeposit,jdbcType=DOUBLE},
+      </if>
+      <if test="securedfunds != null">
+        #{securedfunds,jdbcType=DOUBLE},
+      </if>
+      <if test="availablecapital != null">
+        #{availablecapital,jdbcType=DOUBLE},
+      </if>
+      <if test="payforaredenvelope != null">
+        #{payforaredenvelope,jdbcType=DOUBLE},
+      </if>
+      <if test="headportraitsrc != null">
+        #{headportraitsrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved5 != null">
+        #{reserved5,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved6 != null">
+        #{reserved6,jdbcType=VARCHAR},
+      </if>
+      <if test="presentation != null">
+        #{presentation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Mm_users">
+    update mm_users
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        identitycard = #{identitycard,jdbcType=VARCHAR},
+      </if>
+      <if test="userqq != null">
+        userQQ = #{userqq,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null ">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="profession != null">
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="creationtime != null">
+        creationTime = #{creationtime,jdbcType=DATE},
+      </if>
+      <if test="certificationdate != null">
+        certificationDate = #{certificationdate,jdbcType=DATE},
+      </if>
+      <if test="withdrawaloffunds != null">
+        withdrawalOfFunds = #{withdrawaloffunds,jdbcType=DOUBLE},
+      </if>
+      <if test="merchantdeposit != null">
+        merchantDeposit = #{merchantdeposit,jdbcType=DOUBLE},
+      </if>
+      <if test="securedfunds != null">
+        securedFunds = #{securedfunds,jdbcType=DOUBLE},
+      </if>
+      <if test="availablecapital != null">
+        availableCapital = #{availablecapital,jdbcType=DOUBLE},
+      </if>
+      <if test="payforaredenvelope != null">
+        payForARedEnvelope = #{payforaredenvelope,jdbcType=DOUBLE},
+      </if>
+      <if test="headportraitsrc != null">
+        headPortraitSrc = #{headportraitsrc,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null and reserved1!=''">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved4 != null">
+        reserved4 = #{reserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved5 != null">
+        reserved5 = #{reserved5,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved6 != null">
+        reserved6 = #{reserved6,jdbcType=VARCHAR},
+      </if>
+      <if test="presentation != null">
+        presentation = #{presentation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Mm_users">
+    update mm_users
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      identitycard = #{identitycard,jdbcType=VARCHAR},
+      userQQ = #{userqq,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      profession = #{profession,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      creationTime = #{creationtime,jdbcType=DATE},
+      certificationDate = #{certificationdate,jdbcType=DATE},
+      withdrawalOfFunds = #{withdrawaloffunds,jdbcType=DOUBLE},
+      merchantDeposit = #{merchantdeposit,jdbcType=DOUBLE},
+      securedFunds = #{securedfunds,jdbcType=DOUBLE},
+      availableCapital = #{availablecapital,jdbcType=DOUBLE},
+      payForARedEnvelope = #{payforaredenvelope,jdbcType=DOUBLE},
+      headPortraitSrc = #{headportraitsrc,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      reserved5 = #{reserved5,jdbcType=VARCHAR},
+      reserved6 = #{reserved6,jdbcType=VARCHAR},
+      presentation = #{presentation,jdbcType=LONGVARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Mm_users">
+    update mm_users
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      identitycard = #{identitycard,jdbcType=VARCHAR},
+      userQQ = #{userqq,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      profession = #{profession,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      creationTime = #{creationtime,jdbcType=DATE},
+      certificationDate = #{certificationdate,jdbcType=DATE},
+      withdrawalOfFunds = #{withdrawaloffunds,jdbcType=DOUBLE},
+      merchantDeposit = #{merchantdeposit,jdbcType=DOUBLE},
+      securedFunds = #{securedfunds,jdbcType=DOUBLE},
+      availableCapital = #{availablecapital,jdbcType=DOUBLE},
+      payForARedEnvelope = #{payforaredenvelope,jdbcType=DOUBLE},
+      headPortraitSrc = #{headportraitsrc,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR},
+      reserved4 = #{reserved4,jdbcType=VARCHAR},
+      reserved5 = #{reserved5,jdbcType=VARCHAR},
+      reserved6 = #{reserved6,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

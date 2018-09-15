@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_commodityMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_commodity">
+    <id column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="spu" jdbcType="INTEGER" property="spu" />
+    <result column="categoryId" jdbcType="INTEGER" property="categoryid" />
+    <result column="categoryId_2" jdbcType="INTEGER" property="categoryid2" />
+    <result column="categoryId_3" jdbcType="INTEGER" property="categoryid3" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
+    <result column="region_id_province" jdbcType="INTEGER" property="regionIdProvince" />
+    <result column="region_id_city" jdbcType="INTEGER" property="regionIdCity" />
+    <result column="shop_category_id" jdbcType="INTEGER" property="shopCategoryId" />
+    <result column="discount" jdbcType="REAL" property="discount" />
+    <result column="img_1" jdbcType="VARCHAR" property="img1" />
+    <result column="img_2" jdbcType="VARCHAR" property="img2" />
+    <result column="img_3" jdbcType="VARCHAR" property="img3" />
+    <result column="img_4" jdbcType="VARCHAR" property="img4" />
+    <result column="img_5" jdbcType="VARCHAR" property="img5" />
+    <result column="img_6" jdbcType="VARCHAR" property="img6" />
+    <result column="img_7" jdbcType="VARCHAR" property="img7" />
+    <result column="img_8" jdbcType="VARCHAR" property="img8" />
+    <result column="img_9" jdbcType="VARCHAR" property="img9" />
+    <result column="img_10" jdbcType="VARCHAR" property="img10" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="shopdatetime" jdbcType="DATE" property="shopdatetime" />
+    <result column="shopstatus" jdbcType="INTEGER" property="shopstatus" />
+    <result column="shopnum" jdbcType="INTEGER" property="shopnum" />
+    <result column="prompt_price" jdbcType="REAL" property="promptPrice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mushroom.pojo.Mm_commodityWithBLOBs">
+    <result column="describes" jdbcType="LONGVARCHAR" property="describes" />
+    <result column="main_img" jdbcType="LONGVARCHAR" property="mainImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commodity_id, title, spu, categoryId, categoryId_2, categoryId_3, userId, comments, 
+    region_id_province, region_id_city, shop_category_id, discount, img_1, img_2, img_3, 
+    img_4, img_5, img_6, img_7, img_8, img_9, img_10, shop_id, shopdatetime, shopstatus, 
+    shopnum, prompt_price
+  </sql>
+  <sql id="Blob_Column_List">
+    describes, main_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mm_commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_commodityWithBLOBs">
+    insert into mm_commodity (commodity_id, title, spu, 
+      categoryId, categoryId_2, categoryId_3, 
+      userId, comments, region_id_province, 
+      region_id_city, shop_category_id, discount, 
+      img_1, img_2, img_3, img_4, 
+      img_5, img_6, img_7, img_8, 
+      img_9, img_10, shop_id, 
+      shopdatetime, shopstatus, shopnum, 
+      prompt_price, describes, main_img
+      )
+    values (#{commodityId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{spu,jdbcType=INTEGER}, 
+      #{categoryid,jdbcType=INTEGER}, #{categoryid2,jdbcType=INTEGER}, #{categoryid3,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{comments,jdbcType=INTEGER}, #{regionIdProvince,jdbcType=INTEGER}, 
+      #{regionIdCity,jdbcType=INTEGER}, #{shopCategoryId,jdbcType=INTEGER}, #{discount,jdbcType=REAL}, 
+      #{img1,jdbcType=VARCHAR}, #{img2,jdbcType=VARCHAR}, #{img3,jdbcType=VARCHAR}, #{img4,jdbcType=VARCHAR}, 
+      #{img5,jdbcType=VARCHAR}, #{img6,jdbcType=VARCHAR}, #{img7,jdbcType=VARCHAR}, #{img8,jdbcType=VARCHAR}, 
+      #{img9,jdbcType=VARCHAR}, #{img10,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{shopdatetime,jdbcType=DATE}, #{shopstatus,jdbcType=INTEGER}, #{shopnum,jdbcType=INTEGER}, 
+      #{promptPrice,jdbcType=REAL}, #{describes,jdbcType=LONGVARCHAR}, #{mainImg,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_commodityWithBLOBs">
+    insert into mm_commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="spu != null">
+        spu,
+      </if>
+      <if test="categoryid != null">
+        categoryId,
+      </if>
+      <if test="categoryid2 != null">
+        categoryId_2,
+      </if>
+      <if test="categoryid3 != null">
+        categoryId_3,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="regionIdProvince != null">
+        region_id_province,
+      </if>
+      <if test="regionIdCity != null">
+        region_id_city,
+      </if>
+      <if test="shopCategoryId != null">
+        shop_category_id,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="img1 != null">
+        img_1,
+      </if>
+      <if test="img2 != null">
+        img_2,
+      </if>
+      <if test="img3 != null">
+        img_3,
+      </if>
+      <if test="img4 != null">
+        img_4,
+      </if>
+      <if test="img5 != null">
+        img_5,
+      </if>
+      <if test="img6 != null">
+        img_6,
+      </if>
+      <if test="img7 != null">
+        img_7,
+      </if>
+      <if test="img8 != null">
+        img_8,
+      </if>
+      <if test="img9 != null">
+        img_9,
+      </if>
+      <if test="img10 != null">
+        img_10,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopdatetime != null">
+        shopdatetime,
+      </if>
+      <if test="shopstatus != null">
+        shopstatus,
+      </if>
+      <if test="shopnum != null">
+        shopnum,
+      </if>
+      <if test="promptPrice != null">
+        prompt_price,
+      </if>
+      <if test="describes != null">
+        describes,
+      </if>
+      <if test="mainImg != null">
+        main_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="spu != null">
+        #{spu,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid != null">
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid2 != null">
+        #{categoryid2,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid3 != null">
+        #{categoryid3,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="regionIdProvince != null">
+        #{regionIdProvince,jdbcType=INTEGER},
+      </if>
+      <if test="regionIdCity != null">
+        #{regionIdCity,jdbcType=INTEGER},
+      </if>
+      <if test="shopCategoryId != null">
+        #{shopCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=REAL},
+      </if>
+      <if test="img1 != null">
+        #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="img4 != null">
+        #{img4,jdbcType=VARCHAR},
+      </if>
+      <if test="img5 != null">
+        #{img5,jdbcType=VARCHAR},
+      </if>
+      <if test="img6 != null">
+        #{img6,jdbcType=VARCHAR},
+      </if>
+      <if test="img7 != null">
+        #{img7,jdbcType=VARCHAR},
+      </if>
+      <if test="img8 != null">
+        #{img8,jdbcType=VARCHAR},
+      </if>
+      <if test="img9 != null">
+        #{img9,jdbcType=VARCHAR},
+      </if>
+      <if test="img10 != null">
+        #{img10,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopdatetime != null">
+        #{shopdatetime,jdbcType=DATE},
+      </if>
+      <if test="shopstatus != null">
+        #{shopstatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopnum != null">
+        #{shopnum,jdbcType=INTEGER},
+      </if>
+      <if test="promptPrice != null">
+        #{promptPrice,jdbcType=REAL},
+      </if>
+      <if test="describes != null">
+        #{describes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mainImg != null">
+        #{mainImg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_commodityWithBLOBs">
+    update mm_commodity
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="spu != null">
+        spu = #{spu,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid != null">
+        categoryId = #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid2 != null">
+        categoryId_2 = #{categoryid2,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid3 != null">
+        categoryId_3 = #{categoryid3,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="regionIdProvince != null">
+        region_id_province = #{regionIdProvince,jdbcType=INTEGER},
+      </if>
+      <if test="regionIdCity != null">
+        region_id_city = #{regionIdCity,jdbcType=INTEGER},
+      </if>
+      <if test="shopCategoryId != null">
+        shop_category_id = #{shopCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=REAL},
+      </if>
+      <if test="img1 != null">
+        img_1 = #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null">
+        img_2 = #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null">
+        img_3 = #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="img4 != null">
+        img_4 = #{img4,jdbcType=VARCHAR},
+      </if>
+      <if test="img5 != null">
+        img_5 = #{img5,jdbcType=VARCHAR},
+      </if>
+      <if test="img6 != null">
+        img_6 = #{img6,jdbcType=VARCHAR},
+      </if>
+      <if test="img7 != null">
+        img_7 = #{img7,jdbcType=VARCHAR},
+      </if>
+      <if test="img8 != null">
+        img_8 = #{img8,jdbcType=VARCHAR},
+      </if>
+      <if test="img9 != null">
+        img_9 = #{img9,jdbcType=VARCHAR},
+      </if>
+      <if test="img10 != null">
+        img_10 = #{img10,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopdatetime != null">
+        shopdatetime = #{shopdatetime,jdbcType=DATE},
+      </if>
+      <if test="shopstatus != null">
+        shopstatus = #{shopstatus,jdbcType=INTEGER},
+      </if>
+      <if test="shopnum != null">
+        shopnum = #{shopnum,jdbcType=INTEGER},
+      </if>
+      <if test="promptPrice != null">
+        prompt_price = #{promptPrice,jdbcType=REAL},
+      </if>
+      <if test="describes != null">
+        describes = #{describes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mainImg != null">
+        main_img = #{mainImg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mushroom.pojo.Mm_commodityWithBLOBs">
+    update mm_commodity
+    set title = #{title,jdbcType=VARCHAR},
+      spu = #{spu,jdbcType=INTEGER},
+      categoryId = #{categoryid,jdbcType=INTEGER},
+      categoryId_2 = #{categoryid2,jdbcType=INTEGER},
+      categoryId_3 = #{categoryid3,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=INTEGER},
+      region_id_province = #{regionIdProvince,jdbcType=INTEGER},
+      region_id_city = #{regionIdCity,jdbcType=INTEGER},
+      shop_category_id = #{shopCategoryId,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=REAL},
+      img_1 = #{img1,jdbcType=VARCHAR},
+      img_2 = #{img2,jdbcType=VARCHAR},
+      img_3 = #{img3,jdbcType=VARCHAR},
+      img_4 = #{img4,jdbcType=VARCHAR},
+      img_5 = #{img5,jdbcType=VARCHAR},
+      img_6 = #{img6,jdbcType=VARCHAR},
+      img_7 = #{img7,jdbcType=VARCHAR},
+      img_8 = #{img8,jdbcType=VARCHAR},
+      img_9 = #{img9,jdbcType=VARCHAR},
+      img_10 = #{img10,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      shopdatetime = #{shopdatetime,jdbcType=DATE},
+      shopstatus = #{shopstatus,jdbcType=INTEGER},
+      shopnum = #{shopnum,jdbcType=INTEGER},
+      prompt_price = #{promptPrice,jdbcType=REAL},
+      describes = #{describes,jdbcType=LONGVARCHAR},
+      main_img = #{mainImg,jdbcType=LONGVARCHAR}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_commodity">
+    update mm_commodity
+    set title = #{title,jdbcType=VARCHAR},
+      spu = #{spu,jdbcType=INTEGER},
+      categoryId = #{categoryid,jdbcType=INTEGER},
+      categoryId_2 = #{categoryid2,jdbcType=INTEGER},
+      categoryId_3 = #{categoryid3,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=INTEGER},
+      region_id_province = #{regionIdProvince,jdbcType=INTEGER},
+      region_id_city = #{regionIdCity,jdbcType=INTEGER},
+      shop_category_id = #{shopCategoryId,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=REAL},
+      img_1 = #{img1,jdbcType=VARCHAR},
+      img_2 = #{img2,jdbcType=VARCHAR},
+      img_3 = #{img3,jdbcType=VARCHAR},
+      img_4 = #{img4,jdbcType=VARCHAR},
+      img_5 = #{img5,jdbcType=VARCHAR},
+      img_6 = #{img6,jdbcType=VARCHAR},
+      img_7 = #{img7,jdbcType=VARCHAR},
+      img_8 = #{img8,jdbcType=VARCHAR},
+      img_9 = #{img9,jdbcType=VARCHAR},
+      img_10 = #{img10,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      shopdatetime = #{shopdatetime,jdbcType=DATE},
+      shopstatus = #{shopstatus,jdbcType=INTEGER},
+      shopnum = #{shopnum,jdbcType=INTEGER},
+      prompt_price = #{promptPrice,jdbcType=REAL}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+</mapper>

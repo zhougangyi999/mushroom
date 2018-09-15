@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_collectionMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_collection">
+    <id column="collectionId" jdbcType="INTEGER" property="collectionid" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    collectionId, type, parentId, userId, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_collection
+    where collectionId = #{collectionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_collection
+    where collectionId = #{collectionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_collection">
+    insert into mm_collection (collectionId, type, parentId, 
+      userId, reserved1, reserved2
+      )
+    values (#{collectionid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_collection">
+    insert into mm_collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectionid != null">
+        collectionId,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectionid != null">
+        #{collectionid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_collection">
+    update mm_collection
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where collectionId = #{collectionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_collection">
+    update mm_collection
+    set type = #{type,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where collectionId = #{collectionid,jdbcType=INTEGER}
+  </update>
+</mapper>

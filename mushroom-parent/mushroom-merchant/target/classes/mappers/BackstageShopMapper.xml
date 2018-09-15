@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mushroom.dao.BackstageShopMapper">
+	<resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_shop">
+		<id column="shopId" jdbcType="INTEGER" property="shopid" />
+		<result column="categiryID" jdbcType="INTEGER" property="categiryid" />
+		<result column="storeStylePositionint" jdbcType="VARCHAR"
+			property="storestylepositionint" />
+		<result column="registeredCapital" jdbcType="DOUBLE" property="registeredcapital" />
+		<result column="totalTeamMembers" jdbcType="INTEGER" property="totalteammembers" />
+		<result column="applyPhone" jdbcType="VARCHAR" property="applyphone" />
+		<result column="applyName" jdbcType="VARCHAR" property="applyname" />
+		<result column="addressId" jdbcType="INTEGER" property="addressid" />
+		<result column="userId" jdbcType="VARCHAR" property="userid" />
+		<result column="applyQQ" jdbcType="VARCHAR" property="applyqq" />
+		<result column="stats" jdbcType="INTEGER" property="stats" />
+		<result column="shopName" jdbcType="VARCHAR" property="shopname" />
+		<result column="regionId_province" jdbcType="INTEGER" property="regionidProvince" />
+		<result column="regionId_district" jdbcType="INTEGER" property="regionidDistrict" />
+		<result column="creationTime" jdbcType="DATE" property="creationtime" />
+		<result column="shopLogSrc" jdbcType="VARCHAR" property="shoplogsrc" />
+		<result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+		<result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+		<result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+		<result column="reserved4" jdbcType="VARCHAR" property="reserved4" />
+		<result column="reserved5" jdbcType="VARCHAR" property="reserved5" />
+		<result column="reserved6" jdbcType="VARCHAR" property="reserved6" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.mushroom.pojo.Mm_shopWithBLOBs">
+		<result column="warehousingAndLogistice" jdbcType="LONGVARCHAR"
+			property="warehousingandlogistice" />
+		<result column="licebseSrc" jdbcType="LONGVARCHAR" property="licebsesrc" />
+	</resultMap>
+
+
+	<select id="selectByPrimaryKey" resultType="map">
+		SELECT s.*,(SELECT
+		COUNT(0) FROM `mm_orders` o WHERE o.shopId=s.`shopId` AND o.status=2)
+		orNumber,(SELECT COUNT(0) FROM `mm_comment` mc WHERE (SELECT
+		se.`shopId` FROM `mm_service_evaluation` se WHERE
+		se.`service_evaluation_id`=mc.service_evaluation_id )=#{shopId} AND
+		mc.content=NULL) serNum FROM `mm_shop` s where s.shopId=#{shopId}
+
+
+	</select>
+
+	<select id="selectShop" resultMap="BaseResultMap">
+		SELECT * FROM `mm_shop` WHERE
+		`userId`=#{userid}
+	</select>
+
+
+	<select id="userStatic" resultType="string">
+		SELECT mu.`status` FROM
+		`mm_users` mu
+		WHERE mu.`uid`=#{uid}
+	</select>
+
+
+	 <insert id="insertShops" parameterType="Mm_shop">
+		insert into mm_shop (categiryID, storeStylePositionint,
+		registeredCapital, totalTeamMembers, applyPhone,
+		applyName, addressId, userId,
+		applyQQ, stats, shopName,
+		regionId_province, regionId_district, creationTime,
+		shopLogSrc, reserved1, reserved2,
+		reserved3, reserved4, reserved5,
+		reserved6, warehousingAndLogistice,
+		licebseSrc)
+		values (#{categiryid,jdbcType=INTEGER},
+		#{storestylepositionint,jdbcType=VARCHAR},
+		#{registeredcapital,jdbcType=DOUBLE},
+		#{totalteammembers,jdbcType=INTEGER}, #{applyphone,jdbcType=VARCHAR},
+		#{applyname,jdbcType=VARCHAR}, #{addressid,jdbcType=INTEGER},
+		#{userid,jdbcType=VARCHAR},
+		#{applyqq,jdbcType=VARCHAR}, #{stats,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR},
+		#{regionidProvince,jdbcType=INTEGER},
+		#{regionidDistrict,jdbcType=INTEGER}, NOW(),
+		#{shoplogsrc,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR},
+		#{reserved2,jdbcType=VARCHAR},
+		#{reserved3,jdbcType=VARCHAR}, #{reserved4,jdbcType=VARCHAR}, #{reserved5,jdbcType=VARCHAR},
+		#{reserved6,jdbcType=VARCHAR},
+		#{warehousingandlogistice,jdbcType=LONGVARCHAR},
+		#{licebsesrc,jdbcType=LONGVARCHAR})
+	</insert>
+
+
+</mapper>

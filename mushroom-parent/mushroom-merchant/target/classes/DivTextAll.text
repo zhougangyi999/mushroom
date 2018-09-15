@@ -1,0 +1,356 @@
+<div xmlns="http://www.w3.org/1999/xhtml" id="J_ModuleGraphic"
+		class="module-panel module-graphic">
+		<!-- 图文详情 -->
+		<!--     注：PHP模板走的是本地模板文件：views/modules/module-graphic.php-->
+		<!-- 商品描述 -->
+		<div id="J_Graphic_desc">
+			<div class="panel-title">
+				<h1>商品描述</h1>
+			</div>
+			<!-- 描述 -->
+			<div class="graphic-text">title000</div>
+		</div>
+		<!-- 产品参数 -->
+		<div id="J_Graphic_产品参数">
+			<div class="panel-title">
+				<h1>产品参数</h1>
+			</div>
+			<!-- 产品参数 -->
+			<div class="graphic-block">
+				<!-- 描述 -->
+				<!-- 表格 -->
+				<table id="J_ParameterTable" class="parameter-table">
+					<tbody>
+						<tr class="">
+							<td>图案: 格子,几何</td>
+							<td>颜色: 卡其杏,绿色</td>
+							<td>袖型: 常规袖</td>
+						</tr>
+						<tr class="">
+							<td>衣门襟: 套头</td>
+							<td>尺码: S,XL,L,M</td>
+							<td>衣长: 常规款（51-65cm）</td>
+						</tr>
+						<tr class="">
+							<td>版型: 直身</td>
+							<td>季节: 春秋</td>
+							<td>材质: 针织</td>
+						</tr>
+						<tr class="">
+							<td>领型: V领</td>
+							<td>袖长: 无袖</td>
+							<td>风格: 文艺</td>
+						</tr>
+						<tr class="">
+							<td>潮流: 英伦</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 模块级别 -->
+		<div class="graphic-block">
+			<!-- 图片列表 -->
+			<div id="J_Graphic_穿着效果">
+				<div class="panel-title">
+					<h1>穿着效果</h1>
+				</div>
+				<!-- 描述 -->
+				<div class="graphic-pic">
+					<div style="padding-bottom: 74.66666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.46666666666667%;" class="pic-box">
+						<img
+							src="imgpath0000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath0000"
+							data-original="imgpath0000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 58.4%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 139.2%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 59.599999999999994%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 51.71428571428572%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -320px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 139.2%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 71.86666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.46666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 76.4%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+			</div>
+			<div id="J_Graphic_细节做工">
+				<div class="panel-title">
+					<h1>细节做工</h1>
+				</div>
+				<!-- 描述 -->
+				<div class="graphic-pic">
+					<div style="padding-bottom: 74%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 73.86666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 77.06666666666668%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 57.99999999999999%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 57.99999999999999%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 74.26666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 56.557377049180324%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 56.57534246575342%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 69.6%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 65.60000000000001%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 70.93333333333334%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 57.46666666666667%;" class="pic-box">
+						<img
+							src="imgpath000"
+							data-original="imgpath000"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+				<div class="graphic-pic">
+					<div style="padding-bottom: 25.333333333333336%;" class="pic-box">
+						<img
+							src="http://s3.mogucdn.com/p2/170317/77101615_6f3ak83kkl00329ged9249aa93ifb_1125x285.jpg_750x999.jpg"
+							data-original="http://s3.mogucdn.com/p2/170317/77101615_6f3ak83kkl00329ged9249aa93ifb_1125x285.jpg_750x999.jpg"
+							style="left: -350px; display: block;" class="lazy" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 尺码说明 -->
+		<div id="J_Graphic_尺码说明">
+			<div class="panel-title">
+				<h1>尺码说明</h1>
+			</div>
+			<!-- 尺码说明 -->
+			<div class="graphic-block">
+				<!-- 描述 -->
+				<!-- 表格 -->
+				<table class="size-table">
+					<thead>
+						<tr>
+							<td>尺码</td>
+							<td>胸围</td>
+							<td>腰围</td>
+							<td>袖长</td>
+							<td>肩宽</td>
+							<td>领围</td>
+							<td>衣长</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>S</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>M</td>
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+						</tr>
+						<tr>
+							<td>L</td>
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+						</tr>
+						<tr>
+							<td>XL</td>
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+							<td />
+						</tr>
+					</tbody>
+				</table>
+				<!-- 提醒 -->
+				<div class="size-text">※
+					bor0101</div>
+			</div>
+		</div>
+	</div>

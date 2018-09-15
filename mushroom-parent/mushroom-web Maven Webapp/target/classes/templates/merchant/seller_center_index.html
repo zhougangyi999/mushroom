@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>卖家中心内容主页</title>
+<link rel="icon" href="../statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+<link rel="stylesheet" href="../statics/merchant/css/public.css" />
+<link rel="stylesheet"
+	href="../statics/merchant/css/Seller_Center_index.css" />
+</head>
+<body onload="loadAll()">
+	<section>
+
+		作者：<label class="byname"></label> 时间：<label name="creationTime"></label>描述：店铺主页内容
+
+		<div class="conte_index">
+			<div style="width: 1010PX; margin: auto;">
+				<div>
+					<h3>卖家工作台</h3>
+				</div>
+
+				作者：<span class="byname"></span> 时间：<label name="creationTime"></label>
+				描述：卖家工作台左边*****************************************************************
+
+				<div class="center_right_left">
+
+					作者：<span class="byname"></span> <label name="creationTime"></label> 描述：店铺名片
+
+					<div class="center_right_massage_Sequins">
+						<div class="center_right_massage_Sequins_div">
+							<h3>天猫商家名片</h3>
+						</div>
+						<div class="center_right_massage_Sequins_bot_div">
+							<div class="center_right_massage_Sequins_bot_div_img">
+								<img src="../statics/img/pp20171117220841.png" />
+							</div>
+							<div class="center_right_massage_Sequins_bot_div_li">
+								<ul>
+									<li style=""><a href="JavaScript:void(0)"
+										style="color: #5a83d6; font-size: 26px;"><span
+											class="shopName"></span></a> <a href="JavaScript:void(0)">发布店铺动态</a>
+										<a href="JavaScript:void(0)">商家消息维护</a></li>
+									<li>
+										最近180天.........................................................
+
+										<span style="float: right;">店铺评分:&nbsp; <span
+											class="span_colo">4.9</span>分
+									</span>
+									</li>
+									<li>
+										本年经营内........................................................
+										<span class="span_colo_flo">店铺评分:&nbsp; <span
+											class="span_colo">4.9分</span></span>
+									</li>
+									<li>
+										退款纠纷率........................................................
+										<span class="span_colo span_colo_flo">0%</span>
+									</li>
+									<li style="margin: 10px 0;"></li>
+									<li>安全评分为<span style="color: #fda06b;">100</span>分,点击此 <a
+										href="">提示分数</a></li>
+									<li>支付宝:<a href="#">${paly.payUser_account
+											}&nbsp;&nbsp;&nbsp;支付宝账户管理</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div>作者：<label class="byname"></label> 时间：<label name="creationTime"></label> 描述：店铺提醒
+					</div>
+					<div class="center_right_massage_Sequins">
+					
+						<div class="center_right_massage_Sequins_div">
+							<h3>店铺提醒</h3>
+						</div>
+						<div class="center_right_massage_Sequins_bot_div">
+							<div class="center_right_massage_Sequins_bot_div_li "
+								style="width: 97%; margin-bottom: 1px;">
+								<ul class="center_right_left_remind_top">
+									<li style="">
+										<h4>你需要立即处理:</h4>
+									</li>
+									<li>诚信经营: <a href="">&nbsp;待处理违规(<span
+											class="span_colo">0</span>)
+									</a> <a href="">&nbsp;处理管控(<span class="span_colo">0</span>)
+									</a> <a href="">&nbsp;待处理投诉(<span class="span_colo">0</span>)
+									</a> <a href="">&nbsp;待处理举报(<span class="span_colo">0</span>)
+									</a>
+									</li>
+									<li>订单提醒:</li>
+									<li><a href="">待发货订单(<span class="span_colo" id="span_on"></span>)
+									</a> <a href="">&nbsp;待评价订单(<span class="span_colo" id="span_sn""></span>)
+									</a> <a href="">&nbsp;三个月未完成退款售后订单(<span class="span_colo">0</span>)
+									</a> <br /> <a href="">物流异常提醒(<span class="span_colo">0</span>)
+									</a></li>
+									<li>商品提醒:</li>
+									<li><a href="">待上架(<span class="span_colo">0</span>)
+									</a> <a href="">&nbsp;待补货(<span class="span_colo">0</span>)
+									</a> <a href="">&nbsp;商品违规处理(<span class="span_colo">0</span>)
+									</a></li>
+								</ul>
+
+								<ul class="center_right_left_remind_top"
+									style="background: none;">
+									<li>违规记录:</li>
+									<li><a href="">一般违规累计扣分(<span class="span_colo">0</span>)
+									</a> <a href="">严重违规累计扣分(<span class="span_colo">0</span>)
+									</a></li>
+									<li>商品管理:<a href="">出售中的商品(<span class="span_colo">${sale
+												}</span>)
+									</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				作者：<label class="byname"></label> 时间：<label name="creationTime"></label> 描卖家工作右边           *************************
+
+				<div class="center_right_right">
+					<div class="center_right_service">
+						<div class="center_right_massage_Sequins_div">
+							<h3>天猫服务热线</h3>
+						</div>
+						<h4>天猫服务热线: 4008608608</h4>
+						<h4>
+							天猫在线客服: <a href="">点击进入</a>
+						</h4>
+						<h4>
+							<a href="">培训中心</a> <a href="">帮助中心</a> <a href="">续签FAQ</a>
+						</h4>
+					</div>
+					<div class="center_right_service">
+						<div class="center_right_massage_Sequins_div">
+							<h3>产品增值服务</h3>
+						</div>
+						<div class="center_right_service_box">
+							<div class="center_right_service_order"
+								style="margin-right: 10px;">
+								<a href="">服务订购</a>
+							</div>
+							<div class="center_right_service_order">
+								<a href="">软件订购</a>
+							</div>
+						</div>
+					</div>
+					作者：<label class="byname"></label> 时间：2017-11-17 描述：天猫服务热线
+					<div class="center_right_service">
+						<div class="center_right_massage_Sequins_div">
+							<h3>猫言猫语热点</h3>
+						</div>
+						<div id="masesge">
+
+							<c:forEach var="nase" items="${tmallsay }">
+								<h4>
+									<a href="JavaScript:void">${nase.tmallsay_title }</a>
+								</h4>
+							</c:forEach>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+	</section>
+
+</body>
+<script type="text/javascript" src="../statics/js/jquery-1.8.3.min.js"></script>
+
+</html>

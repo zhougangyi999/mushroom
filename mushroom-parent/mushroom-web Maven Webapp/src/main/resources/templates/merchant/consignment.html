@@ -1,0 +1,259 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>发货页面</title>
+<link rel="icon" href="../statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+<link rel="stylesheet" href="../statics/merchant/css/public.css" />
+<link rel="stylesheet" href="../statics/merchant/css/consignment.css" />
+<script type="text/javascript"
+	src="../statics/merchant/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+
+	<form action="resultconsignment" method="post">
+		<div style="width: 1010PX; margin: auto; position: relative;">
+			<div class="steps" id="J_batchPage">
+				<div id="step1" class="step" data-spm="100010">
+					<h3>
+						<strong>第一步</strong>确认发货/退货信息
+					</h3>
+					<div class="step-box bull-info">
+						<a href="javascript:;" class="accept">修改我的发货信息</a>
+						<dl>
+							<dt>我的发货信息：</dt>
+							<dd id="logisacceptAdd1"></dd>
+							<!-- 省 市 区 地址 邮政编码 发货人 电话 订单id -->
+							<input type="hidden" name="region1" value="">
+							<input type="hidden" name="region2" value="">
+							<input type="hidden" name="region3" value="">
+							<input type="hidden" name="address" value="">
+							<input type="hidden" name="postalCode" value="">
+							<input type="hidden" name="applyName" value="">
+							<input type="hidden" name="applyPhone" value="">
+							<input type="hidden" name="id" value="">
+						</dl>
+						<div class="gray-box">
+							<a href="javascript:;" class="refund">修改我的退货信息</a>
+							<dl>
+								<dt>我的退货信息：</dt>
+								<dd id="logisacceptAdd2">
+									</dd>
+							</dl>
+							<div class="msg">
+								<span class="tips">请准确选中退货信息避免因信息不准导致您的商品发生损毁或灭失风险。<a
+									href="//service.taobao.com/support/knowledge-1133644.htm"
+									target="_blank">什么情况下退货信息会提供给买家？</a></span>
+							</div>
+
+						</div>
+					</div>
+					<div id="logis:contactSelector" class="select_address_box"
+						style="display: none; z-index: 20;"></div>
+				</div>
+				<div id="step2" class="step">
+					<h3>
+						<strong>第二步</strong>选择物流服务
+					</h3>
+					<div class="step-box choose-logis">
+						<ul>
+							<li class="company"><label class="caption">物流公司：</label><em>*</em>
+								<select name="sameLogisCompanyId" class="codstep2-select ">
+									<option value="-1">请选择一家物流公司</option>
+									<option value="ZTO">全峰快递</option>
+									<option value="ZTO">中通</option>
+									<option value="ZTO">EMS经济快递</option>
+									<option value="ZTO">EMS</option>
+									<option value="ZTO">圆通速递</option>
+									<option value="ZTO">中通快递</option>
+									<option value="ZTO">宅急送</option>
+									<option value="ZTO">韵达快递</option>
+									<option value="ZTO">天天快递</option>
+									<option value="ZTO">百世快递</option>
+									<option value="ZTO">顺丰速运</option>
+									<option value="ZTO">申通快递</option>
+									<option value="ZTO">快捷快递</option>
+									<option value="ZTO">邮政快递包裹</option>
+									<option value="ZTO">国通快递</option>
+									<option value="ZTO">中通速递BJ</option>
+									<option value="ZTO">德邦快递</option>
+									<option value="ZTO">邮政标准快递</option>
+									<option value="ZTO">优速快递</option>
+							</select></li>
+
+							<li class="type"><label class="caption">物流方式：</label><em>*</em>
+								<input type="radio" class="logis:type J_LogisType"
+								name="logisType" value="1" checked=""><label
+								id="logis:online" class="type-option" for="online">在线下单</label>
+								<input type="radio" class="logis:type J_LogisType"
+								name="logisType" value="2" style="visibility: visible;"><label
+								id="logis:offline" class="type-option" for="private">自己联系物流</label>
+							</li>
+
+							<li class="date"><label class="caption">预约日期：</label> <input
+								type="text" id="addate" readonly="" name="_fmw.f._0.f" value=""
+								class="codstep2-input">
+								<div id="cal1" class="yui-calcontainer single"
+									style="z-index: 20; position: absolute; display: none;"></div>
+							</li>
+
+							<li class="time"><label class="caption">预约时段：</label> 
+							<input type="date" id="stataDate" value=""/>
+							 至 <input type="date" id="endDate" value=""/>
+							 <span>(可选)</span></li>
+
+						</ul>
+					</div>
+				</div>
+				<div id="step3" class="step batch-consign skin-gray clearfix">
+					<h3>
+						<strong>第三步</strong>确认收货信息并填写运单号
+					</h3>
+
+					<table class="logis consign-detail   batch  checked">
+						<thead>
+
+
+							<!--
+                        	作者：297981745@qq.com
+                        	时间：2017-11-22
+   ****************描述：买家信息***************************************************************************
+                        -->
+							<tr class="J_ConsignTrigger ">
+								<th colspan="2">
+									<div id="receiver:87824626616" class="logis:recei">
+										<input type="hidden" class="contact:adr"
+											name="_fmw.r.87824626616.adr"
+											value="西乡街道   深圳市宝安区西乡固戍万象新天公寓B0914">  <input
+											type="hidden" class="contact:contactName"
+											name="_fmw.r.87824626616.c" value="周旺"> <input
+											type="hidden" class="contact:mobilePhone"
+											name="_fmw.r.87824626616.mo" value="13620220068"> <input
+											type="hidden" class="contact:zipCode"
+											name="_fmw.r.87824626616.z" value="518101">
+
+									</div>
+
+									<div class="close-detail-small">
+										<a id="trigger-onSTY"
+											class=" J_ConsignTriggerBtn trigger-on  trigger-onst"
+											href="#">关闭订单详情</a>
+									</div> <a class="not-deliver J_NotDeliver" href="#"
+									style="display: none;"> 本次不发送<em></em>
+								</a>
+									<div class="receive-info clearfix">
+										<label>收货信息：</label>
+										<div id='userap'>
+											 
+										</div>
+									</div>
+									<div class="shipping-number clearfix">
+										<label>运单号码：</label> <input type="text" name="num"
+											class="J_ShippingNumber logis:mailNo" id="" value=""
+											style="color: rgb(216, 213, 198);"> <a href=""
+											target="_blank">范例</a>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<!--
+                        	作者：297981745@qq.com
+                        	时间：2017-11-22
+   ****************描述：买家信息***************************************************************************
+                        -->
+						<tbody id="message0" style="">
+							<tr class="order-title" order_id="92505782581880217"
+								order_type="">
+								<td colspan="2"><span class="order-number" id="order-numberas"></span> <input type="hidden" name="order_num"
+									value=""> <span class="order-name">
+										买家： <span class="ww ww:token"
+										ww:params="nick=zhouwangvip88&amp;tnick=zhouwangvip88&amp;display=inline"></span>
+								</span> <span class="order-number" id=order-numbers"">物流公司：<span id="companyName">请选择一家物流公司</span></span>
+
+								</td>
+							</tr>
+
+								 <tr id='orderAlls'>
+									<!--<td>
+										
+                        	作者：297981745@qq.com
+                        	时间：2017-11-22
+   ****************描述：订单信息***************************************************************************
+                       
+										<div id="orderdetail1" class="orderdetail">
+											<div class="img">
+												<a href="href=" " target="_blank "> <img width="50 "
+													src="${ordersitem.order_img }" alt="0404040 ">
+												</a>
+											</div>
+											<ul class="des " style="width: 260px; overflow: hidden;">
+												<li>
+													商品名 <a href="" target="_blank"
+													title="${ordersitem.name }">${ordersitem.name }</a> 颜色
+													<p>颜色:${ordersitem.reserved1 }</p>
+												</li>
+												价格 数量
+												<li class="total"><span> ${ordersitem.price } ×
+														<em>${ordersitem.item_num }</em>
+												</span></li>
+											</ul>
+										</div>
+									</td> -->
+
+								</tr>
+
+							<tr>
+								<td class="logis-info">
+									<div class="item">
+
+										<br /> <br /> <label>我的备忘：</label>
+										<textarea name="test" rows="3" cols="50"
+											class="info logis:remark" style="color: rgb(216, 213, 198);"> 您可以在此输入备忘信息（仅卖家自己可见）。</textarea>
+									</div>
+								</td>
+								<td class="logis-comment" id="logis-comment_C"></td>
+								
+
+							</tr>
+						</tbody>
+					</table>
+					<div class="info-area">
+						<span>填写运单号后确认，交易状态就会变成更改为“卖家已发货，等待买家确认”</span>
+						<button id="btnConsign" type="submit">发货</button>
+					</div>
+				</div>
+				<!--
+			    	作者：297981745@qq.com
+			    	时间：2017-11-22
+			    	描述：卖家地址
+			    -->
+				<div id="contactSelector" class="select_address_box">
+					<a href="#" class="refresh_box">刷新</a> <a href="#"
+						class="close_select_box">关闭</a>
+					<table cellspacing="1" cellpadding="0">
+						<caption>
+							请选择合适的地址： <a onclick="closeSelector()" href="">地址库管理</a>
+						</caption>
+						<table >
+						<tbody id="addsm">
+							
+							</tbody>
+						</table>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			
+		</script>
+	</form>
+</body>
+<script type="text/javascript"
+	src="../statics/merchant/js/consignment.js"></script>
+
+</html>

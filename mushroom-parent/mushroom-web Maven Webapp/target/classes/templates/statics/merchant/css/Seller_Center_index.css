@@ -1,0 +1,99 @@
+body,section{
+		background: none;
+}
+.conte_index{
+	width:1032px;
+	background: none;
+}
+.conte_index>div>div h3{font-weight: 400; margin: 6px 0;     font-size: 14px;}
+.conte_index>div>div>h3{
+	font-weight: 400;
+	color: #4682aa;
+
+}
+.center_right_left{
+	float: left;
+	width: 70%;
+}
+.center_right_right{
+	float: right;
+	width: 29%;
+}
+.center_right_massage_Sequins{
+	width: 100%;
+	border:solid #c2e6ed 1px;
+	float: left;
+	margin-bottom: 10px;
+	background: #f8fbfe;
+}
+.center_right_massage_Sequins_div{padding-left: 10px;border-bottom: 1px solid #c2e6ed;}
+.center_right_massage_Sequins li{
+	float: none;
+	font-size: 13px;
+}
+.center_right_massage_Sequins_bot_div,.center_right_massage_Sequins_bot_div div{
+	float:  left;
+}
+.center_right_massage_Sequins_bot_div{
+	width: 100%;
+	padding: 10px;
+	background: #f4fbff;
+}
+.center_right_massage_Sequins_bot_div_img{
+	background: #FFFFFF;
+	margin-right: 15px;
+}
+.center_right_massage_Sequins_bot_div_li li>a{
+	color: #4894c2;
+	margin-right: 15px;
+}
+.center_right_massage_Sequins_bot_div_li{
+	width: 65%;
+	line-height: 28px;
+	margin: 8px;
+}
+.span_colo{
+	color:#fda06b;
+}
+.span_colo_flo{float:right;}
+/**************服务热线*******************/
+.center_right_service{
+	 border: solid #c2e6ed 1px;
+	 padding-bottom: 10PX;
+	
+	background: #f8fbfe;
+	margin-bottom: 10px;
+}
+.center_right_service h4{
+	margin-left: 10px;
+	line-height: 25PX;
+	font-size:14PX ;
+	font-weight: 400;
+}
+  .center_right_service h4 a{color: #4894c2;}  
+ .center_right_service_order{
+ 	border-radius: 4px;
+ 	padding:4px 10px;
+
+ 	background: #4998e2;
+ 	float: left;
+ }
+  .center_right_service_order a{
+  	color: #FFFFFF;
+  }
+ .center_right_service_box{
+ 	width: 62%; 
+ 	margin: auto;
+ 	margin-top: 10px;
+ 	margin-bottom: 0;
+ }
+ /*********************8888店铺提醒**********************/
+ .center_right_left_remind_top{
+ 	border-radius: 5px;
+ 	
+ 	background:#fefeda ;
+ 	padding: 10px;
+ }
+ .center_right_left_remind_top>li>a{
+ 	margin-right: 30px;
+ }

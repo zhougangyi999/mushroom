@@ -1,0 +1,410 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>商品描述</title>
+<link rel="stylesheet" href="../statics/merchant/css/public.css" />
+<link rel="stylesheet" href="../statics/merchant/css/shipments.css" />
+<link rel="stylesheet" href="../statics/merchant/css/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="../statics/merchant/css/index_all.css" />
+<script type="text/javascript" src="../statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../statics/merchant/js/shipments.js"></script>
+<script type="text/javascript"
+	src="../statics/merchant/js/consignment.js"></script>
+<script type="text/javascript"
+	src="../statics/UEditor/ueditor.config.js"></script>
+<script type="text/javascript"
+	src="../statics/UEditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../statics/UEditor/lang/zh-cn/zh-cn.js"></script>
+<link rel="icon" href="../statics/img/login/logo_ioc.png"
+	type="image/x-icon">
+
+</head>
+
+<body class="media_screen_1200">
+
+	<div>
+
+		<div id="page1"></div>
+		<div id="page2"></div>
+
+	</div>
+	<section style="background: #FFFFFF;">
+		<form action="commdityFabu" method="post" id="blue" enctype="multipart/form-data">
+			<div style="width: 1100px; margin: auto;" id="main">
+				<div style="width: 1100px;" class=" title" id="">
+					<span class="fl">商品发布</span>
+				</div>
+				<div>
+
+
+					<div id="catPath">
+						类目：工作台/商品管理&gt;&gt;发布商品<span>切换类目</span>
+					</div>
+					
+					<h1 class="title_h1">1. 宝贝基本信息</h1>
+					<div class="struct rootStruct" control_type="struct"
+						control_classpath="xsell/modules/struct/index" id="itemBasic">
+						<table class="showbar">
+							<tbody>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em><label
+										for="stuffStatus" style="display: inline;">宝贝类型</label></td>
+									<td>
+										<div class="checkbox-wrap" control_type="radio"
+											control_classpath="xsell/modules/radio/index"
+											control_id="stuffStatus" id="stuffStatus">
+											<label><input type="radio"
+												aria-label="宝贝类型:单选，左右方向键切换选项，空格键选中当前项，当前项全新" name="radio0"
+												value="5" checked="checked">全新</label><label><input
+												type="radio" aria-label="宝贝类型:单选，左右方向键切换选项，空格键选中当前项，当前项二手"
+												name="radio0" value="6">二手</label> <a target="_blank"
+												class="info help"><i
+												class="icon iconfont icon-questioncircle"></i></a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em><label
+										for="title" style="display: inline;">宝贝标题</label></td>
+									<td>
+										<div class="texbox title-box" control_type="title"
+											control_classpath="xsell/modules/textbox/title"
+											control_id="title">
+											<div class="inputbox">
+												<input id="title" name="title" type="text"
+													aria-required="true"> <span class="input-count"><strong>0</strong>/60</span>
+											</div>
+											<div class="errors">
+												<ul>
+													<li><i class="icon iconfont icon-removecircle"></i><span
+														class="errorinfo">必填项不能为空！</span></li>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em>宝贝属性</td>
+									<td>
+										<div id="att">
+											<div>
+												<p>
+													<input type="hidden" name="attName"
+														value="${attName.attribute_name_id}">
+												</p>
+												<select class="att" name="attvalue">
+													<option value="-1">请选择</option>
+													<option  th:each="n,nsStatitme:${aname}" th:value="${n.attribute_value_id}+'-'+${n.attribute_name_id}"  th:text="${n.attribute_value}+'-'+${n.attribute_value_name}"></option>
+
+												</select>
+												
+											</div>
+
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em>宝贝类目</td>
+									<td>
+										<div id="att">
+											<div>
+												
+												<select name="category">
+								
+												</select>
+												
+											</div>
+
+										</div>
+									</td>
+								</tr>
+								<tr style="display: none;">
+									<td class="bar"><em style="display: none;">*<em></em></em><label
+										for="qualification" style="display: none;">商品资质</label></td>
+									<td>
+										<div class="qualification" control_type="qualification"
+											control_classpath="tsell/modules/qualification/index"
+											control_id="qualification" id="qualification"
+											style="display: none;"></div>
+									</td>
+								</tr>
+								<tr style="display: none;">
+									<td class="bar"><em style="display: none;">*<em></em></em><label
+										for="customize.frame" style="display: none;"></label></td>
+									<td>
+										<div class="frame" control_type="frame"
+											control_classpath="xsell/modules/frame/index"
+											control_id="customize.frame" id="customize.frame"
+											style="display: none;">
+											<div class="frame-col clearfix">
+												<div class="col-left">定制工具</div>
+												<div class="col-content">
+													<div control_type="select"
+														control_classpath="xsell/modules/select/index"
+														control_id="customize.type">
+														<div class="combobox disableInput readonly">
+															<div class="combobox-sel clearfix">
+																<input class="combobox-inputbox" type="text" readonly=""
+																	oldval="图片传输" role="combobox" aria-autocomplete="list"
+																	aria-owns="customize.type"
+																	aria-label="定制工具: 上下键打开选项列表，回车选中选项，ESC关闭列表，关闭后TAB键跳, 转到其他选项">
+																<span class="combobox-icon"><i
+																	class="icon iconfont icon-sortdown"></i></span>
+															</div>
+															<div class="combobox-opts" aria-hidden="false"
+																style="display: none">
+																<div class="combobox-search clearfix">
+																	<input type="text" aria-label="从下拉列表中搜索"
+																		class="combobox-search-box"> <span
+																		class="combobox-search-icon"><i
+																		class="icon iconfont icon-search"></i></span>
+																</div>
+																<div class="combobox-info" style="display: none;"></div>
+																<ul role="menu" class="combobox-list"></ul>
+																<div class="J_combImg comb-img"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em><label
+										for="multiMedia" style="display: inline;">电脑端宝贝图片</label></td>
+									<td>
+										<div></div>
+										<div class="multmedia-wrap clearfix"
+											control_type="multi_media"
+											control_classpath="xsell/modules/multi_media/index"
+											control_id="multiMedia" id="multiMedia">
+											<div class="multimage-wrap" control_type="multi_img"
+												control_classpath="xsell/modules/multi_img/index"
+												control_id="multiMedia.image">
+												<ul class="image-list">
+													<label for="picpath1">
+														<li data-media="image"
+														aria-label="宝贝主图: 按Enter键打开图片空间选择图片，按Esc退出弹层">
+															<div class="operate">
+																<i style="font-size: 58px; font-weight: 200;"
+																	class="icon iconfont icon-jia2 toleft" title="左移"></i><i
+																	class="icon iconfont icon-sortright toright" title="右移"></i><i
+																	class="icon iconfont icon-remove del" title="删除"></i>
+															</div> <input type="file" name="picpath" id="picpath1"
+															class="picpath" style="display: none;"
+															onchange="xmTanUploadImg(this,1)"> <img id="img1"
+															name="img" width="100%" height="100%"> <span
+															class="info"><em>*</em>宝贝主图</span>
+													</li>
+													</label>
+													<label for="picpath2">
+														<li data-media="image"
+														aria-label="宝贝主图: 按Enter键打开图片空间选择图片，按Esc退出弹层">
+															<div class="operate">
+																<i style="font-size: 58px; font-weight: 200;"
+																	class="icon iconfont icon-jia2 toleft" title="左移"></i><i
+																	class="icon iconfont icon-sortright toright" title="右移"></i><i
+																	class="icon iconfont icon-remove del" title="删除"></i>
+															</div> <input type="file" name="picpath" id="picpath2"
+															class="picpath" style="display: none;"
+															onchange="xmTanUploadImg(this,2)"> <img id="img2"
+															name="img" width="100%" height="100%">
+													</li>
+													</label>
+													<label for="picpath3">
+														<li data-media="image"
+														aria-label="宝贝主图: 按Enter键打开图片空间选择图片，按Esc退出弹层">
+															<div class="operate">
+																<i style="font-size: 58px; font-weight: 200;"
+																	class="icon iconfont  icon-jia2  toleft" title="左移"></i><i
+																	class="icon iconfont icon-sortright toright" title="右移"></i><i
+																	class="icon iconfont icon-remove del" title="删除"></i>
+															</div> <input type="file" name="picpath" id="picpath3"
+															class="picpath" style="display: none;"
+															onchange="xmTanUploadImg(this,3)"> <img id="img3"
+															name="img" width="100%" height="100%">
+													</li>
+													</label>
+													<label for="picpath4">
+														<li data-media="image"
+														aria-label="宝贝主图: 按Enter键打开图片空间选择图片，按Esc退出弹层">
+															<div class="operate">
+																<i style="font-size: 58px; font-weight: 200;"
+																	class="icon iconfont icon-jia2 toleft" title="左移"></i><i
+																	class="icon iconfont icon-sortright toright" title="右移"></i><i
+																	class="icon iconfont icon-remove del" title="删除"></i>
+															</div> <input type="file" name="picpath" id="picpath4"
+															class="picpath" style="display: none;"
+															onchange="xmTanUploadImg(this,4)"> <img id="img4"
+															name="img" width="100%" height="100%">
+													</li>
+													</label>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em>宝贝规格</td>
+									<td>
+										<div id="attcolor">
+											<div class="Father_Title">颜色</div>
+											<div id="color" class="Father_Item Father_Item0"></div>
+
+											<div class="Father_Title">尺码</div>
+											<div id="size" class="Father_Item Father_Item1"></div>
+
+											<div class="control-group mt10">
+												<div class="control-label">生成表格：</div>
+												<div class="controls" id="createTable"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em><label
+										for="priceCombine" style="display: inline;">一口价及总库存</label></td>
+									<td>
+										<div class="price-wrap" control_type="price"
+											control_classpath="tsell/modules/price/index"
+											control_id="priceCombine">
+											<span class="simple-inline info">本类目下，宝贝价格不能低于7.00元</span>
+											<table class="price-table">
+												<thead>
+													<tr class="J_mixControlHead">
+														<th><em>*</em>价格（元）</th>
+														<th><em>*</em>总数量（件）</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="J_mixControl">
+														<td>
+															<div class="texbox" control_type="text"
+																control_classpath="xsell/modules/textbox/index"
+																control_id="price">
+																<div class="inputbox">
+																	<input id="price" name="promptPrice" type="text"
+																		aria-required="true" maxlength="9" aria-label="价格（元）">
+																</div>
+															</div>
+														</td>
+														<td>
+															<div class="texbox" control_type="text"
+																control_classpath="xsell/modules/textbox/index"
+																control_id="quantity">
+																<div class="inputbox">
+																	<input id="quantity" name="shopnum" type="text"
+																		aria-required="true" maxlength="9" aria-label="总数量（件）">
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: inline;">*<em></em></em><label
+										for="descEditorType.pc" style="display: inline;">电脑端描述</label></td>
+								</tr>
+								<tr>
+									<td class="bar"><em style="display: none;"></em></td>
+									<td>
+										<div>
+											<textarea id="contents" name="describes" style="width: 750px"></textarea>
+											<script type="text/javascript" charset="utf-8">
+												var editor = new baidu.editor.ui.Editor();
+												editor.render("contents");
+											</script>
+										</div> <!-- <div id="btns">
+										   <div>
+										       <button onclick="getAllHtml()">获得整个html的内容</button>
+										       <button onclick="getContent()">获得内容</button>
+										       <button onclick="setContent()">写入内容</button>
+										       <button onclick="setContent(true)">追加内容</button>
+										       <button onclick="getContentTxt()">获得纯文本</button>
+										       <button onclick="getPlainTxt()">获得带格式的纯文本</button>
+										       <button onclick="hasContent()">判断是否有内容</button>
+										       <button onclick="setFocus()">使编辑器获得焦点</button>
+										       <button onmousedown="isFocus(event)">编辑器是否获得焦点</button>
+										       <button onmousedown="setblur(event)" >编辑器失去焦点</button>
+										
+										   </div>
+										   <div>
+										       <button onclick="getText()">获得当前选中的文本</button>
+										       <button onclick="insertHtml()">插入给定的内容</button>
+										       <button id="enable" onclick="setEnabled()">可以编辑</button>
+										       <button onclick="setDisabled()">不可编辑</button>
+										       <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
+										       <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
+										       <button onclick=" UE.getEditor('editor').setHeight(300)">设置高度为300默认关闭了自动长高</button>
+										   </div>
+										
+										   <div>
+										       <button onclick="getLocalData()" >获取草稿箱内容</button>
+										       <button onclick="clearLocalData()" >清空草稿箱</button>
+										    </div>
+										
+										</div>
+										<div>
+										    <button onclick="createEditor()">
+										   创建编辑器</button>
+										   <button onclick="deleteEditor()">
+										    删除编辑器</button>
+										</div> -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div style="position: static !important;" id="commit"
+					control_type="commit_sell" control_id="commitBtn"
+					class="floatbar rootStruct">
+					<input type="hidden" id="texts" name="texts">
+					<button class="blue" type="submit">发 布</button>
+				</div>
+			</div>
+		</form>
+	</section>
+	<div id="page4"></div>
+
+	<script>
+		$("#page4").load("../headrandfoot/footer.html");
+		$("#page1").load("../headrandfoot/head.html");
+		$("#page2").load("../headrandfoot/search_head.html");
+	</script>
+<script type="text/javascript">
+		$(function() {
+			$("#header").css("display", "none")
+			$(".selectbox").css("display", "none")
+			$(".ts_txt").val("")
+		})
+		function lpl(){
+	$("select[name=category]").html("<option value='0' selected=''>全部类目</option>");
+	$.getJSON("merchandise",
+			function(json){
+				$.each(json, function(i, item) {
+					var kl="<option value='"+item.mid+"-"+item.bid+"-"+item.cid+"'>"+item.mc+"/"+item.bc+"/"+item.cc+"</option>"
+					$("select[name=category]").append(kl)
+				})
+	},"JSON")
+	
+}
+
+lpl();
+	</script>	
+</body>
+
+</html>

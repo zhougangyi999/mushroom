@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.mm_grouponMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.mm_groupon">
+    <id column="groupon_id" jdbcType="INTEGER" property="grouponId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="groupon_price" jdbcType="DOUBLE" property="grouponPrice" />
+    <result column="has_pin" jdbcType="INTEGER" property="hasPin" />
+    <result column="reserve1" jdbcType="VARCHAR" property="reserve1" />
+    <result column="reserve2" jdbcType="VARCHAR" property="reserve2" />
+    <result column="reserve3" jdbcType="VARCHAR" property="reserve3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    groupon_id, commodity_id, start_time, end_time, creation_time, shop_id, groupon_price, 
+    has_pin, reserve1, reserve2, reserve3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_groupon
+    where groupon_id = #{grouponId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_groupon
+    where groupon_id = #{grouponId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.mm_groupon">
+    insert into mm_groupon (groupon_id, commodity_id, start_time, 
+      end_time, creation_time, shop_id, 
+      groupon_price, has_pin, reserve1, 
+      reserve2, reserve3)
+    values (#{grouponId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, #{startTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE}, #{creationTime,jdbcType=DATE}, #{shopId,jdbcType=INTEGER}, 
+      #{grouponPrice,jdbcType=DOUBLE}, #{hasPin,jdbcType=INTEGER}, #{reserve1,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.mm_groupon">
+    insert into mm_groupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="grouponId != null">
+        groupon_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="grouponPrice != null">
+        groupon_price,
+      </if>
+      <if test="hasPin != null">
+        has_pin,
+      </if>
+      <if test="reserve1 != null">
+        reserve1,
+      </if>
+      <if test="reserve2 != null">
+        reserve2,
+      </if>
+      <if test="reserve3 != null">
+        reserve3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="grouponId != null">
+        #{grouponId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="grouponPrice != null">
+        #{grouponPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hasPin != null">
+        #{hasPin,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.mm_groupon">
+    update mm_groupon
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="grouponPrice != null">
+        groupon_price = #{grouponPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="hasPin != null">
+        has_pin = #{hasPin,jdbcType=INTEGER},
+      </if>
+      <if test="reserve1 != null">
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null">
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null">
+        reserve3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where groupon_id = #{grouponId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.mm_groupon">
+    update mm_groupon
+    set commodity_id = #{commodityId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      creation_time = #{creationTime,jdbcType=DATE},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      groupon_price = #{grouponPrice,jdbcType=DOUBLE},
+      has_pin = #{hasPin,jdbcType=INTEGER},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR},
+      reserve3 = #{reserve3,jdbcType=VARCHAR}
+    where groupon_id = #{grouponId,jdbcType=INTEGER}
+  </update>
+</mapper>

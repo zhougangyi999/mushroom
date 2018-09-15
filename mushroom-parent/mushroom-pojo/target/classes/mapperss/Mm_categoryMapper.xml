@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_categoryMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_category">
+    <id column="categoryId" jdbcType="INTEGER" property="categoryid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    categoryId, name, parentId, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_category
+    where categoryId = #{categoryid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_category
+    where categoryId = #{categoryid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_category">
+    insert into mm_category (categoryId, name, parentId, 
+      reserved1, reserved2)
+    values (#{categoryid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_category">
+    insert into mm_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categoryid != null">
+        categoryId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categoryid != null">
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_category">
+    update mm_category
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where categoryId = #{categoryid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_category">
+    update mm_category
+    set name = #{name,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where categoryId = #{categoryid,jdbcType=INTEGER}
+  </update>
+</mapper>

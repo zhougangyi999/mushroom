@@ -1,0 +1,146 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>	
+		<meta charset="UTF-8">
+		<title>卖家中心头部</title>
+		<link rel="icon" href="../statics/img/login/logo_ioc.png" type="image/x-icon">
+		<link type="text/css" rel="stylesheet" href="../statics/merchant/css/public.css" />
+		<link type="text/css" rel="stylesheet" href="../statics/merchant/css/Seller_Center_header.css" />
+		<link type="text/css" rel="stylesheet"  href="../statics/merchant/css/iconfont.css"/>
+	</head>
+	<body>
+		<!--
+        	作者：offline
+        	时间：2017-11-14
+        	描述：卖家中心头部
+        -->
+		<header>
+			<div class="footer_nav">
+				<div class="width">
+					<div class="footer_nav_left">
+						<ul>
+							<li>
+								<a href="">
+							   <i style=" color: red; position:  relative; bottom: -1px;  font-size: 14px;"
+										 class="iconfont icon-31shouye" ></i>
+								  潮时尚首页
+						    </a>
+							</li>
+							<li>
+								<!--
+	                            	作者：offline
+	                            	时间：2017-11-14
+	                            	描述：用户名字
+	                            -->
+								<a href="JavaScript:void(0)" class="shopName" ><label th:text="${shop.applyname}"></label></a>,
+								<a href="JavaScript:void(0)" >退出</a>
+							</li>
+							
+							<li>
+								<a href="">
+								     站内信
+						    	</a>
+							</li>
+							<!--<li>
+								<div class="massege">
+								</div>
+								  <a href="">
+									<i class="iconfont icon-31pinglun" ></i>
+								         消息
+						    	 </a>
+						    	 <div class="footer_nav_left_head">   
+						    	 	<h2 class="J_Tmsg_Panel_Title tmsg_panel_title">未读新消息</h2>   
+						    	 	<a>全部设为已读</a>
+						    	 </div>
+							</li>-->
+						</ul>
+					</div>
+					<div class="footer_nav_right">
+						<ul>
+							<li>
+								<a href="seller_center_main.jsp">
+									商家中心
+								</a>
+							</li>
+							<!--<li>
+								<a href="">
+									我的天猫
+								
+								    <i class="iconfont icon-31xiala" style="font-size:8px;padding-left: 5px;"></i>
+								</a>
+								<div class="line_border"></div>
+							</li>-->
+							<!--<li>
+								-->
+								<!--<a href="">
+									商家地图 
+								</a>-->
+							    <!--<div class="footer_nav_right_hide_div" style="width: 104px;">
+							    	<ul>							    	
+							    		<li><a href="">已卖出的商品</a></li>
+							    		<li><a href="">出售中的宝贝</a></li>
+							    	</ul>
+							    </div>-->
+							<!--</li>-->
+							<li>
+								<a href="">
+									<i style=" color: red;position:  relative; bottom: -1px;  font-size: 14px;"
+										 class="iconfont icon-shouji" ></i>
+									千牛手机版
+								   
+								</a>
+								<!--<div class="footer_nav_right_hide_div">
+							    	<ul>
+							    		<li><a href="">我的服务</a></li>
+							    		<li><a href="">我的课程</a></li>
+							    	</ul>
+							   </div>-->
+							</li>
+							<!--<li>
+								<a href="">
+									联系客服
+								</a>
+							</li>-->
+							<!--<li>
+								<a href="">
+								<i class="iconfont icon-liebiao"
+									style=" color: red; line-height:36px ; font-size: 14px;"></i>
+								
+									商家地图
+								</a>
+
+								<div id="">
+									
+								</div>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="header_bottom">
+				<div class="width" style="height: 100%;">
+					<div class="header_bottom_divings" >
+						<div class="header_bottom_div_imgBox">
+							<img src="../statics/merchant/img/images/Seller_Center_header/TB11ojWRXXXXXafaFXXXXXXXXXX-190-27.png"/>
+						</div>
+						<h2 ><span class="header_bottom_log">商家中心</span></h2> 
+					</div>
+					<!--搜索框-->
+					<div  class="header_bottom_frI " >
+	                    <form action="#" method="post">
+	                    	<!--<label  style="visibility: visible; display: none;">
+	                    		搜索 天猫 商品/品牌/店铺
+	                    	</label>-->
+	                        <input name="" type="text" value="" placeholder="服务/商品"/>
+	                        <!--<label  class="s-combobox-placeholder" style="color: rgb(102, 102, 102); visibility: visible;">
+	                        	搜索 天猫 商品/品牌/店铺
+	                        </label>-->
+	                        <input  name=" " type="submit" value="搜索"/>
+	                    </form>
+		            </div>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>

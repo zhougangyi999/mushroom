@@ -1,0 +1,606 @@
+.title {
+	background-color: #d5e4fa;
+	color: #fff;
+	line-height: 38px;
+	padding-left: 10px;
+}
+
+* {
+	font-size: 120%;
+	font-weight: 700;
+	font: 12px/1.5 Arial;
+}
+
+#commit.floatbar {
+    position: fixed;
+    z-index: 100000000000;
+    top: 100%;
+    margin-top: -56px;
+   
+    background-color: #f6f6f6;
+    border-top: 1px solid #bbb;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+ button {
+    align-items: flex-start;
+    text-align: center!important;}
+
+#main .rootStruct {
+    background: 0 0;
+    border: none;
+    margin: 10px 0;
+}
+
+#commit {
+    padding: 10px 0 30px;
+}
+#commit button.blue {
+    width: 100px;
+}
+
+#commit button {
+    height: 36px;
+    letter-spacing: 3px;
+}
+.btn.blue, button.blue {
+    background: #09f;
+    color: #fff;
+    border: none;
+}
+.btn, button {
+    text-decoration: none!important;
+    height: 28px;
+    display: inline-block;
+    line-height: 28px;
+    cursor: pointer;
+    color: #333;
+    padding: 0 15px;
+    border-radius: 2px;
+    border: 1px solid #C9C9C9;
+    background-color: #F2F2F2;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    font-family: inherit;
+}
+
+
+
+
+
+.title_h1 {
+	font-size: 120%;
+	font-weight: 400;
+	padding-left: 30px;
+}
+
+#catPath {
+	color: #666;
+	font-size: 115%;
+	margin: 5px 0 10px;
+	padding-left: 30px;
+}
+
+.bar {
+	text-align: right;
+	vertical-align: top;
+	min-width: 100px;
+}
+
+#main {
+	color: #333;
+	margin: 10px auto;
+	padding-right: 30px;
+
+	border: 1px solid  #d5e4fa;
+}
+
+.bar em {
+	position: relative;
+	color: #f60;
+	padding-right: 2px;
+	font-weight: 700;
+	top: 2px;
+}
+
+.title-box .inputbox input {
+	width: 735px!important;
+}
+
+.info.block {
+	line-height: 26px;
+	display: inline-block;
+	color: #767676;
+}
+
+.props {
+	background-color: #f9f9f9;
+	border: 1px solid #eee;
+	padding: 5px;
+	margin-bottom: 8px;
+}
+
+.props>table.props-table {
+	width: 50%;
+	float: left;
+}
+
+.props>table>tbody>tr>td:first-child {
+	text-align: right;
+	vertical-align: top;
+	padding-top: 5px;
+	width: 100px;
+}
+
+.multimage-wrap .image-list li {
+	border: 1px solid #cdcdcd;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	height: 100px;
+	width: 100px;
+	margin: 0 10px 0 0;
+	overflow: hidden;
+}
+#picpath{
+	float:left;
+	top: -100px;
+}
+
+.price-wrap .price-table {
+	width: 540px;
+}
+
+.price-wrap .price-table thead th {
+	background-color: #d5e4fa;
+	border: 1px solid #d7d7d7;
+	white-space: nowrap;
+	font-weight: 400;
+}
+
+.price-wrap .price-table tbody td {
+	border: 1px solid #d7d7d7;
+	white-space: nowrap;
+}
+
+.price-wrap .price-table tbody td .texbox .inputbox input {
+	border: 0;
+	width: 100%;
+	text-align: center;
+	background: #fff;
+}
+
+.price-wrap .price-table thead th em {
+	color: red;
+}
+
+.ks-editor-tools {
+	background-color: #f5f7fa;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8fafd', endColorstr='#f2f5f8');
+	border-bottom: 1px solid #ced5e0;
+	zoom: 1;
+}
+
+textarea {
+	border: 1px solid #C9C9C9;
+	resize: vertical;
+	background-color: #fff;
+	color: #000;
+	font-size: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	box-shadow: none;
+}
+
+.struct>table>tbody>tr>td {
+	padding: 2px 5px;
+	line-height: 24px;
+}
+
+.ks-editor-textarea {
+	border-width: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.pc-desc .ks-editor-status {
+	height: 45px;
+	background:#d5e4fa ;
+}
+
+.ks-editor-status {
+	background-color: #ebeef2;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e7e9ed', endColorstr='#f1f4f7');
+	border-top: 1px solid #ced5e0;
+	height: 22px;
+	padding: 2px 0;
+
+	position: relative;
+}
+
+.pc-desc .ks-editor-button.ks-editor-draft-save-btn.ks-inline-block {
+	background-image: none;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #999;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+
+.ks-editor-button {
+	display: inline-block;
+	margin: 2px;
+	border-radius: 2px;
+	padding: 3px 18px;
+	border: 1px solid #c1c8d1;
+	color: black;
+	vertical-align: middle;
+	white-space: nowrap;
+	box-shadow: 0 1px 1px #E4E4E4;
+	background-color: #e8ebee;
+	background-repeat: repeat-x;
+	background-position: 0 -751px;
+}
+
+.pc-desc .ks-editor-draft {
+	bottom: 23px;
+	font-size: 100%;
+}
+
+.ks-editor-button_sevar {
+	float: right;
+}
+
+.ks-editor-resizer {
+	height: 10px;
+	width: 10px;
+	font-size: 0;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	cursor: auto;
+	background-position: -57px 0;
+}
+
+.pc-desc .ks-editor-resizer {
+	background-position: -67px 0;
+}
+
+textarea,
+select,
+button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+}
+
+.ks-editor-tools {
+	border-bottom: 1px solid #ced5e0;
+	zoom: 1;
+	background-color: #f5f7fa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8fafd), to(#f2f5f8));
+	background: -moz-linear-gradient(center top, #f8fafd, #f2f5f8) repeat scroll 0 0 transparent;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8fafd', endColorstr='#f2f5f8');
+}
+
+.ks-editor {
+	background: white;
+	border: 1px solid #ced5e0;
+	font-size: 13px;
+	line-height: 1.2;
+	_font-size: 12px;
+}
+#descForPC{
+	position: relative;
+}
+.ks-editor-toolbar-sourceArea, .ks-editor-toolbar-preview, .ks-editor-toolbar-bold, .ks-editor-toolbar-italic, .ks-editor-toolbar-underline, .ks-editor-toolbar-strikeThrough, .ks-editor-toolbar-orderedList, .ks-editor-toolbar-unorderedList, .ks-editor-toolbar-outdent, .ks-editor-toolbar-indent, .ks-editor-toolbar-justifyLeft, .ks-editor-toolbar-justifyCenter, .ks-editor-toolbar-justifyRight, .ks-editor-toolbar-image, .ks-editor-toolbar-backColor, .ks-editor-toolbar-foreColor, .ks-editor-toolbar-foreColor, .ks-editor-toolbar-undo, .ks-editor-toolbar-redo, .ks-editor-toolbar-table, .ks-editor-toolbar-template, .ks-editor-toolbar-maximize, .ks-editor-toolbar-flash, .ks-editor-toolbar-link, .ks-editor-toolbar-music, .ks-editor-toolbar-video, .ks-editor-toolbar-smiley, .ks-editor-toolbar-removeFormat, .ks-editor-toolbar-pageBreak, .ks-editor-toolbar-code, .ks-editor-toolbar-restore, .ks-editor-button, .ks-editor-button-hover, .ks-editor-button:hover, .ks-editor-draft-save, .ks-editor-draft-help, .ks-editor-dialog-header, .ks-editor-dialog-close-x, .ks-editor-resizer, .ks-editor-menu-button-dropdown, .ks-editor-big-menu-button-dropdown, .ks-editor-big-menu-button-dropdown-inner, .ks-editor-toolbar-xiamiMusic, .ks-editor-big-menu-button-dropdown {
+    background-image: url(../images/editor-sprite.png) ;
+    background-repeat: no-repeat;
+}
+input,textarea{
+	resize:none;
+	outline: none;
+}
+.ks-editor-toolbar-item {
+    display: block;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -999999px;
+    vertical-align: middle;
+    width: 16px;
+    margin: 2px 4px;
+}
+.ks-editor-tools .ks-editor-menu-button {
+    margin: 0 2px;
+}
+
+.ks-editor-tools .ks-editor-button {
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+.ks-editor-menu-button, .ks-editor-big-select {
+    display: inline-block;
+    border: 1px solid #c1c8d1;
+    height: 20px;
+    margin: 2px 0;
+    color: #000;
+    border-radius: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+}
+.ks-editor-toolbar-sourceArea {
+    background-position: 0 -376px;
+}
+.ks-editor-toolbar-undo {
+    background-position: 0 -711px;
+}
+.ks-editor-toolbar-preview{
+   
+    background-position: 0 -88px;
+}
+.ks-editor-toolbar-redo {
+    height: 15px;
+    margin: 3px 4px;
+    background-position: 0 -736px;
+}
+.ks-editor-toolbar-removeFormat {
+    background-position: 0 -636px;
+}
+.ks-editor-toolbar-bold {
+    background-position: 0 -402px;
+}
+.ks-editor-toolbar-italic {
+    background-position: 0 -116px;
+}
+.ks-editor-toolbar-underline {
+    height: 11px;
+    margin-top: 5px;
+    margin-bottom: 4px;
+    width: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
+    background-position: -57px -20px;
+}
+.ks-editor-toolbar-strikeThrough {
+    height: 11px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    background-position: 0 -700px;
+}
+.fl{
+	color: #000000;
+	line-height: 40px;
+	font-size: 18px;
+}
+.ks-editor-menu-button-dropdown, .ks-editor-big-menu-button-dropdown, .ks-editor-big-menu-button-dropdown-inner {
+    width: 7px;
+    height: 3px;
+    vertical-align: middle;
+    font-size: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 10px;
+    margin-right: 5px;
+    background-color: transparent;
+    background-position: 0 -53px;
+}
+.ks-editor-toolbar-foreColor {
+    background-position: 0 -66px;
+}
+.ks-editor-button {
+    display: inline-block;
+    margin: 2px;
+    border-radius: 2px;
+    padding: 3px 18px;
+    border: 1px solid #c1c8d1;
+    color: black;
+    vertical-align: middle;
+    white-space: nowrap;
+    box-shadow: 0 1px 1px #E4E4E4;
+    background-color: #e8ebee;
+    background-repeat: repeat-x;
+    background-position: 0 -751px;
+}
+
+.ks-editor-toolbar-color-indicator {
+    height: 4px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    width: 20px;
+    font-size: 0;
+    background-color: rgb(204, 0, 0);
+    overflow: hidden;
+}
+.ks-editor-toolbar-backColorArrow, .ks-editor-toolbar-foreColorArrow {
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    _border-color: tomato;
+    _filter: chroma(color=#ff6347);
+    border-top-color: #000000;
+    margin: 8px 2px;
+}
+
+.ks-editor-toolbar-item {
+    display: block;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -999999px;
+    vertical-align: middle;
+    width: 16px;
+    margin: 2px 4px;
+}
+.toolbar-foreColorArrow {
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+
+    border-top-color: #000000;
+    margin: 8px 2px;
+}
+
+.ks-editor-toolbar-unorderedList {
+    margin-right: 0;
+    background-position: 0 -194px;
+}
+.ks-editor-toolbar-orderedList {
+    margin-right: 0;
+    background-position: 0 -168px;
+}
+.ks-editor-toolbar-indent {
+    background-position: 0 -246px;
+}
+.ks-editor-toolbar-outdent {
+    background-position: 0 -220px;
+}
+.ks-editor-toolbar-justifyLeft {
+    background-position: 0 -272px;
+}
+.ks-editor-toolbar-justifyCenter {
+    background-position: 0 -298px;
+}
+.ks-editor-toolbar-justifyRight {
+    background-position: 0 -324px; 
+}
+.ks-editor-toolbar-image {
+    background-position: 0 -350px;
+}
+#descForPC {
+    background: white;
+    border: 1px solid #ced5e0;
+    font-size: 13px;
+    line-height: 1.2;
+}
+.multimage-wrap .image-list li .info {
+    display: inline-block;
+    position: absolute;
+    background: rgba(213,228,250,.6);
+    color: #0000;
+    left: 0;
+    top: 0;
+    z-index: 7;
+    width: 100%;
+    text-align: center;
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#b2404040, endColorstr=#b2404040)";
+}
+.multimage-wrap .image-list li .info em {
+    color: #f60;
+}
+.list li .preview .upload-tip {
+    display: none;
+    color: #d7d7d7;
+    cursor: pointer;
+    font-size: 42px;
+    position: relative;
+    top: 5px;
+}
+.operate{
+	line-height: 135px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	opacity: 0.4;
+	overflow: hidden;
+}
+
+/*属性*/
+#att{
+	width: 735px;
+	padding: 20px 30px;
+	padding-right: 0px;
+	background-color: #F9F9F9;
+}
+#att div{
+	width: 250px;
+	height: 30px;
+	margin-right: 90px;
+	display: inline-block;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+#att p{
+	width: 70px;
+	height: 20px;
+	overflow: hidden;
+	float: left;
+}
+.att{
+	width:170px;
+	height: 20px;
+	border:1px solid #999999;
+	float: left;
+	
+}
+
+
+/*颜色尺码*/
+#attcolor{
+	width: 735px;
+	padding: 20px 30px;
+	padding-right: 0px;
+	background-color: #F9F9F9;
+	overflow: hidden;
+}
+
+#color{
+	width:680px;
+}
+#size{
+	width:680px;
+}
+.attcolor{
+	width:70px;
+	float: left;
+	margin-bottom: 10px;
+}
+.attsiza{
+	width:70px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+div {
+	width: 100%;
+}
+#colorSize tr{
+	border: 1px solid #CCCCCC;
+}
+#colorSize td{
+	width: 150px;
+	height: 25px;
+	line-height: 25px;
+	text-align:center;
+	border: 1px solid #CCCCCC;
+	float: left;
+}
+
+
+
+/*图片*/
+.picpath{
+	border: 1px solid;
+}
+
+
+
+
+
+
+

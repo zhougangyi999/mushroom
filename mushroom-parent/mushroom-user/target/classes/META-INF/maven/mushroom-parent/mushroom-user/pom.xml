@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>mushroom-parent</groupId>
+    <artifactId>mushroom-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>mushroom-user</artifactId>
+   <!-- 初始化框架的版本号 -->
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target> 
+     <shiro-core.version>1.2.3</shiro-core.version>
+    <shiro-spring.version>1.2.3</shiro-spring.version>
+  </properties>
+  <dependencies>
+   <!--  cache 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+          
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>-->
+     
+   <!-- shiro -->
+
+
+
+
+
+
+    
+    
+    
+	<dependency>
+	    <groupId>org.apache.shiro</groupId>
+	    <artifactId>shiro-core</artifactId>
+	    <version>${shiro-core.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.shiro</groupId>
+	    <artifactId>shiro-spring</artifactId>
+	    <version>1.4.0</version>
+	</dependency>
+	<!-- junit测试 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version><!--$NO-MVN-MAN-VER$-->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.18</version><!--$NO-MVN-MAN-VER$-->
+    </dependency>
+
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-dbcp2</artifactId>
+	    <version>2.1.1</version><!--$NO-MVN-MAN-VER$-->
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>3.4</version><!--$NO-MVN-MAN-VER$-->
+	</dependency>
+	  <dependency>
+	    <groupId>net.gplatform</groupId>
+	    <artifactId>Sdk4J</artifactId>
+	    <version>2.0</version>
+	</dependency>
+  </dependencies>
+  
+  <build/>
+</project>

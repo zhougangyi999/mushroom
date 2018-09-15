@@ -1,0 +1,250 @@
+/******************商品类别模块选择****************************/
+.fixed_price_top{
+	line-height: 36px;
+	border-bottom: #9cd8fe 1px solid;
+	position: relative;
+	z-index: 0;
+	padding-left: 100px;
+}
+.fixed_price_top li{
+	cursor: pointer;
+}
+.fixed_price_top_box{
+	z-index: 2;
+	bottom: -1px;
+	position: relative;
+	float: left;
+
+	width: 110px;
+	text-align: center;
+    border: #9cd8fe 1px solid;
+    border-bottom: 0;
+	background: #FFFFFF;
+	
+}
+/*.fixed_price_top_auction{
+	line-height: 22px;
+	
+	border: #9cd8fe 1px solid;
+}*/
+/*****/
+.main{
+	width: 950px!important;
+    margin: 0 auto!important;
+}
+ 
+.li_div{
+	width: 500px;
+	margin: 15px  auto;
+}
+.cate-container{
+    margin-top: 23px;
+    height: 300px;
+    overflow: hidden;
+    width: 950px;
+    position: relative;
+    border: 1px solid #d5e4fa;
+    background-color: #F5F9FF;
+}
+.cate-aside{
+	padding: 5px 15px 0 25px;
+    background-color: #fff;
+    height: 295px;
+    position: relative;
+    overflow: hidden;
+}
+.cate-aside_div{
+	height: 100%;
+	
+	float: left;
+	width: 725PX;
+    padding-top: 10px;
+    border-right: 1px solid #d5e4fa;
+    width: 725px;
+}
+.cate-main{
+	float: left;
+    width: 100%;
+    height: 100%;
+    padding: 0 24px;
+    
+    overflow: hidden;
+}
+.cc-cbox {
+	width: 100%;
+	height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.cc-list>li{
+    float: left;
+    position: relative;
+    width: 223px;
+    height: 100%;
+    font-size: 12PX;
+    border-right: 2px solid #d5e4fa;
+    background: #fff;
+    
+}
+.cc-list{ 
+	padding-left:1.1PX;
+	border-left: 1px solid #d5e4fa;
+    border-right: 1px solid #d5e4fa;
+
+    border-top: 1px solid #d5e4fa;
+	height: 100%;
+	}
+
+.cc-cbox-filter label {
+    color: #AAA;
+    font-size: 12px;
+    padding-left: 29px;
+    position: absolute;
+    top:3px;
+    z-index: 0;
+}
+.cc-cbox-filter {
+    padding: 0px 3px;
+    background: #f5f9ff;
+    position: absolute;
+    top: 0;
+     width: 206.5px;
+    z-index: 10;
+}
+.cc-cbox-filter input{
+	background-color: #fff;
+    background-position: -239px -89px;
+    border: 1px solid #D9E5F6;
+    height: 20px;
+    position: relative;
+    
+    z-index: 2;
+    padding-left: 23px;
+	background: url(../img/sos.png)  no-repeat;
+}
+ .cc-tree-group {
+    padding: 3px 0;
+    border-bottom: 1px dashed #ccc;
+    zoom: 1;
+    float: none;
+}   
+.cc-cbox_ul{
+	line-height: 20px;
+    padding: 0 16px 0 14px;
+    margin-top: 26px;
+}
+.cc-tree-ck{
+	cursor: pointer;
+	color: #36c;
+    background:url(../img/T13PGlXfdfXXXXXXXX-261-188.png)  no-repeat;
+ 	  background-position:-130px -107px ;
+}
+.cc-tree-ckup{
+	 background-position:-130px -121px;
+	
+   
+}
+.cc-tree-group-intm>li{
+	cursor: pointer;
+	float: none;
+	background:url(../img/T13PGlXfdfXXXXXXXX-261-188.png) -80px -137px no-repeat;
+}
+.cate-path {
+    color: #444;
+    padding-top: 9px;
+    position: relative;
+    line-height: 22px;
+    height: 54px;
+  }
+  .cate-path_selecr{
+  	font-size: 12PX;
+  	background-color: #FFFAF2;
+    border: 1px solid #FEDBAB;
+    padding: 4px 27px;
+  }
+.cate-path .up {
+    height: 7px;
+    left: 43px;
+    top: 3px;
+    width: 13px;
+    position: absolute;
+    background:url(../img/T13PGlXfdfXXXXXXXX-261-188.png) -80px -137px no-repeat;
+    background-position: -223px -60px;
+}
+.cateBottom {
+    text-align: center;
+    padding: 5px 0 24px;
+}
+.cateBtn button {
+    padding: 0;
+    width: 276px;
+    height: 37px;
+    background-color: #4096e7;
+    background-image: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #FFF;
+    padding-right: 19px;
+    background-position: right -30px;
+  }
+  .agreement {
+    border: 1px solid #CCC;
+    color: gray;
+    font-size: 10px;
+    height: 100px;
+    overflow: auto;
+    padding: 0 9px;
+    margin-bottom: 10px;
+}
+.agreement .notice {
+    border-bottom: 1px dashed #ccc;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+
+element.style {
+    position: absolute;
+    display: block;
+    left: 372px;
+    top: 674px;
+}
+.yui-calcontainer {
+    position: relative;
+    padding: 5px;
+    background-color: #F7F9FB;
+    border: 1px solid #7B9EBD;
+    float: left;
+}
+
+
+.figure {
+    background-image: url(//img.alicdn.com/tps/i4/T1tETNXadfXXab5o.r-110-126.png);
+}
+ .figure {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 110px;
+    height: 126px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-color: transparent;
+    opacity: .25;
+    filter: alpha(opacity=25);
+}
+
+.hint-content {
+    width: 110px;
+    text-align: center;
+    margin: 70px auto 0;
+}

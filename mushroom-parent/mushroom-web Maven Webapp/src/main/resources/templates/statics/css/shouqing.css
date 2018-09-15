@@ -1,0 +1,14 @@
+#nav .nav-title .one{
+	border-bottom: none;
+}
+#nav .nav-title .two{
+	border-bottom: 3px solid #FFFFFF;
+}
+.shoping-list .lazy{
+	display: block;
+	height: 190px;
+	width: 180px;
+	margin: 13px;
+	background-size: cover;
+	overflow: hidden;
+}

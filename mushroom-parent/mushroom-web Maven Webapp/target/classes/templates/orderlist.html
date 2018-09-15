@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html>
+ 
+  
+  <head>
+<meta charset="UTF-8">
+<title>个人中心</title>
+<link rel="icon" href="${pageContext.request.contextPath }/statics/img/login/logo_ioc.png" type="image/x-icon">
+<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/jquery-1.8.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/statics/js/orderlist.js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/headimgset/index.css-8cb6718d.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/myjubao/index.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/myjubao/indexs.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/myjubao/indexss.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/passwordset/index.css-64380b21.css" />
+<!-- 分页 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/passwordset/layui.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/wangweicss/shopyouhui/index.css-f354c62e.css" />
+</head>
+<body class="media_screen_960">
+	
+	<script language="javascript" src="${pageContext.request.contextPath }/statics/js/jquery-1.8.3.min.js"></script>
+	<script language="javascript">
+			$(function() {
+				updateEndTime();
+			});
+			//倒计时函数
+			function updateEndTime() {
+				var date = new Date();
+				$(".settime").each(function(i) {
+					var endDate = this.getAttribute("endTime"); //结束时间字符串
+					//转换为时间日期类型
+					var endTime = new Date(endDate); //结束时间毫秒数
+					var lag = (endTime - date) / 1000; //当前时间和结束时间之间的秒数
+					lag=lag+1800;
+					if(lag > 0) {
+						var seconds = Math.floor(lag % 60);
+						var minutes = Math.floor((lag / 60) % 60);
+						var hours = Math.floor((lag / 3600) % 24);
+						var day = Math.floor((lag / 3600) / 24);
+						hours = checkTime(hours);
+						minutes = checkTime(minutes);
+						seconds = checkTime(seconds);
+
+						$(this).html("还剩"+minutes + ":" + seconds );
+					} else
+						$(this).html("倒计时结束啦！");
+				});
+				function checkTime(i) { //将0-9的数字前面加上0，例1变为01
+					if(i < 10) {
+						i = "0" + i;
+					}
+					return i;
+				}
+				setTimeout("updateEndTime()", 1000);
+			}
+		</script>
+		<style>
+			.settime{
+				color: red;
+			}
+		</style>
+	<div id="body_wrap">
+		<div class="mu_wrap wrap clearfix">
+			<div id="navListWrap">
+				<div class="mu_nav_wrap">
+					<div class="mu_nav_info">
+						<div class="mu_nav_info_avatar">
+							<div class="mu_nav_info_avatar_mk"></div>
+							<!-- ${pageContext.request.contextPath }/statics/imgName/ -->
+    						<img id='img1' src="${user.headPortraitSrc} "width="100" height="100"> 
+							<img  id='img2' src="${pageContext.request.contextPath }/statics/imgName/${user.headPortraitSrc} "
+											width="100" height="100">
+						</div>
+						
+						<p class="mu_nav_info_uname">${user.name}</p>
+					</div>
+					<div class="mu_nav mu_expand">
+						<div class="mu_title">我的订单</div>
+						<ul class="mu_nav_item">
+					
+							<c:if test="${status==0}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=0}">
+							<li >
+							</c:if>
+							<a
+								href="${pageContext.request.contextPath }/Orders/orderlist.html?id=0&currPageNo=0">全部订单</a>
+							</li>
+							<c:if test="${status==1}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=1}">
+							<li >
+							</c:if>
+							<a
+								href="${pageContext.request.contextPath}/Orders/orderlist.html?id=1&currPageNo=0">待付款</a>
+							</li>
+							<c:if test="${status==2}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=2}">
+							<li >
+							</c:if>
+							<a
+								href="${pageContext.request.contextPath}/Orders/orderlist.html?id=2&currPageNo=0">待发货</a>
+							</li>
+							<c:if test="${status==3}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=3}">
+							<li >
+							</c:if><a
+								href="${pageContext.request.contextPath}/Orders/orderlist.html?id=3&currPageNo=0">待收货</a>
+							</li>
+							<c:if test="${status==4}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=4}">
+							<li >
+							</c:if><a
+								href="${pageContext.request.contextPath}/Orders/orderlist.html?id=4&currPageNo=0">待评价</a>
+							</li>
+							<c:if test="${status==9}">
+							<li class="c">
+							</c:if>
+							<c:if test="${status!=9}">
+							<li >
+							</c:if><a
+								href="${pageContext.request.contextPath}/Orders/orderlist.html?id=9&currPageNo=0">退货退款</a>
+							</li>
+							<!-- 新增，stage=8 回收站订单 -->
+							<li><a href="JavaScript:void(0)">订单回收站</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">
+						    <li   id="myqb"><a href="javascripty:;">我的钱包</a></li>
+						</div>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">优惠特权</div>
+						<ul class="mu_nav_item" id="JCouponList">
+							<li><a href="#">会员中心</a></li>
+							<li><a href="#">店铺优惠券</a></li>
+							<li><a href="#">全场优惠券</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">地址设置</div>
+						<ul class="mu_nav_item">
+							<li><a href="#">地址管理</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">安全设置</div>
+						<ul class="mu_nav_item">
+							<li><a href="#">设置密码</a></li>
+							<li><a href="#">绑定手机</a></li>
+							<li><a href="#">数字证书</a></li>
+							<li><a href="#">实名认证</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav">
+						<div class="mu_title">维权管理</div>
+						<ul class="mu_nav_item">
+							<li><a href="#">投诉管理</a></li>
+							<li><a href="#">举报管理</a></li>
+						</ul>
+					</div>
+					<div class="mu_nav pb40">
+						<div class="mu_title">帐号设置</div>
+						<ul class="mu_nav_item">
+							<li><a href="#">基本信息</a></li>
+							<li><a href="#">修改头像</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--订单查询-->
+			<div id="dingdanchaxun" class="his" style="display: none;">
+				<div class="mu_content_wrap">
+					<div class="order-title">
+						<ul class="order-title-column clearfix">
+							<li class="goods">商品</li>
+							<li class="price">单价(元)</li>
+							<li class="quantity">数量</li>
+							<li class="aftersale">售后</li>
+							<li class="total">实付款(元)</li>
+							<li class="status">交易状态</li>
+							<li class="other">操作</li>
+						</ul>
+					</div>
+					<div id="orderWrap">
+						<div class="order-list">
+							<!-- ******************************************** 订单循环************************************ -->
+							<c:forEach var="listconOrde" items="${listconOrde}">
+								<!-- ********************************************未付款  合并************************************ -->
+								<c:if test="${listconOrde.stats!=-1}">
+									<c:if test="${listconOrde.stats==1}">
+							           <%--   合并订单号${listconOrde.order_num} --%>
+							          <div class="order-section finished" style="position: relative;">
+											<table class="order-table">
+												<tbody>
+													<c:forEach var="ordes" items="${listconOrde.orders}">
+														<c:forEach var="OrderItem" items="${ordes.orderItem}">
+															<tr class="order-table-header">
+																<td colspan="7">
+																	<div class="order-info fl">
+																		<span class="no"> 订单编号： <span class="order_num">
+																				${ordes.order_num}</span>
+																		</span> <span class="deal-time"> 成交时间：<f:formatDate
+																				value="${listconOrde.creation_time}" type="both" />
+																		
+																		</a>
+																	</div> <a href="javascript:;" class="mogutalk_btn"
+																	data-bid="1172ug12#28"> <span
+																		class="icon icon-contact">联系商家</span>
+																</a>
+																</td>
+															</tr>
+															<tr class="order-table-item last">
+																<td class="goods"><a class="pic"
+																	href="javascript:void(0)" title="查看宝贝详情"
+																	hidefocus="true" target="_blank"> <img
+																		src="${OrderItem.order_img}" alt="查看宝贝详情" width="70">
+																</a>
+																	<div class="desc">
+																		<p>
+																			<a href="javascript:void(0)" target="_blank">${OrderItem.name}</a>
+																			<a class="snapshot" href="javascript:void(0)"
+																				target="_blank">[交易快照]</a>
+																		</p>
+																		<p>颜色：${OrderItem.reserved1}</p>
+																		<p>尺码：${OrderItem.order_num}</p>
+																		<ul class="ui-tags-list clearfix">
+																			<li class="ui-tags-item"><img class="ui-tag-pic"
+																				src="" alt="">
+																				<div class="ui-tag-text ui-hide">
+																					<a class="ui-tag-link" href="javascript:void(0)">7天无理由退货</a>
+																					<span class="ui-icon-arrow"></span>
+																				</div></li>
+																			<li class="ui-tags-item"><img class="ui-tag-pic"
+																				src="" alt="">
+																				<div class="ui-tag-text ui-hide">
+																					<a class="ui-tag-link" href="javascript:void(0)">72小时发货</a>
+																					<span class="ui-icon-arrow"></span>
+																				</div></li>
+																		</ul>
+																	</div></td>
+																<td class="price">
+																	<p class="price-old">${OrderItem.price_old}</p>
+																	<p>${ordes.total}</p>
+																</td>
+																<td class="quantity">${OrderItem.item_num}</td>
+																<td class="aftersale"></td>
+																<td class="total" rowspan="1">
+																	<p class="total-price">￥ ${ordes.total}</p>
+																	<p>
+																		<span>(全国包邮)</span>
+																	</p>
+																</td>
+																<td class="status" rowspan="1">
+																	<!-- *****************订单状态**************** -->
+																	 <c:if
+																		test="${listconOrde.stats==1}">
+																		<p class="">待付款</p>
+																	</c:if> <c:if test="${listconOrde.stats==2}">
+																		<p class="">待发货</p>
+																	</c:if> <c:if test="${listconOrde.stats==3}">
+																		<p class="">待收货</p>
+																	</c:if> <c:if test="${listconOrde.stats==4}">
+																		<p class="">待评价</p>
+																	</c:if> <c:if test="${listconOrde.stats==5}">
+																		<p class="">售后待审核</p>
+																	</c:if> <c:if test="${listconOrde.stats==6}">
+																		<p class="">待退货</p>
+																	</c:if> <c:if test="${listconOrde.stats==7}">
+																		<p class="">待退款</p>
+																	</c:if> <c:if test="${listconOrde.stats==8}">
+																		<p class="">交易成功</p>
+																	</c:if> <c:if test="${listconOrde.stats==9}">
+																		<p class="">退款成功</p>
+																	</c:if><c:if test="${listconOrde.stats==10}">
+																		<p class="">订单取消</p>
+																	</c:if>  <c:if test="${listconOrde.stats==-2}">
+																		<p class="">卖家删除</p>
+																	</c:if> <c:if test="${listconOrde.stats==-1}">
+																		<p class="">买家删除</p>
+																	</c:if> <!-- *****************订单状态**************** --> <a
+																	href="${pageContext.request.contextPath }/Orders/xiangqing?id=${ordes.orderId}"
+																	class="order-link go-detail-link" target="_blank">订单详情</a>
+																</td>
+																<td class="other" rowspan="1">
+																	<ul>
+																		<li><c:if test="${listconOrde.stats==10}">
+																				<a class="order-link order-remove" id="shanchu"
+																					href="javascript:void(0)">删除订单</a>
+																				<div id="shanchus" style="display: none;">${pageContext.request.contextPath}/Orders/delectOrder.html?id=${listconOrde.order_num}</div>
+																			
+																			</c:if>
+																			<c:if test="${listconOrde.stats==2}">
+																				<a class="order-link refund" 
+																					href="javascript:void(0)" style="color:red;margin-top:50px;">退款</a>
+																			</c:if>
+																		</li>
+																			
+		
+																	</ul>
+																</td>
+															</tr>
+															
+														</c:forEach>
+													</c:forEach>
+													<c:if test="${listconOrde.stats==1}">
+													       
+														<tr class="order-table-footer">
+															<td colspan="4">
+																<ul>
+																<li class="settime" endTime="<f:formatDate
+																				value='${listconOrde.creation_time}' type='both' />"></li>
+																	<li><a class="order-link order-cancel" href="${pageContext.request.contextPath}/Orders/quxiaoOrder.html?id=${listconOrde.order_num}" data-payid="77454669173105">取消订单</a>
+																</li>
+															
+																
+																</ul>
+															</td>
+															<td class="total"><span class="sub">总计：</span>￥${listconOrde.total}
+															</td>
+															<td class="status">
+																<p class="wait_pay">等待付款</p>
+															</td>
+															<td class="other"><a
+																class="order-btn primary order-pay" target="_blank"
+																href="${pageContext.request.contextPath}/payment?WIDout_trade_no=${listconOrde.order_num}">付款</a></td>
+														</tr>
+													</c:if>
+												</tbody>
+											</table>
+											<div class="refund_zhe">
+												
+											</div>
+											<div class="refund_info">
+													<h1 style="margin-top:60px;">菇凉!真要取消吗?</h1>
+													<p style="margin-top:10px;">
+														<input type="button" class="yes_cal" value="确定" style="padding:5px 15px"/>
+														<input type="button" class="no_cal" value="取消" style="padding:5px 15px;margin-left:5px;"/>
+													</p>		
+											</div>
+										</div>
+									</c:if>
+									<!-- ********************************************付款  分并************************************ -->
+									<c:if test="${listconOrde.stats!=1}">
+							<%-- 合并订单号${listconOrde.order_num} --%>
+							<c:forEach var="ordes" items="${listconOrde.orders}">
+											<c:forEach var="OrderItem" items="${ordes.orderItem}">
+												<div class="order-section finished" style="position: relative;">
+													<table class="order-table">
+														<tbody>
+															<tr class="order-table-header">
+																<td colspan="7">
+																	<div class="order-info fl">
+																		<span class="no"> 订单编号： <span class="order_num">
+																				${ordes.order_num}</span>
+																		</span> <span class="deal-time"> 成交时间：<f:formatDate
+																				value="${listconOrde.creation_time}" type="both" />
+																		
+																		</a>
+																	</div> <a href="javascript:;" class="mogutalk_btn"
+																	data-bid="1172ug12#28"> <span
+																		class="icon icon-contact">联系商家</span>
+																</a>
+																</td>
+															</tr>
+															<tr class="order-table-item last">
+																<td class="goods"><a class="pic"
+																	href="javascript:void(0)" title="查看宝贝详情"
+																	hidefocus="true" target="_blank"> <img
+																		src="${OrderItem.order_img}" alt="查看宝贝详情" width="70">
+																</a>
+																	<div class="desc">
+																		<p>
+																			<a href="javascript:void(0)" target="_blank">${OrderItem.name}</a>
+																			<a class="snapshot" href="javascript:void(0)"
+																				target="_blank">[交易快照]</a>
+																		</p>
+																		<p>颜色：${OrderItem.reserved1}</p>
+																		<p>尺码：${OrderItem.order_num}</p>
+																		<ul class="ui-tags-list clearfix">
+																			<li class="ui-tags-item"><img class="ui-tag-pic"
+																				src="" alt="">
+																				<div class="ui-tag-text ui-hide">
+																					<a class="ui-tag-link" href="javascript:void(0)">7天无理由退货</a>
+																					<span class="ui-icon-arrow"></span>
+																				</div></li>
+																			<li class="ui-tags-item"><img class="ui-tag-pic"
+																				src="" alt="">
+																				<div class="ui-tag-text ui-hide">
+																					<a class="ui-tag-link" href="javascript:void(0)">72小时发货</a>
+																					<span class="ui-icon-arrow"></span>
+																				</div></li>
+																		</ul>
+																	</div></td>
+																<td class="price">
+																	<p class="price-old">${OrderItem.price_old}</p>
+																	<p>${ordes.total}</p>
+																</td>
+																<td class="quantity">${OrderItem.item_num}</td>
+																<td class="aftersale"></td>
+																<td class="total" rowspan="1">
+																	<p class="total-price">￥ ${ordes.total}</p>
+																	<p>
+																		<span>(全国包邮)</span>
+																	</p>
+																</td>
+																<td class="status" rowspan="1">
+																	<!-- *****************订单状态**************** --> <c:if
+																		test="${listconOrde.stats==1}">
+																		<p class="">待付款</p>
+																	</c:if> <c:if test="${listconOrde.stats==2}">
+																		<p class="">待发货</p>
+																	</c:if> <c:if test="${listconOrde.stats==3}">
+																		<p class="">待收货</p>
+																	</c:if> <c:if test="${listconOrde.stats==4}">
+																		<p class="">待评价</p>
+																	</c:if> <c:if test="${listconOrde.stats==5}">
+																		<p class="">售后待审核</p>
+																	</c:if> <c:if test="${listconOrde.stats==6}">
+																		<p class="">待退货</p>
+																	</c:if> <c:if test="${listconOrde.stats==7}">
+																		<p class="">待退款</p>
+																	</c:if> <c:if test="${listconOrde.stats==8}">
+																		<p class="">交易成功</p>
+																	</c:if> <c:if test="${listconOrde.stats==9}">
+																		<p class="">退款成功</p>
+																	</c:if><c:if test="${listconOrde.stats==10}">
+																		<p class="">订单取消</p>
+																	</c:if> <c:if test="${listconOrde.stats==-2}">
+																		<p class="">卖家删除</p>
+																	</c:if> <c:if test="${listconOrde.stats==-1}">
+																		<p class="">买家删除</p>
+																	</c:if> <!-- *****************订单状态**************** --> <a
+																	href="${pageContext.request.contextPath }/Orders/xiangqing?id=${ordes.orderId}"
+																	class="order-link go-detail-link" target="_blank">订单详情</a>
+																</td>
+																<td class="other" rowspan="1">
+																	<ul>
+																		<li><c:if test="${listconOrde.stats==10}">
+																				<a class="order-link order-remove" id="shanchu"
+																					href="javascript:void(0)">删除订单</a>
+																				<div id="shanchus" style="display: none;">${pageContext.request.contextPath}/Orders/delectOrder.html?id=${listconOrde.order_num}</div>
+																			</c:if>
+																			<c:if test="${listconOrde.stats==2}">
+																				<a class="order-link refund" href="javascript:void(0)" style="color:red;margin-top:50px;">退款</a>
+																			</c:if>
+																		</li>
+																	</ul>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<div class="refund_zhe" >
+														
+													</div>
+													<div class="refund_info">
+															<h1 style="margin-top:60px;">菇凉!真要取消吗?</h1>
+															<p style="margin-top:10px;">
+																<input type="button" class="yes_cal" value="确定" style="padding:5px 15px"/>
+																<input type="button" class="no_cal" value="取消" style="padding:5px 15px;margin-left:5px;"/>
+															</p>	
+													</div>
+												</div>
+											</c:forEach>
+										</c:forEach>
+										<c:if test="${listconOrde.stats==1}">
+											<tr class="order-table-footer">
+												<td colspan="4">
+													<ul>
+													<li class="settime" endTime="<f:formatDate
+															value='${listconOrde.creation_time}' type='both' />"></li>
+														<li><a class="order-link order-cancel" href="${pageContext.request.contextPath}/Orders/quxiaoOrder.html?id=${listconOrde.order_num}" id="qiuxiaodindan">取消订单</a>
+														</li>
+														
+														
+													</ul>
+													
+													
+												</td>
+												<td class="total"><span class="sub">总计：</span>￥${listconOrde.total}
+												</td>
+												<td class="status">
+													<p class="wait_pay">等待付款</p>
+												</td>
+												<td class="other"><a
+													class="order-btn primary order-pay" target="_blank"
+													href="${pageContext.request.contextPath}/payment?WIDout_trade_no=${listconOrde.order_num}">付款</a></td>
+											</tr>
+										</c:if>
+									</c:if>
+								</c:if>
+								<!-- ******************************************** 订单删除的时候************************************ -->
+								<!-- ******************************************** 订单删除的时候************************************ -->
+							</c:forEach>
+							<!-- ******************************************** 订单循环************************************ -->
+							<!-- ******************************************** 没有购买任何 东西的 时候显示************************************ -->
+							<c:if test="${empty listconOrde}">
+								<div id="orderWrap">
+									<div class="order-list-empty clearfix">
+										<div class="empty-icon fl"></div>
+										<div class="empty-content fl">
+											<h5 class="empty-title">
+												<p>哎呀，此状态下没有对应的订单！</p>
+											</h5>
+											<ul class="empty-list">
+												<li>去 <a href="">服饰</a> 看看大家都喜欢的商品
+												</li>
+												<li>去 <a href="">团购</a> 看看正在折扣中的商品
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</c:if>
+							<!-- ******************************************** 没有购买任何 东西的 时候显示************************************ -->
+
+
+
+
+
+
+
+							<!--  *******************************************全部订单***************************************************** -->
+						</div>
+						<c:if test="${!empty listconOrde}">
+							<div id="paginator-list">
+								<div class="pagination mt20">
+									<div id="demo1s">
+										<div class="layui-box layui-laypage layui-laypage-default"
+											id="layui-laypage-1">
+											<!--  layui-disabled -->
+											<a
+												href="${pageContext.request.contextPath}/Orders/orderlist.html?id=${status}&currPageNo=${page.currPageNo-1}"
+												class="layui-laypage-prev" data-page="0">上一页</a> <span
+												class="layui-laypage-curr"> 
+												<em class="layui-laypage-em">${page.index}</em>
+											</span> <a
+												href="${pageContext.request.contextPath}/Orders/orderlist.html?id=${status}&currPageNo=${page.currPageNo+1}"
+												id="layui-laypage-next" class="layui-laypage-next"
+												data-page="2">下一页</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+					</div>
+
+
+
+					<script
+						src="${pageContext.request.contextPath }/statics/lib/layui.js"
+						type="text/javascript" charset="utf-8"></script>
+
+					<script
+						src="${pageContext.request.contextPath }/statics/lib/lay/modules/laypage.js"
+						type="text/javascript" charset="utf-8"></script>
+					<script>
+						var a = ${page.totalCount}
+						
+						
+
+						layui.use([ 'laypage', 'layer' ], function() {
+							var laypage = layui.laypage, layer = layui.layer;
+							//总页数大于页码总数
+							
+							laypage.render({
+								elem : 'demo1',
+								count : a//数据总数
+								,
+								jump : function(obj) {
+									console.log(obj)
+								}
+							});
+						});
+					</script>
+
+
+
+
+				</div>
+			</div>
+
+
+			<!--
+                	修改密码
+                	
+                -->
+
+			<div id="xiugaimima" class="his" style="display: none;">
+				<div class="per_content_wrap" id="per_content_wrap">
+					<div class="main_content">
+						<div class="content_header">用户密码</div>
+						<div class="content_form">
+							<form class="pwd_input_form formbox" id="pwd_forms" action="JavaScript:void(0)">
+								<c:if test="${user.password!=null}">
+									<p class="infoset validateitem current_input ">
+									<span class="label" style="width: 60px">当前密码</span>
+									 <input type="password" class="info_input currentpwd ui-input" name="password"> 
+									 <span class="tips display_u" id="password"></span>
+								</p>
+								</c:if>
+								
+								<p class="infoset validateitem inputbox passwordbox">
+									<span class="label"style="width: 60px">新密码</span> 
+									<input type="password" class="info_input newpwd ui-input"  id="js_passbox" name="password1"> 
+									<span class="password-complex"></span>
+									<input type="hidden" class="passComplexLevel" >
+									<span class="tips display_u"></span> 	
+								</p>
+								
+								
+								<p class="infoset validateitem" >
+									<span class="label" style="width: 60px">确认密码</span> 
+									<input type="password" class="info_input confirmpwd ui-input" name="password2"> 
+									<span class="tips display_u"></span>
+								</p>
+								
+								<div >
+									<input type="submit" class="confirm_button">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			<!-- *************************基本资料************************************** -->
+		<div id="jiebengziliao" class="his" style="display: none;">
+			<div class="per_content_wrap" id="per_content_wrap">
+				<div id="setting_box" class="fl">
+					
+				</div>
+			</div>
+			<!-- *************************基本资料************************************** -->
+		</div>
+			<!--
+            	修改头像
+            -->
+			<div id="xiugaitouxiang" class="his" style="display: none;">
+			
+				<div class="per_content_wrap" id="per_content_wrap">
+					<div class="main_content">
+						<div class="content_header">设置头像</div>
+						<div class="content_form">
+						
+
+							<div class="avatar_form">
+							<form  action="../user/uploadimg" class="ui-form" id="ui-form" method="post" enctype="multipart/form-data">	
+									<img id="nickPic" class="ui-pic" src="${pageContext.request.contextPath }/statics/imgName/${user.headPortraitSrc }">
+									<img id="nickPic1" class="ui-pic" src="${user.headPortraitSrc }">
+									<div class="ui-tip">
+										<span class="ui-change">更换头像</span>
+										<div class="ui-bg"></div>
+									</div>
+									<input id="uploadAvartar" class="ui-file" type="file" name="file" onchange="xmTanUploadImg(this)">
+							 </form>
+							</div>
+							<span id="pic-tip" class="ui-pic-tip"></span>
+							<div class="subbox clearfix">
+								<a href="javascript:;" id="btn_submit" class="btn_check">完成</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script language="javascript">
+							var srcs='${user.headPortraitSrc}';
+							 
+							
+							if(srcs.indexOf("http")>=0){
+								$("#img1").show();
+								$("#img2").hide();
+								$("#nickPic1").show();
+								$("#nickPic").hide();
+							}else{
+								$("#img2").show();
+								$("#img1").hide();
+								$("#nickPic").show();
+								$("#nickPic1").hide();
+							}
+						
+			</script>
+		 <script type="text/javascript">
+				$(function() {
+					$("#btn_submit").click(function() {
+						$(".ui-form").submit();
+					});
+				});		
+				
+			</script> 
+			
+			 <script type="text/javascript">            
+            //判断浏览器是否支持FileReader接口
+            if (typeof FileReader == 'undefined') {
+                document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+                //使选择控件不可操作
+                document.getElementById("uploadAvartar").setAttribute("disabled", "disabled");
+            }
+
+            //选择图片，马上预览
+            function xmTanUploadImg(obj) {
+                var file = obj.files[0];
+                
+                console.log(obj);console.log(file);
+                console.log("file.size = " + file.size);  //file.size 单位为byte
+
+                var reader = new FileReader();
+
+                //读取文件过程方法
+                reader.onloadstart = function (e) {
+                    console.log("开始读取....");
+                }
+                reader.onprogress = function (e) {
+                    console.log("正在读取中....");
+                }
+                reader.onabort = function (e) {
+                    console.log("中断读取....");
+                }
+                reader.onerror = function (e) {
+                    console.log("读取异常....");
+                }
+                reader.onload = function (e) {
+                    console.log("成功读取....");
+
+                    var img = document.getElementById("nickPic");
+                    img.src = e.target.result;
+                    //或者 img.src = this.result;  //e.target == this
+                }
+
+                reader.readAsDataURL(file)
+            }
+        </script>
+						<!--
+                	全场优惠券
+                -->
+			<div id="quanchangyouhuiquan" class="his" style="display: none;">
+				<div id="content_wrap" class="mu_content_wrap">
+					<div id="content_tabs">
+						<div class="main-tab">
+							<a class="main-tab__item " href="#">店铺优惠券</a> <a
+								class="main-tab__item active" href="#">全场优惠券</a>
+						</div>
+					</div>
+					<div id="content_coupon">
+						<ul class="coupon-wrapper">
+							<ul class="coupon-tabs" id="recommend_tabs">
+								<li class="active" data-status="1">未使用</li>
+								<li class="" data-status="2">已使用</li>
+								<li class="" data-status="3">已过期</li>
+							</ul>
+							<ul class="coupon-list">
+								<div class="coupon-empty">暂无全场优惠券~</div>
+							</ul>
+						</ul>
+					</div>
+					<div id="content_pagination"></div>
+					<div id="content_recommend"></div>
+				</div>
+			</div>
+
+			<!--
+                	商家优惠券
+                -->
+			<div id="shangjiayouhuiquan" class="his" style="display: none;">
+				<div id="content_wrap" class="mu_content_wrap">
+					<div id="content_tabs">
+						<div class="main-tab">
+							<a class="main-tab__item active" href="javascript:void(0);">店铺优惠券</a>
+							<a class="main-tab__item " href="javascript:void(0);">全场优惠券</a>
+						</div>
+					</div>
+					<div id="content_coupon">
+						<ul class="coupon-wrapper">
+							<ul class="coupon-tabs" id="recommend_tabs">
+								<li class="active" data-status="1">未使用</li>
+								<li class="" data-status="2">已使用</li>
+								<li class="" data-status="3">已过期</li>
+							</ul>
+							<ul class="coupon-list">
+								<div class="coupon-empty">暂无优惠券，快去领券购物吧~</div>
+							</ul>
+						</ul>
+					</div>
+					<div id="content_pagination"></div>
+					<div id="content_recommend">
+						<ul class="coupon-wrapper">
+							<div class="coupon-title">更多店铺优惠</div>
+							<ul class="coupon-list">
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">小松包包店</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>3.00
+										</h3>
+										<p>使用说明：满68元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.06.07 18:11 至<br> 2017.09.30
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">LOZO潮男</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>3.00
+										</h3>
+										<p>使用说明：满3元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.03.01 00:00 至<br> 2017.08.10
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">唯质男鞋</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>3.00
+										</h3>
+										<p>使用说明：满79元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.05.31 00:00 至<br> 2017.11.27
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">每日花茶</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>2.00
+										</h3>
+										<p>使用说明：满39元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.06.24 11:47 至<br> 2017.10.02
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">其拉米鼠婴童馆</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>5.00
+										</h3>
+										<p>使用说明：满99元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.03.29 00:00 至<br> 2017.08.30
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">陈诚圈圈520</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>5.00
+										</h3>
+										<p>使用说明：满98元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.03.23 00:00 至<br> 2017.09.08
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">泡面先生</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>3.00
+										</h3>
+										<p>使用说明：满69元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.03.29 14:16 至<br> 2017.09.24
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">甜心时光</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>3.00
+										</h3>
+										<p>使用说明：满28元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.06.10 22:30 至<br> 2017.10.10
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">pink大嘴猴睡衣</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>2.00
+										</h3>
+										<p>使用说明：满30元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.06.04 00:00 至<br> 2017.12.01
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+								<li class="coupon-card ">
+									<div class="fl left">
+										<div>
+											<p class="title">小时光泳衣</p>
+											<p class="scope">全店通用</p>
+										</div>
+										<h3 class="price">
+											<span>￥</span>2.00
+										</h3>
+										<p>使用说明：满65元可用</p>
+										<p class="time">
+											<span>使用期限：</span> 2017.06.05 00:00 至<br> 2017.10.30
+											00:00
+										</p>
+										<p>使用平台：全平台</p>
+									</div>
+									<div class="fl right">
+										<p style="margin-top: -32px">
+											<a href="javascript:void(0);" target="_blank">立即<br>领取
+											</a>
+										</p>
+									</div>
+								</li>
+							</ul>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+			<!--
+                    	地址设置
+                    -->
+			<script>
+				$(function() {
+					$("#J_saddAddress").click(function() {
+						$(".addressbox_warp").show();
+					});
+					$(".J_cancelbtn").click(function() {
+						$(".addressbox_warp").hide();
+					});
+					//_init_area();
+					   
+				});
+			</script>
+			<script>
+				$(function() {
+					$(".mu_title").toggle(function() {
+						$(this).parent().removeClass("mu_nav");
+						$(this).parent().addClass("mu_nav mu_expand");
+					}, function() {
+						$(this).parent().removeClass("mu_nav mu_expand");
+						$(this).parent().addClass("mu_nav");
+					});
+				});
+				  window.onload=function(){  
+				        initSeletList();  
+				    };  
+			 
+			</script>
+			
+			<style>
+				.pt_ie6hack select{
+					height: 30PX
+				
+				}
+			
+			</style>
+<!-- *****************************************设置地址************************************************** -->			
+			<div id="dizhishezhi" class="his" style="display: none;">
+				<div id="address_wrap">
+					<div class="addr_right topay" isaddress="true">
+						<h2 class="addr_title">地址管理</h2>
+						<div class="addr_edit" id="J_s_addr_edit">
+							<div class="add_new_addr clearfix" >
+								<span id="J_saddAddress">+添加地址</span>
+								
+							</div >
+							<div id="add_nuu"></div>
+							<div class="addressbox_warp" hidden="hidden" id="addpppp">
+								<div class="addressbox_warp">
+									<div class="addressbox" id="J_sAddrWrap"></div>
+									<div class="address_wrapper">
+										
+										<form id="apply_link_form"  action="JavaScript:void(0)">
+										<div class="__addressPop">
+											<dl class="address_pop">
+												<dt>省：</dt>
+												<dd class="pt_ie6hack">
+													<i class="needicon">*</i> 
+														<select id="province" name="s_province"  onchange="changeSelect(this);">
+														 <option value="000000" style="color:#999;" disabled="disabled" >-请选择省-</option>  
+														</select>
+														<select id="city" name="s_city" onchange="changeSelect(this);">
+															<option value="000000" style="color:#999;" disabled="disabled" >-请选择市-</option>  
+														</select>
+														<select id="district" name="s_county">
+															 <option value="000000" style="color:#999;" disabled="disabled">-请选区-</option>  
+														</select> <span class="prompt city_select"></span>
+												</dd>
+												<dt>邮政编码：</dt>
+												<dd>
+													<i class="needicon">*</i> 
+													<input id="youzhengbianma" type="text" data-type="c" data-errormsg="请填写正确的邮政编码"
+														data-normal=""
+														class="text formsize_normal J_postcode J_form vm"
+														name="postcode" value="" style="height: 30px"> <span
+														class="prompt mail_select"></span>
+												</dd>
+												<dt>街道地址：</dt>
+												<dd>
+													<i class="needicon">*</i>
+													<textarea id="jiedaodizhi" data-type="*" data-min="5"
+														data-max="100" data-normal="请填写街道地址，最少5个字，最多不能超过100个字"
+														data-errormsg="请填写街道地址，最少5个字，最多不能超过100个字"
+														class="textarea formsize_large J_street J_form"
+														name="street" cols="30" rows="3" ></textarea>
+													<span class="prompt breakline">请填写街道地址，最少5个字，最多不能超过100个字</span>
+												</dd>
+												<dt>收货人姓名：</dt>
+												<dd>
+													<i class="needicon">*</i> <input id="shouhuorenxingming"
+														type="text" data-type="*" data-errormsg="请填写收货人"
+														data-normal=""
+														class="text formsize_normal J_name J_form vm" name="name"
+														value="" style="height: 30px"> <span class="prompt name_select"></span>
+												</dd>
+												<dt>手机：</dt>
+												<dd>
+													<i class="needicon">*</i> <input id="phone" maxlength="11"
+														onkeypress="checkint()"
+														onkeyup="value=value.replace(/\D/g,'')" type="text"
+														data-type="phone" data-errormsg="请填写正确的联系号码"
+														data-normal=""
+														class="text formsize_normal J_mobile J_form vm"
+														name="mobile" value="" style="height: 30px"> <span
+														class="prompt mobile_select"></span>
+												</dd>
+												<dt></dt>
+												<dd class="pt10 oper_btn" >
+													<input type="submit" class="confirm_btn J_okbtn mr10" title="确认地址"/>
+												</dd>
+												<dd class="pt10 oper_btn" >
+													<input type="button" class="cancel_btn J_cancelbtn" title="取消"/>
+													<!-- <a href="javascript:;" class="confirm_btn J_okbtn mr10">确认地址</a>
+													<a href="javascript:;" class="cancel_btn J_cancelbtn">取消</a> -->
+												</dd>
+											</dl>
+											
+										</div>
+										</form>
+										
+										
+									</div>
+								</div>
+							</div>
+							
+							<!-- -->
+							<div id="addr_sectionsssss">
+								
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- *****************************************设置地址************************************************** -->				
+		</div>
+
+	</div>
+	<div id="lbOrderConfirm" class="light_box"
+		style="left: 533.5px; top: 352.5px; position: fixed; display: none;">
+		<iframe frameborder="0" scrolling="no" class="lb_fix"
+			style="width: 390px; height: 254px;"> </iframe>
+		<table class="lb_wrap clearfix r5" style="width: 400px;">
+			<tbody style="width: 500px;">
+				<tr>
+					<td>
+						<div class="lb_hd">
+							<span class="lb_title"> </span> <a href="javascript:;"
+								class="lb_close">×</a>
+						</div>
+						<div class="lb_bd">
+							<div class="content">
+								<div class="lb-tips" style="width: 220px;">
+									<p>你确定要删除这笔订单吗？删除后你可在订单回收站找回,或永久删除</p>
+								</div>
+								<div class="lb-action">
+									<a class="order-btn primary" id="primary" href="javascript:;">确认</a>
+									<a class="order-btn cancel" id="cancel" href="javascript:;">取消</a>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<!-- 个人信息更新完成的信息 -->
+	<div class="vp_wrap" id="vp_wrap" style="display: none; opacity: 1; margin-left: -201px; margin-top: -108px;" >
+		<h5 class="vp_t">提示</h5>
+		<a href="javascript:;" class="vp_cls">×</a>
+		<div class="v_pop_box">
+			<div class="vp_alert vp_inner" style="display: block;">
+				<p class="vp_cnt">个人信息更新成功</p>
+				<a href="javascript:;" class="vp_btn vp_btn_red vp_ok" id="qreng">确定</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+		<script type="text/javascript">
+		$("#qreng").click(function() {
+			$(".dissss").css("display", "none");
+			$("#vp_wrap").css("display", "none");
+		});	
+		
+		</script>
+<!-- 个人信息更新完成的信息 -->
+	<script type="text/javascript">
+		$("#cancel").click(function() {
+			$(".dissss").css("display", "none");
+			$("#lbOrderConfirm").css("display", "none");
+		})
+		$("#shanchu").click(function() {
+			$(".dissss").css("display", "block");
+			$("#lbOrderConfirm").css("display", "block");
+			var href = $("#shanchus").text();
+			$("#primary").attr("href", href);
+		})
+		
+		
+		
+		
+	</script>
+	<style>
+.dissss {
+	background-color: #000;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	zoom: 1;
+	position: fixed;
+	z-index: 9998;
+	opacity: .3;
+}
+</style>
+	<div class="dissss" style="display: none;"></div>
+	
+
+</body>
+</html>

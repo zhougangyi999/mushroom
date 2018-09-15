@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_order_itemMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_order_item">
+    <id column="order_item_id" jdbcType="INTEGER" property="orderItemId" />
+    <result column="order_item_num" jdbcType="VARCHAR" property="orderItemNum" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="price_old" jdbcType="DOUBLE" property="priceOld" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="item_num" jdbcType="INTEGER" property="itemNum" />
+    <result column="order_img" jdbcType="VARCHAR" property="orderImg" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="snapshoot_id" jdbcType="INTEGER" property="snapshootId" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+    <result column="reserved3" jdbcType="VARCHAR" property="reserved3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_item_id, order_item_num, order_num, price_old, price, item_num, order_img, 
+    sku_id, name, status, snapshoot_id, reserved1, reserved2, reserved3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_order_item
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_order_item
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_order_item">
+    insert into mm_order_item (order_item_id, order_item_num, order_num, 
+      price_old, price, item_num, 
+      order_img, sku_id, name, 
+      status, snapshoot_id, reserved1, 
+      reserved2, reserved3)
+    values (#{orderItemId,jdbcType=INTEGER}, #{orderItemNum,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, 
+      #{priceOld,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{itemNum,jdbcType=INTEGER}, 
+      #{orderImg,jdbcType=VARCHAR}, #{skuId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{snapshootId,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_order_item">
+    insert into mm_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderItemId != null">
+        order_item_id,
+      </if>
+      <if test="orderItemNum != null">
+        order_item_num,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="priceOld != null">
+        price_old,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="itemNum != null">
+        item_num,
+      </if>
+      <if test="orderImg != null">
+        order_img,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="snapshootId != null">
+        snapshoot_id,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+      <if test="reserved3 != null">
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderItemId != null">
+        #{orderItemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderItemNum != null">
+        #{orderItemNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="priceOld != null">
+        #{priceOld,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="itemNum != null">
+        #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderImg != null">
+        #{orderImg,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="snapshootId != null">
+        #{snapshootId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_order_item">
+    update mm_order_item
+    <set>
+      <if test="orderItemNum != null">
+        order_item_num = #{orderItemNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="priceOld != null">
+        price_old = #{priceOld,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="itemNum != null">
+        item_num = #{itemNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderImg != null">
+        order_img = #{orderImg,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="snapshootId != null">
+        snapshoot_id = #{snapshootId,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null">
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_order_item">
+    update mm_order_item
+    set order_item_num = #{orderItemNum,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      price_old = #{priceOld,jdbcType=DOUBLE},
+      price = #{price,jdbcType=DOUBLE},
+      item_num = #{itemNum,jdbcType=INTEGER},
+      order_img = #{orderImg,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      snapshoot_id = #{snapshootId,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where order_item_id = #{orderItemId,jdbcType=INTEGER}
+  </update>
+</mapper>

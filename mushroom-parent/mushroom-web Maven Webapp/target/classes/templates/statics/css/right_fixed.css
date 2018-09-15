@@ -1,0 +1,95 @@
+/*右边固定导航栏*/
+
+.rightbar {
+	position: fixed;
+	right: 0;
+	width: 30px;
+	height: 100%;
+	background: #202020;
+	text-align: center;
+	z-index: 9999;
+}
+
+.rightbar .rightbarList {
+	margin-top: 42.89px;
+}
+
+.rightbarList .on {
+	display: block;
+	height: 87px;
+	padding: 4px 4px 0;
+	font-size: 12px;
+}
+
+.rightbarList .un {
+	display: block;
+	height: 72px;
+	padding: 4px 4px 0;
+	font-size: 12px;
+}
+
+.rightbarList .on::after {
+	display: block;
+	content: '';
+	margin-top: 8px;
+	border-bottom: 1px solid rgba(221, 221, 221, .6);
+}
+
+.rightbarList .un::after {
+	display: block;
+	content: '';
+	margin-top: 9px;
+	border-bottom: 1px solid rgba(221, 221, 221, .6);
+}
+
+.rightbarList li:hover {
+	transition: .3s;
+	background: #ef2f23;
+}
+
+.rightbarList li a {
+	color: white;
+}
+
+.rightbarList i {
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+.rightbarList .icon_car {
+	background: url(../img/all.png) -271px -129px no-repeat;
+}
+
+.rightbarList .icon_coupons {
+	background: url(../img/all.png) -271px -159px no-repeat;
+}
+
+.rightbarList .icon_wallet {
+	background: url(../img/all.png) -271px -219px no-repeat;
+}
+
+.rightbarList .icon_footprint {
+	background: url(../img/all.png) -271px -189px no-repeat;
+}
+
+
+/*返回顶部*/
+
+.rightbar_bottom {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 2px;
+}
+
+.rightbar_bottom i {
+	display: block;
+	width: 25px;
+	height: 40px;
+	background: url(../img/all.png)-270px -280px no-repeat;
+}
+
+.rightbar_bottom i {
+	border-top: 1px solid white;
+}

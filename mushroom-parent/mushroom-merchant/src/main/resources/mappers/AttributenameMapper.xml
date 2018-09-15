@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mushroom.dao.AttributenameMapper">
+
+	<select id="findAttribute" resultType="map">
+		SELECT s.`attribute_name_id`,s.`attribute_value`,b.`attribute_value_id`,b.`attribute_value_name` FROM `mm_attribute_name` s
+		INNER JOIN `mm_attribute_value` b
+		ON s.`attribute_name_id`=b.`parent_id`
+	</select>
+</mapper>

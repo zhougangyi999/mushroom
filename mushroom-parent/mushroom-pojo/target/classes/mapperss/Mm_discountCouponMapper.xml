@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_discountCouponMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_discountCoupon">
+    <id column="discountCouponId" jdbcType="INTEGER" property="discountcouponid" />
+    <result column="employ" jdbcType="DATE" property="employ" />
+    <result column="expire" jdbcType="DATE" property="expire" />
+    <result column="explains" jdbcType="DOUBLE" property="explains" />
+    <result column="terrace" jdbcType="INTEGER" property="terrace" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    discountCouponId, employ, expire, explains, terrace, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_discountCoupon
+    where discountCouponId = #{discountcouponid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_discountCoupon
+    where discountCouponId = #{discountcouponid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_discountCoupon">
+    insert into mm_discountCoupon (discountCouponId, employ, expire, 
+      explains, terrace, reserved1, 
+      reserved2)
+    values (#{discountcouponid,jdbcType=INTEGER}, #{employ,jdbcType=DATE}, #{expire,jdbcType=DATE}, 
+      #{explains,jdbcType=DOUBLE}, #{terrace,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_discountCoupon">
+    insert into mm_discountCoupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="discountcouponid != null">
+        discountCouponId,
+      </if>
+      <if test="employ != null">
+        employ,
+      </if>
+      <if test="expire != null">
+        expire,
+      </if>
+      <if test="explains != null">
+        explains,
+      </if>
+      <if test="terrace != null">
+        terrace,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="discountcouponid != null">
+        #{discountcouponid,jdbcType=INTEGER},
+      </if>
+      <if test="employ != null">
+        #{employ,jdbcType=DATE},
+      </if>
+      <if test="expire != null">
+        #{expire,jdbcType=DATE},
+      </if>
+      <if test="explains != null">
+        #{explains,jdbcType=DOUBLE},
+      </if>
+      <if test="terrace != null">
+        #{terrace,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_discountCoupon">
+    update mm_discountCoupon
+    <set>
+      <if test="employ != null">
+        employ = #{employ,jdbcType=DATE},
+      </if>
+      <if test="expire != null">
+        expire = #{expire,jdbcType=DATE},
+      </if>
+      <if test="explains != null">
+        explains = #{explains,jdbcType=DOUBLE},
+      </if>
+      <if test="terrace != null">
+        terrace = #{terrace,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where discountCouponId = #{discountcouponid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_discountCoupon">
+    update mm_discountCoupon
+    set employ = #{employ,jdbcType=DATE},
+      expire = #{expire,jdbcType=DATE},
+      explains = #{explains,jdbcType=DOUBLE},
+      terrace = #{terrace,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where discountCouponId = #{discountcouponid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mushroom.dao.Mm_transactionRecordMapper">
+  <resultMap id="BaseResultMap" type="com.mushroom.pojo.Mm_transactionRecord">
+    <id column="transaction_recordId" jdbcType="INTEGER" property="transactionRecordid" />
+    <result column="creation_time" jdbcType="DATE" property="creationTime" />
+    <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="capital_source" jdbcType="VARCHAR" property="capitalSource" />
+    <result column="whereabouts_of_fund" jdbcType="VARCHAR" property="whereaboutsOfFund" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="order_num" jdbcType="VARCHAR" property="orderNum" />
+    <result column="types" jdbcType="INTEGER" property="types" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="reserved1" jdbcType="VARCHAR" property="reserved1" />
+    <result column="reserved2" jdbcType="VARCHAR" property="reserved2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    transaction_recordId, creation_time, money, capital_source, whereabouts_of_fund, 
+    name, order_num, types, status, remark, userId, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_transactionRecord
+    where transaction_recordId = #{transactionRecordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_transactionRecord
+    where transaction_recordId = #{transactionRecordid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mushroom.pojo.Mm_transactionRecord">
+    insert into mm_transactionRecord (transaction_recordId, creation_time, money, 
+      capital_source, whereabouts_of_fund, name, 
+      order_num, types, status, 
+      remark, userId, reserved1, 
+      reserved2)
+    values (#{transactionRecordid,jdbcType=INTEGER}, #{creationTime,jdbcType=DATE}, #{money,jdbcType=DOUBLE}, 
+      #{capitalSource,jdbcType=VARCHAR}, #{whereaboutsOfFund,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{orderNum,jdbcType=VARCHAR}, #{types,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mushroom.pojo.Mm_transactionRecord">
+    insert into mm_transactionRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transactionRecordid != null">
+        transaction_recordId,
+      </if>
+      <if test="creationTime != null">
+        creation_time,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="capitalSource != null">
+        capital_source,
+      </if>
+      <if test="whereaboutsOfFund != null">
+        whereabouts_of_fund,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="types != null">
+        types,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="reserved1 != null">
+        reserved1,
+      </if>
+      <if test="reserved2 != null">
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transactionRecordid != null">
+        #{transactionRecordid,jdbcType=INTEGER},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="capitalSource != null">
+        #{capitalSource,jdbcType=VARCHAR},
+      </if>
+      <if test="whereaboutsOfFund != null">
+        #{whereaboutsOfFund,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        #{types,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mushroom.pojo.Mm_transactionRecord">
+    update mm_transactionRecord
+    <set>
+      <if test="creationTime != null">
+        creation_time = #{creationTime,jdbcType=DATE},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="capitalSource != null">
+        capital_source = #{capitalSource,jdbcType=VARCHAR},
+      </if>
+      <if test="whereaboutsOfFund != null">
+        whereabouts_of_fund = #{whereaboutsOfFund,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="types != null">
+        types = #{types,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null">
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null">
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where transaction_recordId = #{transactionRecordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mushroom.pojo.Mm_transactionRecord">
+    update mm_transactionRecord
+    set creation_time = #{creationTime,jdbcType=DATE},
+      money = #{money,jdbcType=DOUBLE},
+      capital_source = #{capitalSource,jdbcType=VARCHAR},
+      whereabouts_of_fund = #{whereaboutsOfFund,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=VARCHAR},
+      types = #{types,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where transaction_recordId = #{transactionRecordid,jdbcType=INTEGER}
+  </update>
+</mapper>
